@@ -1,0 +1,570 @@
+[
+  {
+    "portrait": "/images/illustrations/artists/artist-1.png",
+    "name": "FAST X FURIOUS",
+    "description": "A powerhouse of energy, FAST X FURIOUS delivers pounding beats and relentless rhythms that define the hardcore and hard techno scenes.",
+    "genres": ["Hardcore", "HardTechno"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party2.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party3.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      },
+      {
+        "illustration": "party4.jpg",
+        "name": "Jazz Evening",
+        "date": "20.09.24",
+        "location": "Jazz Bar"
+      },
+      {
+        "illustration": "party5.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": [
+      "DJ1.jpg",
+      "DJ2.jpg",
+      "DJ3.jpg",
+      "DJ4.jpg",
+      "DJ5.jpg",
+      "DJ6.jpg",
+      "DJ7.jpg",
+      "DJ8.jpg",
+      "DJ9.jpg",
+      "DJ10.jpg"
+    ]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-2.png",
+    "name": "Mellow Vibes",
+    "description": "With a smooth fusion of Deep House and Chillout, Mellow Vibes offers an escape into a world of tranquil beats and soul-soothing melodies.",
+    "genres": ["Deep House", "Chillout"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party2.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party3.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ6.jpg", "DJ7.jpg", "DJ8.jpg", "DJ9.jpg", "DJ10.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-3.png",
+    "name": "Euphoria Pulse",
+    "description": "Euphoria Pulse takes you on a transcendent journey through uplifting Trance and mesmerizing Psytrance, crafting soundscapes of pure bliss.",
+    "genres": ["Trance", "Psytrance"],
+    "lastMixs": [
+      {
+        "illustration": "party4.jpg",
+        "name": "Jazz Evening",
+        "date": "20.09.24",
+        "location": "Jazz Bar"
+      },
+      {
+        "illustration": "party5.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ1.jpg", "DJ3.jpg", "DJ4.jpg", "DJ7.jpg", "DJ8.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-4.png",
+    "name": "Bass Shifter",
+    "description": "Dominating the Drum & Bass and Jungle scenes, Bass Shifter's tracks are a relentless assault on the senses, with deep basslines and fast-paced breaks.",
+    "genres": ["Drum & Bass", "Jungle"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-5.png",
+    "name": "Rhyme Master",
+    "description": "Rhyme Master brings sharp lyrics and smooth flows over hard-hitting Hip Hop and Trap beats, showcasing storytelling prowess and rhythmic genius.",
+    "genres": ["Hip Hop", "Trap"],
+    "lastMixs": [
+      {
+        "illustration": "party5.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ1.jpg", "DJ2.jpg", "DJ3.jpg", "DJ4.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-6.png",
+    "name": "Electric Rebels",
+    "description": "From gritty Rock anthems to soulful Indie Rock ballads, Electric Rebels strike a chord with raw emotion and electrifying performances.",
+    "genres": ["Rock", "Indie Rock"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party2.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ7.jpg", "DJ8.jpg", "DJ9.jpg", "DJ10.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-7.png",
+    "name": "Soulful Keys",
+    "description": "Soulful Keys explores the depths of Jazz and Soul, delivering heart-stirring melodies and captivating improvisations with every performance.",
+    "genres": ["Jazz", "Soul"],
+    "lastMixs": [
+      {
+        "illustration": "party5.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ3.jpg", "DJ4.jpg", "DJ5.jpg", "DJ6.jpg", "DJ7.jpg", "DJ9.jpg", "DJ10.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-1.png",
+    "name": "Melody Lane",
+    "description": "Melody Lane crafts infectious Pop and Electropop tunes that are impossible to resist, blending catchy hooks with dazzling production.",
+    "genres": ["Pop", "Electropop"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-2.png",
+    "name": "Strings of Legacy",
+    "description": "Strings of Legacy brings the timeless beauty of Classical and Orchestral music to the modern era, with compositions that stir the soul and inspire the mind.",
+    "genres": ["Classical", "Orchestral"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party4.jpg",
+        "name": "Jazz Evening",
+        "date": "20.09.24",
+        "location": "Jazz Bar"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ1.jpg", "DJ2.jpg", "DJ3.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-3.png",
+    "name": "Ritmo Caliente",
+    "description": "Ritmo Caliente ignites the dance floor with fiery Latin and Reggaeton rhythms, creating an irresistible blend of heat and melody.",
+    "genres": ["Latin", "Reggaeton"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-4.png",
+    "name": "Deep Blues Sea",
+    "description": "Deep Blues Sea delves into the soulful world of Blues and R&B, with emotionally charged performances that resonate with the struggles and joys of life.",
+    "genres": ["Blues", "R&B"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party2.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party3.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      },
+      {
+        "illustration": "party4.jpg",
+        "name": "Jazz Evening",
+        "date": "20.09.24",
+        "location": "Jazz Bar"
+      },
+      {
+        "illustration": "party5.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-5.png",
+    "name": "Island Groove",
+    "description": "Island Groove brings the sunny vibes of Reggae and Dancehall, transporting listeners to a paradise of rhythmic beats and laid-back melodies.",
+    "genres": ["Reggae", "Dancehall"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party2.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      }
+    ],
+    "gallery": ["DJ1.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-6.png",
+    "name": "Heartland Strum",
+    "description": "Heartland Strum captures the spirit of America with heartfelt Country and Folk tunes, telling stories of love, loss, and the open road.",
+    "genres": ["Country", "Folk"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-7.png",
+    "name": "Beat Explorer",
+    "description": "Beat Explorer navigates the expansive universe of EDM and House, dropping beats that propel listeners into a state of euphoric dance.",
+    "genres": ["EDM", "House"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party2.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party3.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      },
+      {
+        "illustration": "party4.jpg",
+        "name": "Jazz Evening",
+        "date": "20.09.24",
+        "location": "Jazz Bar"
+      },
+      {
+        "illustration": "party5.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ6.jpg", "DJ10.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-1.png",
+    "name": "Thunder Gods",
+    "description": "With an arsenal of Metal and Heavy Metal anthems, Thunder Gods reign supreme, delivering power chords and face-melting solos that resonate with the rebel within.",
+    "genres": ["Metal", "Heavy Metal"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      }
+    ],
+    "gallery": ["DJ1.jpg", "DJ2.jpg", "DJ3.jpg", "DJ4.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-2.png",
+    "name": "Afro Sonic",
+    "description": "Afro Sonic fuses Afrobeat and Funk, creating a vibrant tapestry of sound that celebrates the rich musical heritage of Africa and its diaspora.",
+    "genres": ["Afrobeat", "Funk"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party2.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      }
+    ],
+    "gallery": ["DJ1.jpg", "DJ2.jpg", "DJ3.jpg", "DJ4.jpg", "DJ9.jpg", "DJ10.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-3.png",
+    "name": "Indie Spirits",
+    "description": "Indie Spirits embrace the DIY ethos of Indie and Alternative music, crafting songs that speak to the soul with authenticity and innovation.",
+    "genres": ["Indie", "Alternative"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-4.png",
+    "name": "Folklore Echoes",
+    "description": "Folklore Echoes brings the timeless tales and melodies of Folk music to life, weaving stories that echo through the ages with acoustic simplicity.",
+    "genres": ["Folk", "Acoustic"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party2.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party3.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      },
+      {
+        "illustration": "party4.jpg",
+        "name": "Jazz Evening",
+        "date": "20.09.24",
+        "location": "Jazz Bar"
+      },
+      {
+        "illustration": "party5.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ1.jpg", "DJ2.jpg", "DJ10.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-5.png",
+    "name": "Ethereal Soundscapes",
+    "description": "Ethereal Soundscapes invites listeners into a world of Ambient and Downtempo soundscapes, where ethereal melodies float on waves of tranquil beats.",
+    "genres": ["Ambient", "Downtempo"],
+    "lastMixs": [
+      {
+        "illustration": "party4.jpg",
+        "name": "Jazz Evening",
+        "date": "20.09.24",
+        "location": "Jazz Bar"
+      },
+      {
+        "illustration": "party5.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ3.jpg", "DJ4.jpg", "DJ5.jpg", "DJ8.jpg", "DJ9.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-6.png",
+    "name": "Bass Wobble",
+    "description": "Bass Wobble shakes the foundations with the deepest Dubstep and Bass Music, delivering wobbly basslines and drops that defy gravity.",
+    "genres": ["Dubstep", "Bass Music"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party3.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ1.jpg", "DJ2.jpg", "DJ3.jpg", "DJ4.jpg", "DJ5.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-7.png",
+    "name": "Swing Reviver",
+    "description": "Swing Reviver resurrects the joy and jitterbug of Electro Swing and Nu Jazz, blending vintage sounds with modern grooves for a timeless party.",
+    "genres": ["Electro Swing", "Nu Jazz"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-1.png",
+    "name": "Rave Rebellion",
+    "description": "Rave Rebellion leads a Hardcore and Gabber uprising, with tracks that fuel the fire of the rave spirit, driving dancers into a frenzy.",
+    "genres": ["Hardcore", "Gabber"],
+    "lastMixs": [
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ1.jpg", "DJ8.jpg", "DJ9.jpg", "DJ10.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-2.png",
+    "name": "Retro Future",
+    "description": "Retro Future takes you on a neon-drenched journey through Synthwave and Retrowave, reviving the sounds of the '80s with a modern twist.",
+    "genres": ["Synthwave", "Retrowave"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party2.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ2.jpg", "DJ3.jpg", "DJ4.jpg", "DJ5.jpg", "DJ6.jpg"]
+  },
+  {
+    "portrait": "/images/illustrations/artists/artist-3.png",
+    "name": "Modular Mind",
+    "description": "Modular Mind explores the boundaries of Techno and Minimal, crafting hypnotic rhythms and textures with a masterful modular synthesis.",
+    "genres": ["Techno", "Minimal"],
+    "lastMixs": [
+      {
+        "illustration": "party1.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party2.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party3.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      },
+      {
+        "illustration": "party4.jpg",
+        "name": "Jazz Evening",
+        "date": "20.09.24",
+        "location": "Jazz Bar"
+      },
+      {
+        "illustration": "party5.jpg",
+        "name": "Rock Fest",
+        "date": "25.10.24",
+        "location": "Rock Arena"
+      },
+      {
+        "illustration": "party6.jpg",
+        "name": "Live at the Arena",
+        "date": "10.03.24",
+        "location": "The Grand Arena"
+      }
+    ],
+    "gallery": ["DJ1.jpg", "DJ2.jpg", "DJ3.jpg"]
+  }
+]

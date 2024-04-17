@@ -1,0 +1,23 @@
+@keyframes slow-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-slow-spin {
+  animation: slow-spin 4s linear infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-8%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(8%);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+.animate-bounce-slow {
+  animation: bounce 1.5s infinite;
+}

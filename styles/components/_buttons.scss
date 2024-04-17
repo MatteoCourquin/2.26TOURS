@@ -1,0 +1,39 @@
+.wrapper-button {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.button {
+  padding: 0 $padding-x-button;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.button-icon {
+  width: 60px;
+}
+.button-text {
+  color: $color-white;
+  width: fit-content;
+  white-space: nowrap;
+  font-family: $font-space-grotesk;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-family: $font-space-grotesk;
+  font-weight: medium;
+  width: fit-content;
+  border-radius: 999px;
+  color: $color-white;
+  padding: 8px 20px;
+}

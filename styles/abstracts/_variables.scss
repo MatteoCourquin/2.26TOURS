@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/SpaceGrotesk.ttf') format('truetype');
+  font-display: auto;
+}
+
+// COLORS
+$color-white: #ffffff;
+$color-white-opacity: #ffffff80;
+$color-black: #0d0d0d;
+$color-black-opacity: #0d0d0da6;
+$color-grey-light: #ffffff37;
+$color-grey: #3c3c3c;
+
+// FONTS
+$font-space-grotesk: 'Space Grotesk', sans-serif;
+
+// RADIUS
+$radius-default: 20px;
+
+// TRANSITIONS
+$transition-default: all 0.15s ease-in-out;
+
+// PADDING
+$padding-x-default: clamp(20px, 8vw, 100px);
+$padding-y-default: clamp(20px, 8vh, 100px);
+$padding-x-button: 20px;
+
+.space-grotesk-bold {
+  font-family: $font-space-grotesk;
+  font-weight: bold;
+}
+.space-grotesk-medium {
+  font-family: $font-space-grotesk;
+  font-weight: medium;
+}
+
+.blur-medium {
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: $radius-default;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}

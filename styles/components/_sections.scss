@@ -1,0 +1,31 @@
+.section-revealer {
+  position: relative;
+  border-collapse: collapse;
+  box-sizing: border-box;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    height: 5px;
+    width: 100px;
+    transform: translateX(-50%);
+    background: $color-grey-light;
+    z-index: 1;
+    border-radius: 40px 40px 0 0;
+    border-radius: 999px;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -1px;
+    height: 50px;
+    width: 100vw;
+    border-radius: 40px 40px 0 0;
+    background: $color-black-opacity;
+    border-top: 1px solid $color-grey-light;
+    border-left: 1px solid $color-grey-light;
+    border-right: 1px solid $color-grey-light;
+  }
+}

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './abstracts/variables';
+@import './abstracts/mixins';
+@import './abstracts/functions';
+
+@import './base/reset';
+@import './base/lenis';
+@import './base/txt';
+
+@import './components/sections';
+@import './components/buttons';
+@import './components/gallery';
+@import './components/form';
