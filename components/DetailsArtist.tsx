@@ -10,6 +10,8 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import Button, { BUTTON_TYPE } from './Atoms/Button';
 import Tag from './Atoms/Tag';
 import Typography from './Atoms/Typography';
+import { urlForImage } from '@/sanity/lib/image';
+import { Image } from 'sanity';
 
 const DetailsArtist = ({
   artist,
@@ -154,7 +156,11 @@ const DetailsArtist = ({
               className="flex h-0 origin-bottom items-end justify-center overflow-hidden"
             >
               <div className="h-[calc(100vh-260px)] w-full">
-                <img src={artist.portrait} alt="" className="h-full w-full object-contain" />
+                <img
+                  src={urlForImage(artist.portrait)}
+                  alt=""
+                  className="h-full w-full object-contain"
+                />
               </div>
             </div>
           </div>
@@ -179,9 +185,9 @@ const DetailsArtist = ({
                   {artist.name}
                 </Typography>
                 <div className="flex gap-3">
-                  {artist.genres.map((genre: string, index: number) => {
-                    return <Tag key={index}>{genre}</Tag>;
-                  })}
+                  {artist.genres.map((genre: string, index: number) => (
+                    <Tag key={index}>{genre}</Tag>
+                  ))}
                 </div>
                 <div className="flex gap-3">
                   <Button
@@ -227,7 +233,7 @@ const DetailsArtist = ({
                           width="100%"
                           height="100%"
                           className="h-[30vh] min-h-[240px] w-full object-cover"
-                          src={'/images/illustrations/party/' + lastMix.illustration}
+                          src={urlForImage(lastMix.illustration)}
                         />
                         <Typography className="pt-4" type="heading5" as="heading6">
                           {lastMix.name}
@@ -249,7 +255,7 @@ const DetailsArtist = ({
                 </Typography>
                 <div className="wrapper">
                   <div className="container">
-                    {artist.gallery.map((image: string, index) => {
+                    {artist.gallery.map((image: Image, index) => {
                       return (
                         <div className={clsx(getClass(index), 'overflow-hidden')} key={index}>
                           <LazyLoadImage
@@ -258,7 +264,7 @@ const DetailsArtist = ({
                             width="100%"
                             height="100%"
                             className="h-full w-full object-cover"
-                            src={'/images/illustrations/galleryDJ/' + image}
+                            src={urlForImage(image)}
                           />
                         </div>
                       );

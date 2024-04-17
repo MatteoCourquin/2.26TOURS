@@ -1,17 +1,13 @@
 import Typography from '@/components/Atoms/Typography';
 import CardArtist from '@/components/CardArtist';
 import DetailsArtist from '@/components/DetailsArtist';
-import artistsData from '@/data/artists.json';
 import { TypeArtist } from '@/data/types';
 import { calculateMargin } from '@/hooks/functions';
 import { client } from '@/sanity/lib/client';
 import clsx from 'clsx';
 import { useState } from 'react';
 
-export default function Artists(props: any) {
-  console.log(props);
-
-  const [artists, _] = useState(artistsData);
+export default function Artists({ artists }: { artists: TypeArtist[] }) {
   const [activeArtist, setActiveArtist] = useState<TypeArtist>(artists[0]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -36,20 +32,15 @@ export default function Artists(props: any) {
       </Typography>
 
       {artists.map((artist, index) => (
-        <div
+        <CardArtist
           key={index}
-          style={{
-            marginTop: calculateMargin(index),
-          }}
-        >
-          <CardArtist
-            name={artist.name}
-            className={clsx(index % 2 ? 'pb-80' : 'pt-80')}
-            portrait={artist.portrait}
-            genres={artist.genres}
-            onClick={() => handleClick(artist)}
-          />
-        </div>
+          index={index}
+          name={artist.name}
+          className={clsx(index % 2 ? 'pb-80' : 'pt-80')}
+          portrait={artist.portrait}
+          genres={artist.genres}
+          onClick={() => handleClick(artist)}
+        />
       ))}
 
       {activeArtist && (
@@ -60,11 +51,10 @@ export default function Artists(props: any) {
 }
 
 export async function getStaticProps() {
-  const authors = await client.fetch('*[_type == "author"]');
-
+  const artists = await client.fetch('*[_type == "artists"]');
   return {
     props: {
-      authors,
+      artists,
     },
   };
 }

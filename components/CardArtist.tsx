@@ -6,16 +6,21 @@ import { useEffect, useRef, useState } from 'react';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Tag from './Atoms/Tag';
 import Typography from './Atoms/Typography';
+import { calculateMargin } from '@/hooks/functions';
+import { urlForImage } from '@/sanity/lib/image';
+import { Image } from 'sanity';
 
 const CardArtist = ({
+  index,
   name,
   portrait,
   genres,
   onClick,
   className,
 }: {
+  index: number;
   name: string;
-  portrait: string;
+  portrait: Image;
   genres: string[];
   onClick: () => void;
   className?: string;
@@ -110,7 +115,7 @@ const CardArtist = ({
   });
 
   return (
-    <div ref={artistRef} className={className}>
+    <div ref={artistRef} className={className} style={{ marginTop: calculateMargin(index) }}>
       <div className="group relative z-20 h-fit w-full cursor-pointer hover:z-50">
         <div
           ref={imageRef}
@@ -121,7 +126,7 @@ const CardArtist = ({
           <img
             onClick={onClick}
             alt={'Portrait de ' + name}
-            src={portrait}
+            src={urlForImage(portrait)}
             className="z-10 w-full select-none"
           />
         </div>
