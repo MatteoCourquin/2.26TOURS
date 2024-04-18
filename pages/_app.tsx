@@ -1,6 +1,7 @@
 import Layout from '@/layout/default';
 import SmoothScrolling from '@/layout/lenis';
 import '@/styles/main.scss';
+import { AnimatePresence } from 'framer-motion';
 import type { AppProps } from 'next/app';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -18,7 +19,9 @@ export default function App({ Component, pageProps }: AppProps) {
       {layoutEnabled ? (
         <SmoothScrolling>
           <Layout>
-            <Component {...pageProps} />
+            <AnimatePresence mode="wait">
+              <Component key={pathname} {...pageProps} />
+            </AnimatePresence>
           </Layout>
         </SmoothScrolling>
       ) : (

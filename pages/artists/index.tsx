@@ -1,6 +1,7 @@
 import Typography from '@/components/Atoms/Typography';
 import CardArtist from '@/components/CardArtist';
 import DetailsArtist from '@/components/DetailsArtist';
+import PageTransition from '@/components/PageTransition';
 import { TypeArtist } from '@/data/types';
 import { client } from '@/sanity/lib/client';
 import clsx from 'clsx';
@@ -20,30 +21,32 @@ export default function Artists({ artists }: { artists: TypeArtist[] }) {
   };
 
   return (
-    <div className="relative grid min-h-screen grid-cols-2 gap-4 overflow-x-hidden px-x-large pt-header sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-      <Typography
-        className="fixed left-[50vw] top-[50vh] z-10 -translate-x-1/2 -translate-y-1/2"
-        type="heading1"
-        as="heading2"
-        colored={true}
-      >
-        Artists
-      </Typography>
+    <PageTransition>
+      <div className="relative grid min-h-screen grid-cols-2 gap-4 overflow-x-hidden px-x-large pt-header sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <Typography
+          className="fixed left-[50vw] top-[50vh] z-10 -translate-x-1/2 -translate-y-1/2"
+          type="heading1"
+          as="heading2"
+          colored={true}
+        >
+          Artists
+        </Typography>
 
-      {artists.map((artist, index) => (
-        <CardArtist
-          key={index}
-          index={index}
-          name={artist.name}
-          className={clsx(index % 2 ? 'pb-80' : 'pt-80')}
-          portrait={artist.portrait}
-          genres={artist.genres}
-          onClick={() => handleClick(artist)}
-        />
-      ))}
+        {artists.map((artist, index) => (
+          <CardArtist
+            key={index}
+            index={index}
+            name={artist.name}
+            className={clsx(index % 2 ? 'pb-80' : 'pt-80')}
+            portrait={artist.portrait}
+            genres={artist.genres}
+            onClick={() => handleClick(artist)}
+          />
+        ))}
 
-      <DetailsArtist artist={activeArtist} isOpen={isOpen} setIsOpen={setIsOpen} />
-    </div>
+        <DetailsArtist artist={activeArtist} isOpen={isOpen} setIsOpen={setIsOpen} />
+      </div>
+    </PageTransition>
   );
 }
 
