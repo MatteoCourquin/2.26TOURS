@@ -3,7 +3,7 @@ import { Image } from 'sanity';
 export interface TypeArtistMix {
   illustration: Image;
   name: string;
-  date: string;
+  date: Date;
   location: string;
 }
 

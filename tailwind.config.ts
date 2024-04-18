@@ -10,6 +10,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        down: {
+          '0%': { transform: 'translateY(0px)', opacity: '1' },
+          '5%': { transform: 'translateY(100px)', opacity: '0' },
+          '6%': { transform: 'translateY(-100px)', opacity: '0' },
+          '11%': { transform: 'translateY(0px)', opacity: '1' },
+          '50%': { transform: 'translateY(0px)', opacity: '1' },
+        },
+      },
+      animation: {
+        down: 'down 8s cubic-bezier(.48,-0.23,.53,1.24) infinite',
+      },
       padding: {
         'x-default': 'clamp(30px, 3vw, 100px)',
         'x-large': 'clamp(60px, 6vw, 200px)',

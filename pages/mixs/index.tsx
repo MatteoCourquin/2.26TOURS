@@ -42,15 +42,9 @@ export default function Mixs({ mixs }: { mixs: TypeMixs[] }) {
             ))}
           </div>
           <Typography type="text">{activeMix.description}</Typography>
-          <Button
-            as="a"
-            href={activeMix.link}
-            target="_blank"
-            type={BUTTON_TYPE.TEXT}
-            className="group"
-          >
+          <Button as="a" href={activeMix.link} target="_blank" type={BUTTON_TYPE.TEXT}>
             <p className="pr-2">Écouter sur soundcloud</p>
-            <IconArrowUpRight className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+            <IconArrowUpRight />
           </Button>
         </div>
       </div>

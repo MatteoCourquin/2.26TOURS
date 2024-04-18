@@ -5,6 +5,13 @@ export const scroll = () => {
   });
 };
 
+export const formatDate = (date: Date) =>
+  new Date(date).toLocaleDateString('fr-FR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
 export const formatSlug = (slug: string) => {
   return slug
     .toLowerCase()

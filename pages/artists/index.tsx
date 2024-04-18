@@ -42,9 +42,7 @@ export default function Artists({ artists }: { artists: TypeArtist[] }) {
         />
       ))}
 
-      {activeArtist && (
-        <DetailsArtist artist={activeArtist} isOpen={isOpen} setIsOpen={setIsOpen} />
-      )}
+      <DetailsArtist artist={activeArtist} isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 }

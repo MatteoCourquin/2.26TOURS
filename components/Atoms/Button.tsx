@@ -15,6 +15,7 @@ const Button = ({
   href,
   children,
   className,
+  onClick,
 }: {
   type: BUTTON_TYPE;
   as: 'a' | 'button';
@@ -22,6 +23,7 @@ const Button = ({
   href?: string;
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 }) => {
   return (
     <>
@@ -49,6 +51,7 @@ const Button = ({
       )}
       {as === 'button' && (
         <button
+          onClick={onClick}
           className={clsx(
             type === BUTTON_TYPE.TEXT ? 'button-text' : '',
             type === BUTTON_TYPE.ICON ? 'button-icon' : '',

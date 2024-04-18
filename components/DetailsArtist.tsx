@@ -1,4 +1,6 @@
-import { TypeArtist, TypeArtistMix, TypeGenre } from '@/data/types';
+import { TypeArtist } from '@/data/types';
+import { formatDate } from '@/hooks/functions';
+import { urlForImage } from '@/sanity/lib/image';
 import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';
 import gsap from 'gsap';
@@ -8,10 +10,9 @@ import { useLayoutEffect, useRef } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Button, { BUTTON_TYPE } from './Atoms/Button';
+import { IconClose, IconFacebook, IconInstagram, IconSoundcloud } from './Atoms/Icons';
 import Tag from './Atoms/Tag';
 import Typography from './Atoms/Typography';
-import { urlForImage } from '@/sanity/lib/image';
-import { Image } from 'sanity';
 
 const DetailsArtist = ({
   artist,
@@ -37,7 +38,6 @@ const DetailsArtist = ({
   };
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
     timeline.current = gsap
       .timeline({ paused: true })
       .to(titleRef.current, { y: 100, opacity: 0, duration: 0 })
@@ -64,34 +64,6 @@ const DetailsArtist = ({
         'startAnimations',
       );
   }, [artist]);
-
-  // useGSAP(() => {
-  //   const scaleImage = (progress: number) => {
-  //     const scale = 1 + 1.4 * progress;
-  //     gsap.set(wrapperImageRef.current, { scale: scale });
-  //   };
-  //   const scaleTitle = (progress: number) => {
-  //     const scale = 1 - 0.6 * progress;
-  //     gsap.set(wrapperTitleRef.current, { scale: scale });
-  //   };
-
-  //   const animationConfig = {
-  //     scrollTrigger: {
-  //       trigger: wrapperSectionDescritionRef.current,
-  //       scroller: wrapperSectionRef.current,
-  //       start: 'top bottom',
-  //       end: 'bottom top',
-  //       toggleActions: 'play none none none',
-  //       onUpdate: (self: ScrollTrigger) => {
-  //         scaleImage(self.progress);
-  //         scaleTitle(self.progress);
-  //       },
-  //     },
-  //   };
-
-  //   gsap.to(wrapperImageRef.current, animationConfig);
-  //   gsap.to(wrapperTitleRef.current, animationConfig);
-  // });
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -142,11 +114,19 @@ const DetailsArtist = ({
         data-lenis-prevent
         ref={wrapperSectionRef}
         className="left-O invisible fixed bottom-0 right-0 top-0 z-[99] min-h-svh w-screen overflow-y-scroll scroll-smooth backdrop-blur-0 will-change-auto"
-        onClick={() => {
-          setIsOpen(false);
-        }}
       >
-        <div className="flex h-svh w-full items-end justify-center overflow-hidden px-x-default pb-[120px] pt-[140px]">
+        <Button
+          className="fixed right-0 top-36"
+          as="button"
+          type={BUTTON_TYPE.ICON}
+          onClick={() => setIsOpen(false)}
+        >
+          <IconClose />
+        </Button>
+        <div
+          onClick={() => setIsOpen(false)}
+          className="flex h-svh w-full items-end justify-center overflow-hidden px-x-default pb-[120px] pt-[140px]"
+        >
           <div
             ref={wrapperImageRef}
             className="flex h-full w-full origin-bottom items-end justify-center overflow-hidden will-change-[transform,opacity]"
@@ -158,7 +138,7 @@ const DetailsArtist = ({
               <div className="h-[calc(100vh-260px)] w-full">
                 <img
                   src={urlForImage(artist.portrait)}
-                  alt=""
+                  alt={'Portrait de ' + artist.name}
                   className="h-full w-full object-contain"
                 />
               </div>
@@ -185,7 +165,7 @@ const DetailsArtist = ({
                   {artist.name}
                 </Typography>
                 <div className="flex gap-3">
-                  {artist.genres.map((genre: TypeGenre, index: number) => (
+                  {artist.genres.map((genre, index) => (
                     <Tag key={index}>{genre.name}</Tag>
                   ))}
                 </div>
@@ -196,7 +176,7 @@ const DetailsArtist = ({
                     target="_blank"
                     type={BUTTON_TYPE.ICON}
                   >
-                    <img src="/images/icons/insta-white.svg" alt="" />
+                    <IconInstagram />
                   </Button>
                   <Button
                     as="a"
@@ -204,7 +184,7 @@ const DetailsArtist = ({
                     target="_blank"
                     type={BUTTON_TYPE.ICON}
                   >
-                    <img src="/images/icons/facebook-white.svg" alt="" />
+                    <IconFacebook />
                   </Button>
                   <Button
                     as="a"
@@ -212,7 +192,7 @@ const DetailsArtist = ({
                     target="_blank"
                     type={BUTTON_TYPE.ICON}
                   >
-                    <img src="/images/icons/soundcloud-white.svg" alt="" />
+                    <IconSoundcloud />
                   </Button>
                 </div>
               </div>
@@ -224,7 +204,7 @@ const DetailsArtist = ({
                   DERNIERS MIXS
                 </Typography>
                 <div className="flex w-full overflow-x-scroll px-x-default">
-                  {artist.lastMixs.map((lastMix: TypeArtistMix, index) => {
+                  {artist.lastMixs.map((lastMix, index) => {
                     return (
                       <div className="slider-item h-fit overflow-hidden" key={index}>
                         <LazyLoadImage
@@ -239,7 +219,7 @@ const DetailsArtist = ({
                           {lastMix.name}
                         </Typography>
                         <Typography className="py-2" type="text">
-                          {lastMix.date}
+                          {formatDate(lastMix.date)}
                         </Typography>
                         <Typography type="text">@{lastMix.location}</Typography>
                       </div>
@@ -255,20 +235,18 @@ const DetailsArtist = ({
                 </Typography>
                 <div className="wrapper">
                   <div className="container">
-                    {artist.gallery.map((image: Image, index) => {
-                      return (
-                        <div className={clsx(getClass(index), 'overflow-hidden')} key={index}>
-                          <LazyLoadImage
-                            alt={'Dernier mix ' + artist.name}
-                            effect="blur"
-                            width="100%"
-                            height="100%"
-                            className="h-full w-full object-cover"
-                            src={urlForImage(image)}
-                          />
-                        </div>
-                      );
-                    })}
+                    {artist.gallery.map((image, index) => (
+                      <div className={clsx(getClass(index), 'overflow-hidden')} key={index}>
+                        <LazyLoadImage
+                          alt={'Dernier mix ' + artist.name}
+                          effect="blur"
+                          width="100%"
+                          height="100%"
+                          className="h-full w-full object-cover"
+                          src={urlForImage(image)}
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
