@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import gsap from 'gsap';
 import ScrollToPlugin from 'gsap/dist/ScrollToPlugin';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Button, { BUTTON_TYPE } from './Atoms/Button';
@@ -87,7 +87,7 @@ const DetailsArtist = ({
     });
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       timeline.current.play();
     } else {
