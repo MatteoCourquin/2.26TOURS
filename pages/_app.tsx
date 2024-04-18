@@ -14,14 +14,16 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [pathname]);
 
   return (
-    <SmoothScrolling>
+    <>
       {layoutEnabled ? (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <SmoothScrolling>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SmoothScrolling>
       ) : (
         <Component {...pageProps} />
       )}
-    </SmoothScrolling>
+    </>
   );
 }

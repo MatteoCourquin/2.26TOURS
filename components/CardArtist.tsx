@@ -9,6 +9,8 @@ import Typography from './Atoms/Typography';
 import { calculateMargin } from '@/hooks/functions';
 import { urlForImage } from '@/sanity/lib/image';
 import { Image } from 'sanity';
+import { log } from 'util';
+import { TypeGenre } from '@/data/types';
 
 const CardArtist = ({
   index,
@@ -21,7 +23,7 @@ const CardArtist = ({
   index: number;
   name: string;
   portrait: Image;
-  genres: string[];
+  genres: TypeGenre[];
   onClick: () => void;
   className?: string;
 }) => {
@@ -140,13 +142,11 @@ const CardArtist = ({
           <Typography type="heading4" as="heading6" className="whitespace-nowrap font-bold">
             {name}
           </Typography>
-          {genres.map((genre: string, index) => {
-            return (
-              <Tag className="animate-text -translate-y-full opacity-0" key={index}>
-                {genre}
-              </Tag>
-            );
-          })}
+          {genres.map((genre, index) => (
+            <Tag className="animate-text -translate-y-full opacity-0" key={index}>
+              {genre.name}
+            </Tag>
+          ))}
         </div>
       </div>
     </div>

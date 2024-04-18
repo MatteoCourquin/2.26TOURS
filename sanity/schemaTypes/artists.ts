@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'artists',
-  title: 'Artistes',
+  title: 'DJs',
   type: 'document',
   fields: [
     defineField({
@@ -27,7 +27,7 @@ export default defineType({
       name: 'genres',
       title: 'Genres',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'reference', to: [{ type: 'genre' }] }],
     }),
     defineField({
       name: 'lastMixs',

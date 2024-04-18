@@ -3,28 +3,24 @@ import { IconArrowUpRight } from '@/components/Atoms/Icons';
 import Tag from '@/components/Atoms/Tag';
 import Typography from '@/components/Atoms/Typography';
 import Vinyle from '@/components/Vinyle';
-import mixsData from '@/data/mixs.json';
 import { TypeMixs } from '@/data/types';
+import { client } from '@/sanity/lib/client';
+import { urlForImage } from '@/sanity/lib/image';
 import clsx from 'clsx';
 import { useState } from 'react';
 
-export default function Mixs() {
-  const [artists, _] = useState(mixsData);
-  const [activeMix, setActiveMix] = useState<TypeMixs>(artists[0]);
+export default function Mixs({ mixs }: { mixs: TypeMixs[] }) {
+  const [activeMix, setActiveMix] = useState<TypeMixs>(mixs[0]);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
     <div className="z-10 flex h-screen flex-col items-center justify-between gap-6 px-x-large py-y-default pt-header">
       <div className="grid grid-cols-2 items-center pt-header">
         <div className="w-1/2">
-          <Vinyle
-            src={'/images/illustrations/mixs/' + activeMix.cover}
-            alt={'Mix de ' + activeMix.artist}
-          />
+          <Vinyle src={urlForImage(activeMix.cover)} alt={'Mix de ' + activeMix.artist.name} />
         </div>
         <div className="flex flex-col gap-6">
           <Typography type="text" className="text-lg uppercase">
-            2.26 PODCAST <span className="text-white">{activeMix.subtitle}</span>
+            2.26 PODCAST <span className="text-white">#{activeMix.subtitle}</span>
           </Typography>
           <div className="h-[2px] w-20 rounded-full bg-white-opacity" />
           <div>
@@ -36,13 +32,13 @@ export default function Mixs() {
                 par{' '}
               </Typography>
               <Typography className="inline font-bold" type="heading2" as="heading6" colored={true}>
-                {activeMix.artist}
+                {activeMix.artist.name}
               </Typography>
             </div>
           </div>
           <div className="flex gap-3">
             {activeMix.genres.map((genre, index) => (
-              <Tag key={index}>{genre}</Tag>
+              <Tag key={index}>{genre.name}</Tag>
             ))}
           </div>
           <Typography type="text">{activeMix.description}</Typography>
@@ -59,13 +55,13 @@ export default function Mixs() {
         </div>
       </div>
       <div className="max-w-screen z-40 flex h-52 w-full">
-        {artists.map((mix, index) => (
+        {mixs.map((mix, index) => (
           <div
             key={index}
             className="transition-smooth relative flex !h-52 grow items-start justify-start last-of-type:pr-36 hover:pr-28"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() => setActiveMix(artists[index])}
+            onClick={() => setActiveMix(mixs[index])}
           >
             <div
               className={clsx(
@@ -80,7 +76,7 @@ export default function Mixs() {
             >
               <img
                 className="h-full w-full object-cover"
-                src={'/images/illustrations/mixs/' + mix.cover}
+                src={urlForImage(mix.cover)}
                 alt={'Mix de ' + mix.artist}
               />
             </div>
@@ -90,3 +86,36 @@ export default function Mixs() {
     </div>
   );
 }
+
+export async function getStaticProps() {
+  const query = `
+    *[_type == "mixs"]{
+      title,
+      subtitle,
+      "artist": artist->{
+        name
+      },
+      description,
+      link,
+      "genres": genres[]->{
+        name
+      },
+      "cover": cover.asset->url
+    }`;
+
+  const mixs = await client.fetch(query);
+  return {
+    props: {
+      mixs,
+    },
+  };
+}
+
+// export async function getStaticProps() {
+//   const mixs = await client.fetch('*[_type == "mixs"]');
+//   return {
+//     props: {
+//       mixs,
+//     },
+//   };
+// }

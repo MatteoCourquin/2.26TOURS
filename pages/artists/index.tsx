@@ -2,7 +2,6 @@ import Typography from '@/components/Atoms/Typography';
 import CardArtist from '@/components/CardArtist';
 import DetailsArtist from '@/components/DetailsArtist';
 import { TypeArtist } from '@/data/types';
-import { calculateMargin } from '@/hooks/functions';
 import { client } from '@/sanity/lib/client';
 import clsx from 'clsx';
 import { useState } from 'react';
@@ -51,7 +50,24 @@ export default function Artists({ artists }: { artists: TypeArtist[] }) {
 }
 
 export async function getStaticProps() {
-  const artists = await client.fetch('*[_type == "artists"]');
+  const query = `
+    *[_type == "artists"]{
+      name,
+      description,
+      "portrait": portrait.asset->url,
+      "genres": genres[]->{
+        name
+      },
+      "lastMixs": lastMixs[]{
+        "illustration": illustration.asset->url,
+        name,
+        date,
+        location
+      },
+      "gallery": gallery[].asset->url
+    }
+  `;
+  const artists = await client.fetch(query);
   return {
     props: {
       artists,

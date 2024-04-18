@@ -1,4 +1,4 @@
-import { Image } from "sanity";
+import { Image } from 'sanity';
 
 export interface TypeArtistMix {
   illustration: Image;
@@ -11,7 +11,7 @@ export interface TypeArtist {
   portrait: Image;
   name: string;
   description: string;
-  genres: string[];
+  genres: TypeGenre[];
   lastMixs?: TypeArtistMix[];
   gallery?: Image[];
 }
@@ -19,9 +19,13 @@ export interface TypeArtist {
 export interface TypeMixs {
   subtitle: string;
   title: string;
-  artist: string;
+  artist: TypeArtist;
   description: string;
   link: string;
-  genres: string[];
-  cover: string;
+  genres: TypeGenre[];
+  cover: Image;
+}
+
+export interface TypeGenre {
+  name: string;
 }

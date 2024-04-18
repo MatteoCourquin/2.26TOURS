@@ -1,4 +1,4 @@
-import { TypeArtist, TypeArtistMix } from '@/data/types';
+import { TypeArtist, TypeArtistMix, TypeGenre } from '@/data/types';
 import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';
 import gsap from 'gsap';
@@ -185,8 +185,8 @@ const DetailsArtist = ({
                   {artist.name}
                 </Typography>
                 <div className="flex gap-3">
-                  {artist.genres.map((genre: string, index: number) => (
-                    <Tag key={index}>{genre}</Tag>
+                  {artist.genres.map((genre: TypeGenre, index: number) => (
+                    <Tag key={index}>{genre.name}</Tag>
                   ))}
                 </div>
                 <div className="flex gap-3">
