@@ -9,11 +9,13 @@ export default defineType({
       name: 'title',
       title: 'Titre du mix',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'subtitle',
       title: 'Numéro du mix',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'artist',
@@ -45,6 +47,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      validation: (Rule) => Rule.required(),
     }),
   ],
 });

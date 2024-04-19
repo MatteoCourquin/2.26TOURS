@@ -8,18 +8,35 @@ import { TypeMixs } from '@/data/types';
 import { client } from '@/sanity/lib/client';
 import { urlForImage } from '@/sanity/lib/image';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Mixs({ mixs }: { mixs: TypeMixs[] }) {
-  const [activeMix, setActiveMix] = useState<TypeMixs>(mixs[0]);
+  const [activeMix, setActiveMix] = useState<TypeMixs | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const handleMixClick = (index: number) => {
+    setActiveMix({
+      title: mixs[index].title,
+      subtitle: mixs[index].subtitle,
+      artist: mixs[index].artist?.name || '2.26 tours',
+      description: mixs[index].description || null,
+      link: mixs[index].link,
+      genres: mixs[index].genres,
+      cover: mixs[index].cover,
+    });
+  };
+
+  useEffect(() => {
+    handleMixClick(0);
+  }, []);
+
   return (
     <PageTransition>
       <div className="z-10 flex h-screen flex-col items-center justify-between gap-6 px-x-large py-y-default pt-header">
         {activeMix && (
           <div className="grid grid-cols-2 items-center pt-header">
             <div className="w-1/2">
-              <Vinyle src={urlForImage(activeMix.cover)} alt={'Mix de ' + activeMix.artist.name} />
+              <Vinyle src={urlForImage(activeMix.cover)} alt={'Mix de ' + activeMix.artist} />
             </div>
             <div className="flex flex-col gap-6">
               <Typography type="text" className="text-lg uppercase">
@@ -40,7 +57,7 @@ export default function Mixs({ mixs }: { mixs: TypeMixs[] }) {
                     as="heading6"
                     colored={true}
                   >
-                    {activeMix.artist.name}
+                    {activeMix.artist}
                   </Typography>
                 </div>
               </div>
@@ -49,7 +66,9 @@ export default function Mixs({ mixs }: { mixs: TypeMixs[] }) {
                   <Tag key={index}>{genre.name}</Tag>
                 ))}
               </div>
-              <Typography type="text">{activeMix.description}</Typography>
+              {activeMix.description && (
+                <Typography type="text">{activeMix.description}</Typography>
+              )}
               <Button as="a" href={activeMix.link} target="_blank" type={BUTTON_TYPE.TEXT}>
                 <p className="pr-2">Écouter sur soundcloud</p>
                 <IconArrowUpRight />
@@ -65,7 +84,7 @@ export default function Mixs({ mixs }: { mixs: TypeMixs[] }) {
                 className="transition-smooth relative flex !h-52 grow items-start justify-start last-of-type:pr-36 hover:pr-28"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => setActiveMix(mixs[index])}
+                onClick={() => handleMixClick(index)}
               >
                 <div
                   className={clsx(
@@ -127,12 +146,3 @@ export async function getStaticProps() {
     },
   };
 }
-
-// export async function getStaticProps() {
-//   const mixs = await client.fetch('*[_type == "mixs"]');
-//   return {
-//     props: {
-//       mixs,
-//     },
-//   };
-// }

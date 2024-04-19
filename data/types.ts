@@ -19,8 +19,8 @@ export interface TypeArtist {
 export interface TypeMixs {
   subtitle: string;
   title: string;
-  artist: TypeArtist;
-  description: string;
+  artist: any;
+  description: string | null;
   link: string;
   genres: TypeGenre[];
   cover: Image;
