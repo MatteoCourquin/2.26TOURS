@@ -30,39 +30,10 @@ export default defineType({
       of: [{ type: 'reference', to: [{ type: 'genre' }] }],
     }),
     defineField({
-      name: 'lastMixs',
-      title: 'Last Mixes',
+      name: 'events',
+      title: 'Évenements',
       type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'illustration',
-              title: 'Illustration',
-              type: 'image',
-              options: {
-                hotspot: true,
-              },
-            }),
-            defineField({
-              name: 'name',
-              title: 'Name',
-              type: 'string',
-            }),
-            defineField({
-              name: 'date',
-              title: 'Date',
-              type: 'datetime',
-            }),
-            defineField({
-              name: 'location',
-              title: 'Location',
-              type: 'string',
-            }),
-          ],
-        },
-      ],
+      of: [{ type: 'reference', to: [{ type: 'events' }] }],
     }),
     defineField({
       name: 'gallery',

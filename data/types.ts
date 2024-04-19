@@ -12,7 +12,7 @@ export interface TypeArtist {
   name: string;
   description: string;
   genres: TypeGenre[];
-  lastMixs?: TypeArtistMix[];
+  events?: TypeEvents[];
   gallery?: Image[];
 }
 
@@ -28,4 +28,11 @@ export interface TypeMixs {
 
 export interface TypeGenre {
   name: string;
+}
+
+export interface TypeEvents {
+  illustration: Image;
+  name: string;
+  date: Date;
+  location: string;
 }

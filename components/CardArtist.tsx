@@ -1,16 +1,15 @@
+import { TypeGenre } from '@/data/types';
+import { calculateMargin } from '@/hooks/functions';
+import { urlForImage } from '@/sanity/lib/image';
 import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { Image } from 'sanity';
 import Tag from './Atoms/Tag';
 import Typography from './Atoms/Typography';
-import { calculateMargin } from '@/hooks/functions';
-import { urlForImage } from '@/sanity/lib/image';
-import { Image } from 'sanity';
-import { log } from 'util';
-import { TypeGenre } from '@/data/types';
 
 const CardArtist = ({
   index,

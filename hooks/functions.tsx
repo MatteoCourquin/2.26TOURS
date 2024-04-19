@@ -1,3 +1,5 @@
+import { TypeArtist } from '@/data/types';
+
 export const scroll = () => {
   window.scrollTo({
     top: window.innerHeight - 92,
@@ -35,4 +37,15 @@ export const calculateMargin = (i: number) => {
   } else {
     return '0vh';
   }
+};
+
+export const shuffleFisherYates = (arr: Array<TypeArtist>) => {
+  let currentIndex = arr.length,
+    randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]];
+  }
+  return arr;
 };

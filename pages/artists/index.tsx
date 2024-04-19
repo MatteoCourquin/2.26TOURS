@@ -3,6 +3,7 @@ import CardArtist from '@/components/CardArtist';
 import DetailsArtist from '@/components/DetailsArtist';
 import PageTransition from '@/components/PageTransition';
 import { TypeArtist } from '@/data/types';
+import { shuffleFisherYates } from '@/hooks/functions';
 import { client } from '@/sanity/lib/client';
 import clsx from 'clsx';
 import { useState } from 'react';
@@ -32,19 +33,22 @@ export default function Artists({ artists }: { artists: TypeArtist[] }) {
           Artists
         </Typography>
 
-        {artists.map((artist, index) => (
-          <CardArtist
-            key={index}
-            index={index}
-            name={artist.name}
-            className={clsx(index % 2 ? 'pb-80' : 'pt-80')}
-            portrait={artist.portrait}
-            genres={artist.genres}
-            onClick={() => handleClick(artist)}
-          />
-        ))}
+        {artists &&
+          artists.map((artist, index) => (
+            <CardArtist
+              key={artist.name + index}
+              index={index}
+              name={artist.name}
+              className={clsx(index % 2 ? 'pb-80' : 'pt-80')}
+              portrait={artist.portrait}
+              genres={artist.genres}
+              onClick={() => handleClick(artist)}
+            />
+          ))}
 
-        <DetailsArtist artist={activeArtist} isOpen={isOpen} setIsOpen={setIsOpen} />
+        {activeArtist && (
+          <DetailsArtist artist={activeArtist} isOpen={isOpen} setIsOpen={setIsOpen} />
+        )}
       </div>
     </PageTransition>
   );
@@ -59,8 +63,8 @@ export async function getStaticProps() {
       "genres": genres[]->{
         name
       },
-      "lastMixs": lastMixs[]{
-        "illustration": illustration.asset->url,
+      "events": events[]->{
+        illustration,
         name,
         date,
         location
@@ -68,7 +72,8 @@ export async function getStaticProps() {
       "gallery": gallery[].asset->url
     }
   `;
-  const artists = await client.fetch(query);
+  const artistsData = await client.fetch(query);
+  const artists = shuffleFisherYates([...artistsData, ...artistsData]);
   return {
     props: {
       artists,

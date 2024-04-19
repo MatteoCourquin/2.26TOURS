@@ -198,13 +198,13 @@ const DetailsArtist = ({
               </div>
               {artist.description && <Typography type="text">{artist.description}</Typography>}
             </div>
-            {artist.lastMixs && (
+            {artist.events && (
               <div>
                 <Typography className="px-x-default pb-10" type="heading4" as="heading5">
                   DERNIERS MIXS
                 </Typography>
                 <div className="flex w-full overflow-x-scroll px-x-default">
-                  {artist.lastMixs.map((lastMix, index) => {
+                  {artist.events.map((event, index) => {
                     return (
                       <div className="slider-item h-fit overflow-hidden" key={index}>
                         <LazyLoadImage
@@ -213,15 +213,15 @@ const DetailsArtist = ({
                           width="100%"
                           height="100%"
                           className="h-[30vh] min-h-[240px] w-full object-cover"
-                          src={urlForImage(lastMix.illustration)}
+                          src={urlForImage(event.illustration)}
                         />
                         <Typography className="pt-4" type="heading5" as="heading6">
-                          {lastMix.name}
+                          {event.name}
                         </Typography>
                         <Typography className="py-2" type="text">
-                          {formatDate(lastMix.date)}
+                          {formatDate(event.date)}
                         </Typography>
-                        <Typography type="text">@{lastMix.location}</Typography>
+                        <Typography type="text">@{event.location}</Typography>
                       </div>
                     );
                   })}
