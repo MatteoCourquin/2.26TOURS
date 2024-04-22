@@ -3,7 +3,6 @@ import CardArtist from '@/components/CardArtist';
 import DetailsArtist from '@/components/DetailsArtist';
 import PageTransition from '@/components/PageTransition';
 import { TypeArtist } from '@/data/types';
-import { shuffleFisherYates } from '@/hooks/functions';
 import { client } from '@/sanity/lib/client';
 import clsx from 'clsx';
 import { useState } from 'react';
@@ -73,7 +72,8 @@ export async function getStaticProps() {
     }
   `;
   const artistsData = await client.fetch(query);
-  const artists = shuffleFisherYates([...artistsData, ...artistsData]);
+  const artistsDouble = artistsData.concat(artistsData);
+  const artists = artistsDouble.sort(() => Math.random() - 0.5);
   return {
     props: {
       artists,

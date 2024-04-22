@@ -38,14 +38,3 @@ export const calculateMargin = (i: number) => {
     return '0vh';
   }
 };
-
-export const shuffleFisherYates = (arr: Array<TypeArtist>) => {
-  let currentIndex = arr.length,
-    randomIndex;
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-    [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]];
-  }
-  return arr;
-};

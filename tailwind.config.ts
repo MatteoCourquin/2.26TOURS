@@ -31,6 +31,9 @@ const config: Config = {
       screens: {
         nav: '870px',
       },
+      inset: {
+        'default': 'clamp(30px, 3vw, 100px)',
+      },
       colors: {
         black: '#0D0D0D',
         white: '#ffffff',

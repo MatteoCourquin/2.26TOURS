@@ -38,6 +38,7 @@ const CardArtist = ({
       setIsRight(rect.left + rect.width / 2 > midpoint);
     }
   };
+
   const apparitionText = () => {
     if (artistRef.current) {
       const wrapperText = artistRef.current.querySelector('#wrapper-text');
@@ -113,7 +114,7 @@ const CardArtist = ({
         y: () => -speed * 100,
         ease: 'power1.inOut',
       });
-  });
+  }, [artistRef]);
 
   return (
     <div ref={artistRef} className={className} style={{ marginTop: calculateMargin(index) }}>
