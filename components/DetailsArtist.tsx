@@ -65,7 +65,11 @@ const DetailsArtist = ({
         { y: 0, duration: 1, ease: 'power2.inOut' },
         'startAnimations',
       )
-      .to(closeButtonRef.current, { scale: 1, opacity: 1, duration: 0.3, ease: 'power2.inOut' });
+      .to(
+        closeButtonRef.current,
+        { scale: 1, opacity: 1, duration: 0.3, ease: 'power2.inOut' },
+        'startAnimations',
+      );
   }, [artist]);
 
   useGSAP(() => {
@@ -126,152 +130,154 @@ const DetailsArtist = ({
   }, []);
 
   return (
-    <div
-      data-lenis-prevent
-      ref={wrapperSectionRef}
-      className="left-O invisible fixed bottom-0 right-0 top-0 z-[99] min-h-svh w-screen overflow-y-scroll scroll-smooth backdrop-blur-0 will-change-auto"
-    >
-      <div className="sticky top-[108px] z-40 flex w-full justify-end px-x-default">
-        <div ref={closeButtonRef} className="scale-0">
-          <Button as="button" type={BUTTON_TYPE.ICON} onClick={() => setIsOpen(false)}>
-            <IconClose />
-          </Button>
-        </div>
+    <>
+      <div ref={closeButtonRef} className="fixed right-default top-[108px] z-[120] opacity-0 scale-0">
+        <Button as="button" type={BUTTON_TYPE.ICON} onClick={() => setIsOpen(false)}>
+          <IconClose />
+        </Button>
       </div>
       <div
-        onClick={() => setIsOpen(false)}
-        className="flex h-svh w-full items-end justify-center overflow-hidden px-x-default pb-[120px] pt-[140px]"
+        data-lenis-prevent
+        ref={wrapperSectionRef}
+        className="left-O invisible fixed bottom-0 right-0 top-0 z-[99] min-h-svh w-screen overflow-y-scroll scroll-smooth backdrop-blur-0 will-change-auto"
       >
         <div
-          ref={wrapperImageRef}
-          className="flex h-full w-full origin-bottom items-end justify-center overflow-hidden will-change-[transform,opacity]"
+          onClick={() => setIsOpen(false)}
+          className="flex h-svh w-full items-end justify-center overflow-hidden px-x-default pb-[120px] pt-[140px]"
         >
           <div
-            ref={imageRef}
-            className="flex h-0 origin-bottom items-end justify-center overflow-hidden"
+            ref={wrapperImageRef}
+            className="flex h-full w-full origin-bottom items-end justify-center overflow-hidden will-change-[transform,opacity]"
           >
-            <div className="h-[calc(100vh-260px)] w-full">
-              <img
-                src={urlForImage(artist.portrait)}
-                alt={'Portrait de ' + artist.name}
-                className="h-full w-full object-contain"
-              />
+            <div
+              ref={imageRef}
+              className="flex h-0 origin-bottom items-end justify-center overflow-hidden"
+            >
+              <div className="h-[calc(100vh-260px)] w-full">
+                <img
+                  src={urlForImage(artist.portrait)}
+                  alt={'Portrait de ' + artist.name}
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="text-shadow-xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pt-[30vh] text-center">
+            <div ref={wrapperTitleRef} className="will-change-[transform,opacity]">
+              <div ref={titleRef}>
+                <Typography className="whitespace-nowrap" type="heading2" as="heading1">
+                  {artist.name}
+                </Typography>
+              </div>
             </div>
           </div>
         </div>
-        <div className="text-shadow-xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pt-[30vh] text-center">
-          <div ref={wrapperTitleRef} className="will-change-[transform,opacity]">
-            <div ref={titleRef}>
-              <Typography className="whitespace-nowrap" type="heading2" as="heading1">
-                {artist.name}
-              </Typography>
-            </div>
-          </div>
-        </div>
-      </div>
-      <section
-        ref={wrapperSectionDescritionRef}
-        className="section-revealer w-screen translate-y-14 border-x-[1px] border-x-grey bg-black-opacity pt-12 text-white"
-      >
-        <div className="flex w-full flex-col gap-24 pb-24">
-          <div className="grid grid-cols-1 gap-6 px-x-default md:grid-cols-2">
-            <div className="flex flex-col gap-6">
-              <Typography type="heading3" colored={true}>
-                {artist.name}
-              </Typography>
-              <div className="flex gap-3">
-                {artist.genres.map((genre, index) => (
-                  <Tag key={index}>{genre.name}</Tag>
-                ))}
+        <section
+          ref={wrapperSectionDescritionRef}
+          className="section-revealer w-screen translate-y-14 border-x-[1px] border-x-grey bg-black-opacity pt-12 text-white"
+        >
+          <div className="flex w-full flex-col gap-24 pb-24">
+            <div className="grid grid-cols-1 gap-6 px-x-default md:grid-cols-2">
+              <div className="flex flex-col gap-6">
+                <Typography type="heading3" colored={true}>
+                  {artist.name}
+                </Typography>
+                <div className="flex gap-3">
+                  {artist.genres.map((genre, index) => (
+                    <Tag key={index}>{genre.name}</Tag>
+                  ))}
+                </div>
+                <div className="flex gap-3">
+                  <Button
+                    as="a"
+                    href="https://www.instagram.com/2.26tours"
+                    target="_blank"
+                    type={BUTTON_TYPE.ICON}
+                  >
+                    <IconInstagram />
+                  </Button>
+                  <Button
+                    as="a"
+                    href="https://www.facebook.com/2.26tours"
+                    target="_blank"
+                    type={BUTTON_TYPE.ICON}
+                  >
+                    <IconFacebook />
+                  </Button>
+                  <Button
+                    as="a"
+                    href="https://soundcloud.com/2-26-tours"
+                    target="_blank"
+                    type={BUTTON_TYPE.ICON}
+                  >
+                    <IconSoundcloud />
+                  </Button>
+                </div>
               </div>
-              <div className="flex gap-3">
-                <Button
-                  as="a"
-                  href="https://www.instagram.com/2.26tours"
-                  target="_blank"
-                  type={BUTTON_TYPE.ICON}
-                >
-                  <IconInstagram />
-                </Button>
-                <Button
-                  as="a"
-                  href="https://www.facebook.com/2.26tours"
-                  target="_blank"
-                  type={BUTTON_TYPE.ICON}
-                >
-                  <IconFacebook />
-                </Button>
-                <Button
-                  as="a"
-                  href="https://soundcloud.com/2-26-tours"
-                  target="_blank"
-                  type={BUTTON_TYPE.ICON}
-                >
-                  <IconSoundcloud />
-                </Button>
-              </div>
+              {artist.description && <Typography type="text">{artist.description}</Typography>}
             </div>
-            {artist.description && <Typography type="text">{artist.description}</Typography>}
-          </div>
-          {artist.events && (
-            <div>
-              <Typography className="px-x-default pb-10" type="heading4" as="heading5">
-                DERNIERS MIXS
-              </Typography>
-              <div ref={sliderRef} className="flex w-full gap-4 overflow-x-scroll px-x-default">
-                {artist.events.map((event, index) => (
-                  <div className="slider-item h-fit overflow-hidden" key={index}>
-                    <div
-                      className="relative -left-[200px] h-[30vh] min-h-[240px]"
-                      style={{ width: 'calc(100% + 200px)' }}
-                    >
-                      <LazyLoadImage
-                        alt={'Dernier mix ' + artist.name}
-                        effect="blur"
-                        width="100%"
-                        height="100%"
-                        className="anim-image-slider absolute h-full w-full object-cover"
-                        src={urlForImage(event.illustration)}
-                      />
-                    </div>
-                    <Typography className="pt-4" type="heading5" as="heading6">
-                      {event.name}
-                    </Typography>
-                    <Typography className="py-2" type="text">
-                      {formatDate(event.date)}
-                    </Typography>
-                    <Typography type="text">@{event.location}</Typography>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-          {artist.gallery && (
-            <div className="px-x-default">
-              <Typography className="pb-10" type="heading4" as="heading5">
-                GALERIE
-              </Typography>
-              <div className="wrapper">
-                <div className="container">
-                  {artist.gallery.map((image, index) => (
-                    <div className={clsx(getClass(index), 'overflow-hidden')} key={index}>
-                      <LazyLoadImage
-                        alt={'Dernier mix ' + artist.name}
-                        effect="blur"
-                        width="100%"
-                        height="100%"
-                        className="h-full w-full object-cover"
-                        src={urlForImage(image)}
-                      />
+            {artist.events && (
+              <div>
+                <Typography className="px-x-default pb-10" type="heading4" as="heading5">
+                  DERNIERS MIXS
+                </Typography>
+                <div ref={sliderRef} className="flex w-full overflow-x-scroll px-x-default">
+                  {artist.events.map((event, index) => (
+                    <div className="slider-item h-fit overflow-hidden" key={index}>
+                      <div className="overflow-hidden">
+                        <div
+                          style={{ width: 'calc(100% + 200px)' }}
+                          className="relative -left-[200px] h-[30vh] min-h-[240px]"
+                        >
+                          <LazyLoadImage
+                            alt={'Dernier mix ' + artist.name}
+                            effect="blur"
+                            width="100%"
+                            height="100%"
+                            className="anim-image-slider absolute h-full w-full object-cover"
+                            src={urlForImage(event.illustration)}
+                          />
+                        </div>
+                      </div>
+                      <Typography className="pt-4" type="heading5" as="heading6">
+                        {event.name}
+                      </Typography>
+                      <Typography className="py-2" type="text">
+                        {formatDate(event.date)}
+                      </Typography>
+                      <Typography type="text">@{event.location}</Typography>
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-      </section>
-    </div>
+            )}
+            {artist.gallery && (
+              <div className="px-x-default">
+                <Typography className="pb-10" type="heading4" as="heading5">
+                  GALERIE
+                </Typography>
+                <div className="wrapper">
+                  <div className="container">
+                    {artist.gallery.map((image, index) => (
+                      <div className={clsx(getClass(index), 'overflow-hidden')} key={index}>
+                        <LazyLoadImage
+                          alt={'Dernier mix ' + artist.name}
+                          effect="blur"
+                          width="100%"
+                          height="100%"
+                          className="h-full w-full object-cover"
+                          src={urlForImage(image)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 
