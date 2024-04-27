@@ -1,18 +1,23 @@
 import { TypeEvent } from '@/data/types';
-import { formatDateDigit, formatDateWithoutDay } from '@/hooks/functions';
+import { formatDateDigit, formatDateWithoutDay, getColorsFromGenre } from '@/utils/functions';
 import Button, { BUTTON_TYPE } from './Atoms/Button';
 import Tag from './Atoms/Tag';
 import Typography from './Atoms/Typography';
 
 const CardEvent = ({ event }: { event: TypeEvent }) => {
   return (
-    <div className="card-event sticky top-1/3 grid grid-cols-[24px,1fr] gap-6 md:grid-cols-[150px,1fr]">
+    <div
+      key={event.name}
+      className="card-event sticky top-1/3 grid grid-cols-[24px,1fr] gap-6 md:grid-cols-[150px,1fr]"
+    >
       <div
         className="card-event-circle"
         style={{ backgroundImage: `radial-gradient(${event.color}1a 0%, ${event.color}00 60%)` }}
       ></div>
       <div className="sticky top-1/3 flex h-fit items-center gap-4">
-        <div style={{ backgroundColor: event.color }} className="h-6 w-6 md:h-8 md:w-8"></div>
+        {event.genres && (
+          <div style={{ backgroundColor: event.color }} className="h-6 w-6 md:h-8 md:w-8"></div>
+        )}
         <Typography type="text" as="heading6" className="hidden md:block">
           {formatDateWithoutDay(event.date)}
         </Typography>

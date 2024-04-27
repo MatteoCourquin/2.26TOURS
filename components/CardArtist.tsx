@@ -1,6 +1,6 @@
 import { TypeGenre } from '@/data/types';
-import { calculateMargin } from '@/hooks/functions';
 import { urlForImage } from '@/sanity/lib/image';
+import { calculateMargin } from '@/utils/functions';
 import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';
 import gsap from 'gsap';
@@ -117,7 +117,12 @@ const CardArtist = ({
   }, [artistRef]);
 
   return (
-    <div ref={artistRef} className={className} style={{ marginTop: calculateMargin(index) }}>
+    <div
+      key={'artist-' + name}
+      ref={artistRef}
+      className={className}
+      style={{ marginTop: calculateMargin(index) }}
+    >
       <div className="group relative z-20 h-fit w-full cursor-pointer hover:z-50">
         <div
           ref={imageRef}

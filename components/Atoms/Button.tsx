@@ -1,4 +1,4 @@
-import { useMagnet, useResetMagnet } from '@/hooks/animations';
+import { useMagnet, useResetMagnet } from '@/utils/animations';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { ReactNode } from 'react';

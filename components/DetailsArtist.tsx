@@ -1,5 +1,5 @@
 import { TypeArtist } from '@/data/types';
-import { formatDate } from '@/hooks/functions';
+import { formatDate } from '@/utils/functions';
 import { urlForImage } from '@/sanity/lib/image';
 import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';

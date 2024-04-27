@@ -3,8 +3,8 @@ import { IconScrollDown } from '@/components/Atoms/Icons';
 import Typography from '@/components/Atoms/Typography';
 import CardEvent from '@/components/CardEvent';
 import PageTransition from '@/components/PageTransition';
-import { useMagnet, useResetMagnet } from '@/hooks/animations';
-import { scroll } from '@/hooks/functions';
+import { useMagnet, useResetMagnet } from '@/utils/animations';
+import { scroll } from '@/utils/functions';
 
 const events = [
   {
@@ -72,11 +72,11 @@ export default function Index() {
           type="heading2"
           as="heading4"
           colored={false}
-          className="w-full pb-28 md:text-center"
+          className="w-full pb-28 text-center"
         >
           CALENDRIER
         </Typography>
-        <div className="relative flex flex-col gap-20">
+        <div className="relative flex flex-col gap-32">
           <div className="line-calendar absolute left-3 h-full w-px bg-white opacity-50 md:left-4"></div>
           {events.map((event) => {
             return (
@@ -92,7 +92,7 @@ export default function Index() {
           type="heading2"
           as="heading4"
           colored={false}
-          className="w-full pb-28 md:text-center"
+          className="w-full pb-28 text-center"
         >
           A PROPOS DE NOUS
         </Typography>

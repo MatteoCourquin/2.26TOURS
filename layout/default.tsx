@@ -1,6 +1,6 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { useTouchDevice } from '@/hooks/states';
+import { useTouchDevice } from '@/utils/states';
 import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useRef } from 'react';
 

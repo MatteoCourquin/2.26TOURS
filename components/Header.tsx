@@ -1,4 +1,4 @@
-import { useMagnet, useResetMagnet, useRotateHover } from '@/hooks/animations';
+import { useMagnet, useResetMagnet, useRotateHover } from '@/utils/animations';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

@@ -32,6 +32,35 @@ export const formatSlug = (slug: string) => {
     .replace(/[^\w-]+/g, '');
 };
 
+const red = ['hardcore', 'techno', 'hardtechno'];
+const blue = ['house', 'minimal', 'tech house'];
+const yellow = ['psytrance', 'trance'];
+const green = ['latino', 'trance'];
+export const getColorsFromGenre = (genres: string[]) => {
+  genres.forEach((genre: string) => {
+    if (red.join(', ').toLocaleLowerCase().includes(genre.toLocaleLowerCase())) {
+      console.log('red');
+      // return 'ff0000';
+      return 'red';
+    }
+    if (blue.join(', ').toLocaleLowerCase().includes(genre.toLocaleLowerCase())) {
+      console.log('blue');
+      // return '0000ff';
+      return 'blue';
+    }
+    if (yellow.join(', ').toLocaleLowerCase().includes(genre.toLocaleLowerCase())) {
+      console.log('yellow');
+      // return 'ffff00';
+      return 'yellow';
+    }
+    if (green.join(', ').toLocaleLowerCase().includes(genre.toLocaleLowerCase())) {
+      console.log('008000');
+      // return '008000';
+      return 'green';
+    }
+  });
+};
+
 export const calculateMargin = (i: number) => {
   if (i % 6 === 0) {
     return '40vh';
