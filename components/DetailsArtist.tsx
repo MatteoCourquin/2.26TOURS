@@ -119,7 +119,7 @@ const DetailsArtist = ({
     const slides = gsap.utils.toArray('.anim-image-slider');
     gsap.to(slides, {
       ease: 'none',
-      left: 200,
+      x: 100,
       scrollTrigger: {
         trigger: sliderRef.current,
         scroller: sliderRef.current,
@@ -127,11 +127,14 @@ const DetailsArtist = ({
         horizontal: true,
       },
     });
-  }, []);
+  });
 
   return (
     <>
-      <div ref={closeButtonRef} className="fixed right-default top-[108px] z-[120] opacity-0 scale-0">
+      <div
+        ref={closeButtonRef}
+        className="fixed right-default top-[108px] z-[120] scale-0 opacity-0"
+      >
         <Button as="button" type={BUTTON_TYPE.ICON} onClick={() => setIsOpen(false)}>
           <IconClose />
         </Button>
@@ -225,17 +228,11 @@ const DetailsArtist = ({
                   {artist.events.map((event, index) => (
                     <div className="slider-item h-fit overflow-hidden" key={index}>
                       <div className="overflow-hidden">
-                        <div
-                          style={{ width: 'calc(100% + 200px)' }}
-                          className="relative -left-[200px] h-[30vh] min-h-[240px]"
-                        >
-                          <LazyLoadImage
-                            alt={'Dernier mix ' + artist.name}
-                            effect="blur"
-                            width="100%"
-                            height="100%"
-                            className="anim-image-slider absolute h-full w-full object-cover"
+                        <div className="anim-image-slider relative h-[30vh] min-h-[240px]">
+                          <img
                             src={urlForImage(event.illustration)}
+                            alt={'Dernier mix ' + artist.name}
+                            className="absolute h-full w-[calc(100%+200px)] -translate-x-[100px] object-cover"
                           />
                         </div>
                       </div>

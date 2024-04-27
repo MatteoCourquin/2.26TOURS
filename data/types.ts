@@ -12,11 +12,11 @@ export interface TypeArtist {
   name: string;
   description: string;
   genres: TypeGenre[];
-  events?: TypeEvents[];
+  events?: TypeEvent[];
   gallery?: Image[];
 }
 
-export interface TypeMixs {
+export interface TypeMix {
   subtitle: string;
   title: string;
   artist: any;
@@ -30,9 +30,12 @@ export interface TypeGenre {
   name: string;
 }
 
-export interface TypeEvents {
-  illustration: Image;
+export interface TypeEvent {
+  illustration: Image | string; // Remove string
   name: string;
   date: Date;
   location: string;
+  genres?: string[];
+  shotgun?: string;
+  color?: string // A voir en fonction du genre
 }

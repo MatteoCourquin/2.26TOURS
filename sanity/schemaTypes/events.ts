@@ -29,9 +29,21 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'genres',
+      title: 'Genres',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'genre' }] }],
+      validation: (Rule) => Rule.required().min(1).max(3),
+    }),
+    defineField({
       name: 'location',
       title: 'Location',
       type: 'string',
+    }),
+    defineField({
+      name: 'billeterie', // À traduire
+      title: 'Lien de la billeterie',
+      type: 'string', // Link ?
     }),
   ],
 });

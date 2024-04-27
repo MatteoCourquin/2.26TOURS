@@ -30,6 +30,7 @@ export default defineType({
       title: 'Genres',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'genre' }] }],
+      validation: (Rule) => Rule.required().min(1).max(3),
     }),
     defineField({
       name: 'events',

@@ -1,5 +1,3 @@
-import { TypeArtist } from '@/data/types';
-
 export const scroll = () => {
   window.scrollTo({
     top: window.innerHeight - 92,
@@ -10,7 +8,20 @@ export const scroll = () => {
 export const formatDate = (date: Date) =>
   new Date(date).toLocaleDateString('fr-FR', {
     day: 'numeric',
-    month: 'long',
+    month: 'short',
+    year: 'numeric',
+  });
+
+export const formatDateDigit = (date: Date) =>
+  new Date(date).toLocaleDateString('fr-FR', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+  });
+
+export const formatDateWithoutDay = (date: Date) =>
+  new Date(date).toLocaleDateString('fr-FR', {
+    month: 'short',
     year: 'numeric',
   });
 

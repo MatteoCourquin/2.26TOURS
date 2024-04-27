@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { ReactNode } from 'react';
+import { CSSProperties } from 'styled-components';
 
 const Typography = ({
   type = 'text',
@@ -7,12 +8,14 @@ const Typography = ({
   colored = false,
   children,
   className,
+  style,
 }: {
   type?: 'text' | 'heading1' | 'heading2' | 'heading3' | 'heading4' | 'heading5' | 'heading6';
   as?: string;
   colored?: boolean;
   children?: ReactNode;
   className?: string;
+  style?: CSSProperties;
 }) => {
   const Typography = (() => {
     switch (type) {
@@ -37,6 +40,7 @@ const Typography = ({
 
   return (
     <Typography
+      style={style}
       className={clsx(
         as || type,
         colored ? 'bg-clip-text' : 'text-white',

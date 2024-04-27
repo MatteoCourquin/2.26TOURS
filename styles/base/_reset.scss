@@ -20,3 +20,36 @@ body {
 *::-webkit-scrollbar {
   display: none;
 }
+
+.line-calendar {
+  &::after {
+    content: '';
+    position: absolute;
+    top: -200px;
+    width: 1px;
+    background-image: linear-gradient(transparent, white);
+    height: 200px;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -200px;
+    width: 1px;
+    background-image: linear-gradient(white, transparent);
+    height: 200px;
+  }
+}
+
+.card-event {
+  .card-event-circle {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translate(50%, -50%);
+    right: 0;
+    width: 50vw;
+    height: 50vw;
+    aspect-ratio: 1/1;
+    border-radius: 9999px;
+  }
+}

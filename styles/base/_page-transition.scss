@@ -4,8 +4,8 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: grey;
-  z-index: 990;
+  background: $color-white;
+  z-index: 999;
   transform-origin: bottom;
 }
 
@@ -15,7 +15,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: grey;
-  z-index: 990;
+  background: $color-white;
+  z-index: 999;
   transform-origin: top;
 }

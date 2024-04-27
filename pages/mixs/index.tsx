@@ -4,14 +4,14 @@ import Tag from '@/components/Atoms/Tag';
 import Typography from '@/components/Atoms/Typography';
 import PageTransition from '@/components/PageTransition';
 import Vinyle from '@/components/Vinyle';
-import { TypeMixs } from '@/data/types';
+import { TypeMix } from '@/data/types';
 import { client } from '@/sanity/lib/client';
 import { urlForImage } from '@/sanity/lib/image';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 
-export default function Mixs({ mixs }: { mixs: TypeMixs[] }) {
-  const [activeMix, setActiveMix] = useState<TypeMixs | null>(null);
+export default function Mixs({ mixs }: { mixs: TypeMix[] }) {
+  const [activeMix, setActiveMix] = useState<TypeMix | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const handleMixClick = (index: number) => {
@@ -47,7 +47,7 @@ export default function Mixs({ mixs }: { mixs: TypeMixs[] }) {
                 <Typography type="heading2" as="heading5">
                   {activeMix.title}
                 </Typography>
-                <div>
+                <div className="pt-2">
                   <Typography className="inline" type="text">
                     par{' '}
                   </Typography>
@@ -91,9 +91,15 @@ export default function Mixs({ mixs }: { mixs: TypeMixs[] }) {
                     'transition-smooth absolute left-0 top-0 !aspect-square !h-52 !w-52 grow-0 cursor-pointer ease-power2inOut',
                     {
                       '-translate-y-3 scale-[1.25]': index === hoveredIndex,
-                      '-translate-y-2 scale-[1.10]':
+                      '-translate-y-2 scale-[1.20]':
                         hoveredIndex !== null &&
                         (index === hoveredIndex - 1 || index === hoveredIndex + 1),
+                      '-translate-y-1 scale-[1.15]':
+                        hoveredIndex !== null &&
+                        (index === hoveredIndex - 2 || index === hoveredIndex + 2),
+                      '-translate-y-0 scale-[1.10]':
+                        hoveredIndex !== null &&
+                        (index === hoveredIndex - 3 || index === hoveredIndex + 3),
                     },
                   )}
                 >
@@ -139,7 +145,8 @@ export async function getStaticProps() {
       "cover": cover.asset->url
     }`;
 
-  const mixs = await client.fetch(query);
+  const mixsData = await client.fetch(query);
+  const mixs = mixsData.length <= 10 ? [...mixsData, ...mixsData] : [...mixsData];
   return {
     props: {
       mixs,
