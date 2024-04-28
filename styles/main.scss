@@ -15,3 +15,17 @@
 @import './components/buttons';
 @import './components/gallery';
 @import './components/form';
+
+// .button-colored {
+//   border:
+//     2px solid red,
+//     2px solid green,
+//     2px solid blue;
+//   border-radius: calc($radius-default - 1px);
+//   background: rgba(255, 255, 255, 0.1);
+//   backdrop-filter: blur(6px);
+//   -webkit-backdrop-filter: blur(6px);
+//   p {
+//   }
+// }
+// <button className='button-colored'><p>En savoir plus</p></button>

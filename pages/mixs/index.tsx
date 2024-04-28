@@ -80,7 +80,7 @@ export default function Mixs({ mixs }: { mixs: TypeMix[] }) {
           <div className="max-w-screen z-40 flex h-52 w-full">
             {mixs.map((mix, index) => (
               <div
-                key={index}
+                key={index + mix.title}
                 className="transition-smooth relative flex !h-52 grow items-start justify-start last-of-type:pr-36 hover:pr-28"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}

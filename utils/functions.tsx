@@ -32,33 +32,19 @@ export const formatSlug = (slug: string) => {
     .replace(/[^\w-]+/g, '');
 };
 
-const red = ['hardcore', 'techno', 'hardtechno'];
-const blue = ['house', 'minimal', 'tech house'];
-const yellow = ['psytrance', 'trance'];
-const green = ['latino', 'trance'];
-export const getColorsFromGenre = (genres: string[]) => {
-  genres.forEach((genre: string) => {
-    if (red.join(', ').toLocaleLowerCase().includes(genre.toLocaleLowerCase())) {
-      console.log('red');
-      // return 'ff0000';
-      return 'red';
-    }
-    if (blue.join(', ').toLocaleLowerCase().includes(genre.toLocaleLowerCase())) {
-      console.log('blue');
-      // return '0000ff';
-      return 'blue';
-    }
-    if (yellow.join(', ').toLocaleLowerCase().includes(genre.toLocaleLowerCase())) {
-      console.log('yellow');
-      // return 'ffff00';
-      return 'yellow';
-    }
-    if (green.join(', ').toLocaleLowerCase().includes(genre.toLocaleLowerCase())) {
-      console.log('008000');
-      // return '008000';
-      return 'green';
-    }
-  });
+export const getColorsFromGenre = (genres: string[]): string => {
+  const colorGenreMap: { [color: string]: string[] } = {
+    '#FF0000': ['hardcore', 'techno', 'hardtechno', 'berlinoise'], // RED
+    '#6EC2EA': ['minimal', 'house'], // BLUE
+  };
+
+  for (const [color, genreList] of Object.entries(colorGenreMap))
+    if (
+      genreList.some((g) => genres.join(', ').toLocaleLowerCase().includes(g.toLocaleLowerCase()))
+    )
+      return color;
+
+  return '#FFFFFF';
 };
 
 export const calculateMargin = (i: number) => {

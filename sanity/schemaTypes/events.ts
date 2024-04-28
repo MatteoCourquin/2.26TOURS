@@ -41,6 +41,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'color',
+      title: 'Color Hexadecimal (#000000)',
+      type: 'string',
+      // validation: (Rule) => Rule.required(), // Regex hexadecimal
+    }),
+    defineField({
       name: 'billeterie', // À traduire
       title: 'Lien de la billeterie',
       type: 'string', // Link ?
