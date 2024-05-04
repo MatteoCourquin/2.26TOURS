@@ -19,7 +19,7 @@ export interface TypeArtist {
 export interface TypeMix {
   subtitle: string;
   title: string;
-  artist: any;
+  artist: string;
   description: string | null;
   link: string;
   genres: TypeGenre[];
@@ -31,11 +31,11 @@ export interface TypeGenre {
 }
 
 export interface TypeEvent {
-  illustration: Image | string; // Remove string
+  illustration: Image;
   name: string;
   date: Date;
   location: string;
-  genres?: string[];
+  genres?: TypeGenre[];
   shotgun?: string;
-  color?: string // A voir en fonction du genre
+  color?: string; // A voir en fonction du genre
 }

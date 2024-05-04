@@ -32,18 +32,19 @@ export const formatSlug = (slug: string) => {
     .replace(/[^\w-]+/g, '');
 };
 
-export const getColorsFromGenre = (genres: string[]): string => {
+export const getColorsFromGenre = (genres: any[]): string => {
   const colorGenreMap: { [color: string]: string[] } = {
     '#FF0000': ['hardcore', 'techno', 'hardtechno', 'berlinoise'], // RED
     '#6EC2EA': ['minimal', 'house'], // BLUE
   };
 
-  for (const [color, genreList] of Object.entries(colorGenreMap))
-    if (
-      genreList.some((g) => genres.join(', ').toLocaleLowerCase().includes(g.toLocaleLowerCase()))
-    )
-      return color;
+  const genreNames = genres.map((genre) => genre.name.toLowerCase());
 
+  for (const [color, genreList] of Object.entries(colorGenreMap)) {
+    if (genreList.some((g) => genreNames.includes(g.toLowerCase()))) {
+      return color;
+    }
+  }
   return '#FFFFFF';
 };
 

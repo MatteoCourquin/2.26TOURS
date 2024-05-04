@@ -8,6 +8,7 @@ import Button, { BUTTON_TYPE } from './Atoms/Button';
 import Tag from './Atoms/Tag';
 import Typography from './Atoms/Typography';
 import { IconArrowUpRight } from './Atoms/Icons';
+import { urlForImage } from '@/sanity/lib/image';
 
 const CardEvent = ({ event }: { event: TypeEvent }) => {
   const [color, _] = useState<string>(event.color || getColorsFromGenre(event.genres || ['']));
@@ -21,6 +22,7 @@ const CardEvent = ({ event }: { event: TypeEvent }) => {
           trigger: scrollCubeRef.current,
           start: window.innerWidth <= 768 ? 'top 160px' : 'top 33%',
           toggleActions: 'restart none none reverse',
+          invalidateOnRefresh: true,
         },
       })
       .to(scrollCubeRef.current, {
@@ -53,7 +55,11 @@ const CardEvent = ({ event }: { event: TypeEvent }) => {
           {formatDateWithoutDay(event.date)}
         </Typography>
         <div className="aspect-square w-full min-w-[240px] shrink-0 md:w-[20vw]">
-          <img src={event.illustration as string} alt="" className="" />
+          <img
+            className="h-full w-full object-cover"
+            src={urlForImage(event.illustration)}
+            alt=""
+          />
         </div>
         <div className="flex flex-col gap-2">
           <Typography type="heading3" as="heading5">
@@ -64,7 +70,7 @@ const CardEvent = ({ event }: { event: TypeEvent }) => {
           </Typography>
           <Typography type="text">@{event.location}</Typography>
           <div className="flex flex-wrap gap-3">
-            {event.genres?.map((genre, index) => <Tag key={index}>{genre}</Tag>)}
+            {event.genres?.map((genre, index) => <Tag key={index}>{genre.name}</Tag>)}
           </div>
           <div className="mt-auto flex flex-wrap gap-3 pt-6">
             <Button type={BUTTON_TYPE.TEXT} as="button">

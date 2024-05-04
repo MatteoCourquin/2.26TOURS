@@ -16,10 +16,10 @@ const Vinyle = ({ src, alt }: { src: string; alt: string }) => {
       <div
         onMouseEnter={playAudio}
         onMouseLeave={pauseAudio}
-        className="group/vinyle relative rotate-12 z-0 mr-[60%] h-fit w-full translate-x-[30%] transition-transform duration-700 hover:translate-x-0"
+        className="group/vinyle relative z-0 h-fit w-full translate-x-[30%] transition-transform duration-700 hover:translate-x-0"
       >
         <img src={src} alt={alt} className="z-20 w-full select-none" />
-        <div className="group-hover/vinyle:translate-x-[60%] absolute inset-0 -z-10 p-2 transition-transform duration-700">
+        <div className="absolute inset-0 -z-10 p-2 transition-transform duration-700 group-hover/vinyle:translate-x-[60%]">
           <div className="relative flex h-full w-full items-center justify-center rounded-full">
             <img
               src="/images/illustrations/vinyle-black.png"

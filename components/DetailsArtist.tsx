@@ -255,18 +255,20 @@ const DetailsArtist = ({
                 </Typography>
                 <div className="wrapper">
                   <div className="container">
-                    {artist.gallery.map((image, index) => (
-                      <div className={clsx(getClass(index), 'overflow-hidden')} key={index}>
-                        <LazyLoadImage
-                          alt={'Dernier mix ' + artist.name}
-                          effect="blur"
-                          width="100%"
-                          height="100%"
-                          className="h-full w-full object-cover"
-                          src={urlForImage(image)}
-                        />
-                      </div>
-                    ))}
+                    {artist.gallery
+                      .filter((image) => image !== null)
+                      .map((image, index) => (
+                        <div className={clsx(getClass(index), 'overflow-hidden')} key={index}>
+                          <LazyLoadImage
+                            alt={'Dernier mix ' + artist.name}
+                            effect="blur"
+                            width="100%"
+                            height="100%"
+                            className="h-full w-full object-cover"
+                            src={urlForImage(image)}
+                          />
+                        </div>
+                      ))}
                   </div>
                 </div>
               </div>
