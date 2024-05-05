@@ -1,9 +1,9 @@
 import { useMagnet, useResetMagnet, useRotateHover } from '@/utils/animations';
 import clsx from 'clsx';
 import Link from 'next/link';
-import Typography from './Atoms/Typography';
 import { usePathname } from 'next/navigation';
 import { IconFacebook, IconInstagram, IconSoundcloud } from './Atoms/Icons';
+import Typography from './Atoms/Typography';
 
 const Footer = () => {
   const pathname = usePathname();
