@@ -71,7 +71,7 @@ import { scroll } from '@/utils/functions';
 export default function Index({ events }: { events: TypeEvent[] }) {
   return (
     <PageTransition>
-      <section className="flex h-screen flex-col items-center justify-center px-x-large">
+      <section className="flex h-screen flex-col items-center justify-center px-x-default md:px-x-large">
         <Typography type="heading1" colored={true}>
           2.26 TOURS
         </Typography>
@@ -90,7 +90,7 @@ export default function Index({ events }: { events: TypeEvent[] }) {
           </Typography>
         </div>
       </section>
-      <section className="px-x-large">
+      <section className="px-x-default md:px-x-large">
         <Typography
           type="heading2"
           as="heading4"
@@ -122,7 +122,7 @@ export default function Index({ events }: { events: TypeEvent[] }) {
             })}
         </div>
       </section>
-      <section className="px-x-large py-[30vh]">
+      <section className="px-x-default md:px-x-large py-[30vh]">
         <Typography
           type="heading2"
           as="heading4"

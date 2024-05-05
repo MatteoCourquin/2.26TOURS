@@ -32,7 +32,7 @@ export default function Mixs({ mixs }: { mixs: TypeMix[] }) {
 
   return (
     <PageTransition>
-      <div className="z-10 flex h-screen flex-col items-center justify-between gap-6 px-x-large py-y-default pt-header">
+      <div className="z-10 flex h-screen flex-col items-center justify-between gap-6 px-x-default py-y-default pt-header md:px-x-large">
         {activeMix && (
           <div className="grid grid-cols-2 items-center pt-header">
             <div className="w-1/2">
@@ -104,7 +104,7 @@ export default function Mixs({ mixs }: { mixs: TypeMix[] }) {
                   )}
                 >
                   <img
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover select-none"
                     src={urlForImage(mix.cover)}
                     alt={'Mix de ' + mix.artist}
                   />
@@ -154,8 +154,6 @@ export async function getStaticProps() {
     },
   };
 }
-
-
 
 // import Button, { BUTTON_TYPE } from '@/components/Atoms/Button';
 // import { IconArrowUpRight } from '@/components/Atoms/Icons';
@@ -215,7 +213,7 @@ export async function getStaticProps() {
 
 //   return (
 //     <PageTransition>
-//       <div className="z-10 flex h-screen flex-col items-center justify-between gap-6 px-x-large py-y-default pt-header">
+//       <div className="z-10 flex h-screen flex-col items-center justify-between gap-6 px-x-default md:px-x-large py-y-default pt-header">
 //         {activeMix && (
 //           <div className="grid h-full w-full grid-cols-2 items-center">
 //             <div className="relative aspect-square w-1/2">

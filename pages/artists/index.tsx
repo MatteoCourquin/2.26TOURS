@@ -22,7 +22,7 @@ export default function Artists({ artists }: { artists: TypeArtist[] }) {
 
   return (
     <PageTransition>
-      <div className="relative grid min-h-screen grid-cols-2 gap-4 overflow-x-hidden px-x-large pt-header sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      <div className="relative grid min-h-screen grid-cols-2 gap-4 overflow-x-hidden px-x-default pt-header sm:grid-cols-3 md:grid-cols-4 md:px-x-large lg:grid-cols-6">
         <Typography
           className="fixed left-[50vw] top-[50vh] z-10 -translate-x-1/2 -translate-y-1/2"
           type="heading1"

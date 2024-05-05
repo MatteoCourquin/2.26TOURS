@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
+import Lottie from 'lottie-react';
 import { ReactNode } from 'react';
+import TransitionPage from '@/public/animations/lottie.json';
 
 export default function PageTransition({ children }: { children: ReactNode }) {
   return (
