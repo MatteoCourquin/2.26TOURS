@@ -1,21 +1,58 @@
-.slide-in {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: $color-white;
-  z-index: 999;
-  transform-origin: bottom;
+#bubbles {
+  --size: 250vw;
 }
 
-.slide-out {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+@media (width >= 768px) {
+  #bubbles {
+    --size: 300vw;
+  }
+}
+
+.bubbles__first {
   background: $color-white;
-  z-index: 999;
-  transform-origin: top;
+}
+.bubbles__first {
+  background: $color-white;
+}
+
+.bubbles__first,
+.bubbles__second {
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  translate: -50% 100%;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--size);
+  animation-timing-function: ease-in-out;
+}
+#bubbles.show .bubbles__first {
+  animation-name: bubble-move;
+}
+
+@keyframes bubble-move {
+  0% {
+    top: 0;
+    bottom: auto;
+    border-radius: var(--size);
+    translate: -50% 100vh;
+  }
+  30% {
+    top: 0;
+    bottom: auto;
+    border-radius: 0;
+    translate: -50% 0;
+  }
+  70% {
+    top: auto;
+    bottom: 0;
+    border-radius: 0;
+    translate: -50% 0;
+  }
+  100% {
+    top: auto;
+    bottom: 0;
+    border-radius: var(--size);
+    translate: -50% -100vh;
+  }
 }

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Typography from './Atoms/Typography';
 import { usePathname } from 'next/navigation';
 import { IconFacebook, IconInstagram, IconSoundcloud } from './Atoms/Icons';
+import TransitionLink from './Atoms/TransitionLink';
 
 const Footer = () => {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ const Footer = () => {
         <footer className="flex gap-4 text-white">
           <div className=" blur-medium flex shrink grow flex-col gap-6 px-4 py-8 sm:px-x-default">
             <div className="space-grotesk-bold flex w-full justify-between uppercase">
-              <Link className="flex items-center gap-4" href="/">
+              <TransitionLink className="flex items-center gap-4" to="/">
                 <div
                   onMouseEnter={(e) => useRotateHover(e.currentTarget, 0.7)}
                   onMouseMove={(e) => useMagnet(e, 0.4)}
@@ -27,35 +28,35 @@ const Footer = () => {
                 <Typography type="heading4" as="heading5">
                   2.26 TOURS
                 </Typography>
-              </Link>
+              </TransitionLink>
               <nav className="hidden gap-6 lg:flex">
-                <Link
+                <TransitionLink
                   className="wrapper-link flex h-full items-center"
                   onMouseMove={(e) => useMagnet(e, 0.4)}
                   onMouseOut={(e) => useResetMagnet(e)}
-                  href="/"
+                  to="/"
                 >
                   <span className={clsx(isRouteActive('/') && 'active', 'link whitespace-nowrap')}>
                     accueil
                   </span>
-                </Link>
-                <Link
+                </TransitionLink>
+                <TransitionLink
                   className="wrapper-link flex h-full items-center"
                   onMouseMove={(e) => useMagnet(e, 0.4)}
                   onMouseOut={(e) => useResetMagnet(e)}
-                  href="/about"
+                  to="/about"
                 >
                   <span
                     className={clsx(isRouteActive('/about') && 'active', 'link whitespace-nowrap')}
                   >
                     à propos
                   </span>
-                </Link>
-                <Link
+                </TransitionLink>
+                <TransitionLink
                   className="wrapper-link flex h-full items-center"
                   onMouseMove={(e) => useMagnet(e, 0.4)}
                   onMouseOut={(e) => useResetMagnet(e)}
-                  href="/artists"
+                  to="/artists"
                 >
                   <span
                     className={clsx(
@@ -65,19 +66,19 @@ const Footer = () => {
                   >
                     artistes
                   </span>
-                </Link>
-                <Link
+                </TransitionLink>
+                <TransitionLink
                   className="wrapper-link flex h-full items-center"
                   onMouseMove={(e) => useMagnet(e, 0.4)}
                   onMouseOut={(e) => useResetMagnet(e)}
-                  href="/mixs"
+                  to="/mixs"
                 >
                   <span
                     className={clsx(isRouteActive('/mixs') && 'active', 'link whitespace-nowrap')}
                   >
                     mixs
                   </span>
-                </Link>
+                </TransitionLink>
               </nav>
             </div>
             <nav className="flex gap-6">

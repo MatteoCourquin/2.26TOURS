@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useRef } from 'react';
 import Button, { BUTTON_TYPE } from './Atoms/Button';
 import { IconFacebook, IconInstagram, IconSoundcloud } from './Atoms/Icons';
+import TransitionLink from './Atoms/TransitionLink';
 
 const Header = () => {
   const logoRef = useRef(null);
@@ -16,64 +17,64 @@ const Header = () => {
       <div className="fixed top-0 z-[999] w-full px-x-default pt-8">
         <header className="space-grotesk-bold flex gap-4 uppercase text-white">
           <nav className="blur-medium flex h-[60px] shrink grow items-center gap-6 px-4 sm:px-x-default">
-            <Link
-              href="/"
+            <TransitionLink
+              to="/"
               onMouseMove={(e) => useMagnet(e, 0.4)}
               onMouseOut={(e) => useResetMagnet(e)}
             >
               <div onMouseEnter={(e) => useRotateHover(e.currentTarget, 0.7)}>
                 <img ref={logoRef} src="/images/icons/logo-white.svg" alt="" />
               </div>
-            </Link>
-            <Link
+            </TransitionLink>
+            <TransitionLink
+              to="/"
               className="wrapper-link hidden h-full items-center nav:flex"
               onMouseMove={(e) => useMagnet(e, 0.4)}
               onMouseOut={(e) => useResetMagnet(e)}
-              href="/"
             >
               <span className={clsx(isRouteActive('/') && 'active', 'link whitespace-nowrap')}>
                 accueil
               </span>
-            </Link>
-            <Link
+            </TransitionLink>
+            <TransitionLink
               className="wrapper-link hidden h-full items-center sm:flex"
               onMouseMove={(e) => useMagnet(e, 0.4)}
               onMouseOut={(e) => useResetMagnet(e)}
-              href="/about"
+              to="/about"
             >
               <span className={clsx(isRouteActive('/about') && 'active', 'link whitespace-nowrap')}>
                 à propos
               </span>
-            </Link>
-            <Link
+            </TransitionLink>
+            <TransitionLink
               className="wrapper-link hidden h-full items-center sm:flex"
               onMouseMove={(e) => useMagnet(e, 0.4)}
               onMouseOut={(e) => useResetMagnet(e)}
-              href="/artists"
+              to="/artists"
             >
               <span
                 className={clsx(isRouteActive('/artists') && 'active', 'link whitespace-nowrap')}
               >
                 artistes
               </span>
-            </Link>
-            <Link
+            </TransitionLink>
+            <TransitionLink
               className="wrapper-link hidden h-full items-center sm:flex"
               onMouseMove={(e) => useMagnet(e, 0.4)}
               onMouseOut={(e) => useResetMagnet(e)}
-              href="/mixs"
+              to="/mixs"
             >
               <span className={clsx(isRouteActive('/mixs') && 'active', 'link whitespace-nowrap')}>
                 mixs
               </span>
-            </Link>
+            </TransitionLink>
           </nav>
           {/* CONTACT */}
-          <Link
+          <TransitionLink
             className="blur-medium wrapper-link button-text hidden shrink-0 nav:block"
             onMouseMove={(e) => useMagnet(e, 1)}
             onMouseOut={(e) => useResetMagnet(e)}
-            href="/contact"
+            to="/contact"
           >
             <button
               className="button h-full w-full uppercase"
@@ -86,7 +87,7 @@ const Header = () => {
                 contact
               </span>
             </button>
-          </Link>
+          </TransitionLink>
           {/* INSTAGRAM */}
           <Button
             type={BUTTON_TYPE.ICON}

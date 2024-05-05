@@ -1,12 +1,10 @@
+import Bubbles from '@/components/Atoms/Bubbles';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { useTouchDevice } from '@/utils/states';
-import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useRef } from 'react';
 
 const Layout = ({ children }: { children: ReactNode }) => {
-  const router = useRouter();
-
   const backgroundRef = useRef<HTMLImageElement>(null);
   const followMouse = (event: MouseEvent) => {
     if (!backgroundRef.current) return;
@@ -27,9 +25,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <div className="background-wrapper"></div>
+      <Bubbles />
       <img
         ref={backgroundRef}
-        className="fixed left-1/2 top-1/2 -z-10 aspect-square h-[250vh] min-h-[250vh] w-[250vw] min-w-[250vw] -translate-x-1/2 -translate-y-1/2 object-cover"
+        className="fixed left-1/2 top-1/2 -z-10 aspect-square h-[300vh] min-h-[300vh] w-[300vw] min-w-[300vw] -translate-x-1/2 -translate-y-1/2 object-cover"
         src="/images/illustrations/background-gradient.svg"
         alt=""
       />
