@@ -1,25 +1,35 @@
 import { motion } from 'framer-motion';
-import Lottie from 'lottie-react';
 import { ReactNode } from 'react';
-import TransitionPage from '@/public/animations/lottie.json';
 
 export default function PageTransition({ children }: { children: ReactNode }) {
   return (
     <>
-      {children}
+      <motion.div
+        initial={{ y: '100vh' }}
+        animate={{
+          y: '0vh',
+        }}
+        transition={{
+          duration: 1,
+          ease: [0.22, 1, 0.36, 1],
+          delay: 0,
+        }}
+      >
+        {children}
+      </motion.div>
       <motion.div
         className="slide-in"
-        initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0 }}
-        exit={{ scaleY: 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ y: '100%', x: '-50%', borderRadius: '100%' }}
+        animate={{ y: '100%', borderRadius: '0%' }}
+        exit={{ y: '0%', borderRadius: '0%' }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       />
       <motion.div
         className="slide-out"
-        initial={{ scaleY: 0 }}
-        animate={{ scaleY: 0 }}
-        exit={{ scaleY: 1 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ y: '0%', x: '-50%', borderRadius: '0%' }}
+        animate={{ y: '-100%', borderRadius: '100%' }}
+        exit={{ y: '-100%', borderRadius: '100%' }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       />
     </>
   );
