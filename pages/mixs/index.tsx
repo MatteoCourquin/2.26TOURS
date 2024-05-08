@@ -8,11 +8,36 @@ import { TypeMix } from '@/data/types';
 import { client } from '@/sanity/lib/client';
 import { urlForImage } from '@/sanity/lib/image';
 import clsx from 'clsx';
+import gsap from 'gsap';
 import { useEffect, useState } from 'react';
 
 export default function Mixs({ mixs }: { mixs: TypeMix[] }) {
   const [activeMix, setActiveMix] = useState<TypeMix | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [listVinyle, setListVinyle] = useState<TypeMix[]>([]);
+
+  useEffect(() => {
+    setActiveMix({
+      title: mixs[0].title,
+      subtitle: mixs[0].subtitle,
+      artist: mixs[0].artist || '2.26 tours',
+      description: mixs[0].description || null,
+      link: mixs[0].link,
+      genres: mixs[0].genres,
+      cover: mixs[0].cover,
+    });
+    setListVinyle([
+      {
+        title: mixs[0].title,
+        subtitle: mixs[0].subtitle,
+        artist: mixs[0].artist || '2.26 tours',
+        description: mixs[0].description || null,
+        link: mixs[0].link,
+        genres: mixs[0].genres,
+        cover: mixs[0].cover,
+      },
+    ]);
+  }, []);
 
   const handleMixClick = (index: number) => {
     setActiveMix({
@@ -24,58 +49,83 @@ export default function Mixs({ mixs }: { mixs: TypeMix[] }) {
       genres: mixs[index].genres,
       cover: mixs[index].cover,
     });
+    setListVinyle([...listVinyle, mixs[index]]);
   };
 
   useEffect(() => {
-    handleMixClick(0);
-  }, []);
+    showDisc('vinyle-' + (listVinyle.length - 1));
+  }, [listVinyle]);
+
+  const showDisc = (element: any) => {
+    gsap.fromTo(
+      `#${element}`,
+      {
+        x: -window.innerWidth / 2,
+        rotate: -180,
+      },
+      {
+        x: 0,
+        rotate: Math.floor(Math.random() * (20 - -20 + 1)) + -20,
+      },
+    );
+  };
 
   return (
     <PageTransition>
       <div className="z-10 flex h-screen flex-col items-center justify-between gap-6 px-x-default py-y-default pt-header md:px-x-large">
-        {activeMix && (
-          <div className="grid grid-cols-2 items-center pt-header">
-            <div className="w-1/2">
-              <Vinyle src={urlForImage(activeMix.cover)} alt={'Mix de ' + activeMix.artist} />
-            </div>
-            <div className="flex flex-col gap-6">
-              <Typography type="text" className="text-lg uppercase">
-                2.26 PODCAST <span className="text-white">#{activeMix.subtitle}</span>
-              </Typography>
-              <div className="h-[2px] w-20 rounded-full bg-white-opacity" />
-              <div>
-                <Typography type="heading2" as="heading5">
-                  {activeMix.title}
-                </Typography>
-                <div className="pt-2">
-                  <Typography className="inline" type="text">
-                    par{' '}
-                  </Typography>
-                  <Typography
-                    className="inline font-bold"
-                    type="heading2"
-                    as="heading6"
-                    colored={true}
-                  >
-                    {activeMix.artist}
-                  </Typography>
+        <div className="grid h-full w-full grid-cols-2 items-center">
+          <div className="relative w-1/2">
+            {listVinyle.map((vinyle, index) => {
+              return (
+                <div
+                  key={index}
+                  className="absolute top-1/2 -translate-y-1/2"
+                  id={'vinyle-' + index}
+                >
+                  <Vinyle
+                    hovered={index === listVinyle.length - 1}
+                    src={urlForImage(vinyle.cover)}
+                    alt={'Mix de ' + vinyle.artist}
+                  />
                 </div>
-              </div>
-              <div className="flex gap-3">
-                {activeMix.genres.map((genre, index) => (
-                  <Tag key={index}>{genre.name}</Tag>
-                ))}
-              </div>
-              {activeMix.description && (
-                <Typography type="text">{activeMix.description}</Typography>
-              )}
-              <Button as="a" href={activeMix.link} target="_blank" type={BUTTON_TYPE.TEXT}>
-                <p className="pr-2">Écouter sur soundcloud</p>
-                <IconArrowUpRight />
-              </Button>
-            </div>
+              );
+            })}
           </div>
-        )}
+          <div className="flex flex-col gap-6">
+            <Typography type="text" className="text-lg uppercase">
+              2.26 PODCAST <span className="text-white">#{activeMix?.subtitle}</span>
+            </Typography>
+            <div className="h-[2px] w-20 rounded-full bg-white-opacity" />
+            <div>
+              <Typography type="heading2" as="heading5">
+                {activeMix?.title}
+              </Typography>
+              <div className="pt-2">
+                <Typography className="inline" type="text">
+                  par{' '}
+                </Typography>
+                <Typography
+                  className="inline font-bold"
+                  type="heading2"
+                  as="heading6"
+                  colored={true}
+                >
+                  {activeMix?.artist}
+                </Typography>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              {activeMix?.genres.map((genre, index) => <Tag key={index}>{genre.name}</Tag>)}
+            </div>
+            {activeMix?.description && (
+              <Typography type="text">{activeMix?.description}</Typography>
+            )}
+            <Button as="a" href={activeMix?.link} target="_blank" type={BUTTON_TYPE.TEXT}>
+              <p className="pr-2">Écouter sur soundcloud</p>
+              <IconArrowUpRight />
+            </Button>
+          </div>
+        </div>
         {mixs && (
           <div className="max-w-screen z-40 flex h-52 w-full">
             {mixs.map((mix, index) => (
@@ -104,7 +154,7 @@ export default function Mixs({ mixs }: { mixs: TypeMix[] }) {
                   )}
                 >
                   <img
-                    className="h-full w-full object-cover select-none"
+                    className="h-full w-full select-none object-cover"
                     src={urlForImage(mix.cover)}
                     alt={'Mix de ' + mix.artist}
                   />

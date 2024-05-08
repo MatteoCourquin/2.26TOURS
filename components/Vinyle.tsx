@@ -1,12 +1,15 @@
+import clsx from 'clsx';
 import { useRef } from 'react';
 
-const Vinyle = ({ src, alt }: { src: string; alt: string }) => {
+const Vinyle = ({ src, alt, hovered = true }: { src: string; alt: string; hovered?: boolean }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const playAudio = () => {
+    if (!hovered) return;
     audioRef.current?.play();
   };
   const pauseAudio = () => {
+    if (!hovered) return;
     audioRef.current?.pause();
   };
 
@@ -16,10 +19,18 @@ const Vinyle = ({ src, alt }: { src: string; alt: string }) => {
       <div
         onMouseEnter={playAudio}
         onMouseLeave={pauseAudio}
-        className="group/vinyle relative z-0 h-fit w-full translate-x-[30%] transition-transform duration-700 hover:translate-x-0"
+        className={clsx(
+          hovered && 'hover:translate-x-0',
+          'group/vinyle relative z-0 h-fit w-full translate-x-[30%] transition-transform duration-700',
+        )}
       >
         <img src={src} alt={alt} className="z-20 w-full select-none" />
-        <div className="absolute inset-0 -z-10 p-2 transition-transform duration-700 group-hover/vinyle:translate-x-[60%]">
+        <div
+          className={clsx(
+            hovered && 'group-hover/vinyle:translate-x-[60%]',
+            'absolute inset-0 -z-10 p-2 transition-transform duration-700',
+          )}
+        >
           <div className="relative flex h-full w-full items-center justify-center rounded-full">
             <img
               src="/images/illustrations/vinyle-black.png"
