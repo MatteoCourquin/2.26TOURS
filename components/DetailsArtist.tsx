@@ -115,20 +115,6 @@ const DetailsArtist = ({
     }
   }, [isOpen]);
 
-  useGSAP(() => {
-    const slides = gsap.utils.toArray('.anim-image-slider');
-    gsap.to(slides, {
-      ease: 'none',
-      x: 100,
-      scrollTrigger: {
-        trigger: sliderRef.current,
-        scroller: sliderRef.current,
-        scrub: 1,
-        horizontal: true,
-      },
-    });
-  });
-
   return (
     <>
       <div
@@ -232,7 +218,7 @@ const DetailsArtist = ({
                           <img
                             src={urlForImage(event.illustration)}
                             alt={'Dernier mix ' + artist.name}
-                            className="absolute h-full w-[calc(100%+200px)] -translate-x-[100px] object-cover"
+                            className="absolute h-full w-full object-cover"
                           />
                         </div>
                       </div>

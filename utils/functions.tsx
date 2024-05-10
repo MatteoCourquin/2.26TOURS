@@ -1,3 +1,5 @@
+import { TypeGenre } from '@/data/types';
+
 export const scroll = () => {
   window.scrollTo({
     top: window.innerHeight - 92,
@@ -32,7 +34,7 @@ export const formatSlug = (slug: string) => {
     .replace(/[^\w-]+/g, '');
 };
 
-export const getColorsFromGenre = (genres: any[]): string => {
+export const getColorsFromGenre = (genres: any[]) => {
   const colorGenreMap: { [color: string]: string[] } = {
     '#FF0000': ['hardcore', 'techno', 'hardtechno', 'berlinoise'], // RED
     '#6EC2EA': ['minimal', 'house'], // BLUE

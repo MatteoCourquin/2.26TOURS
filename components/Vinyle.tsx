@@ -1,7 +1,17 @@
 import clsx from 'clsx';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-const Vinyle = ({ src, alt, hovered = true }: { src: string; alt: string; hovered?: boolean }) => {
+const Vinyle = ({
+  src,
+  alt,
+  className,
+  hovered = true,
+}: {
+  src: string;
+  alt: string;
+  className: string;
+  hovered?: boolean;
+}) => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const playAudio = () => {
@@ -13,6 +23,12 @@ const Vinyle = ({ src, alt, hovered = true }: { src: string; alt: string; hovere
     audioRef.current?.pause();
   };
 
+  useEffect(() => {
+    if (!hovered) {
+      pauseAudio();
+    }
+  }, [hovered]);
+
   return (
     <>
       <audio className="scale-0" ref={audioRef} src="/sounds/von-bikrav.mp3"></audio>
@@ -21,7 +37,8 @@ const Vinyle = ({ src, alt, hovered = true }: { src: string; alt: string; hovere
         onMouseLeave={pauseAudio}
         className={clsx(
           hovered && 'hover:translate-x-0',
-          'group/vinyle relative z-0 h-fit w-full translate-x-[30%] transition-transform duration-700',
+          'group/vinyle relative z-0 h-fit w-full translate-x-[30%] transition-[transform,filter,opacity] duration-700',
+          className,
         )}
       >
         <img src={src} alt={alt} className="z-20 w-full select-none" />

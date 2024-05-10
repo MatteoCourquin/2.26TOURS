@@ -8,66 +8,6 @@ import { client } from '@/sanity/lib/client';
 import { useMagnet, useResetMagnet } from '@/utils/animations';
 import { scroll } from '@/utils/functions';
 
-// const events = [
-//   {
-//     illustration: '/images/illustrations/sero-5.png',
-//     name: 'SEROTONIC #5 : WILD RAVE',
-//     date: new Date(2023, 10, 5),
-//     location: 'O29',
-//     genres: ['Techno', 'Hardtechno', 'Hardcore'],
-//     shotgun: '/#',
-//     color: '#BDFF00',
-//   },
-//   {
-//     illustration: '/images/illustrations/record-1.png',
-//     name: 'Record #1',
-//     date: new Date(2024, 2, 15),
-//     location: 'O29',
-//     genres: ['House', 'Minimal', 'Techhouse'],
-//     shotgun: '/#',
-//   },
-//   {
-//     illustration: '/images/illustrations/phaer-1.png',
-//     name: 'PHAER #1',
-//     date: new Date(2023, 8, 23),
-//     location: 'O29',
-//     genres: ['Techno', 'Hardtechno', 'Hardcore'],
-//     shotgun: '/#',
-//   },
-//   {
-//     illustration: '/images/illustrations/sero-4.png',
-//     name: 'SEROTONIC #4 : TECHNOEL',
-//     date: new Date(2024, 0, 7),
-//     location: 'O29',
-//     genres: ['Techno', 'Hardtechno', 'Hardcore'],
-//     shotgun: '/#',
-//   },
-//   {
-//     illustration: '/images/illustrations/record-1.png',
-//     name: 'Record #1',
-//     date: new Date(2022, 2, 15),
-//     location: 'O29',
-//     genres: ['House', 'Minimal', 'Techhouse'],
-//     shotgun: '/#',
-//   },
-//   {
-//     illustration: '/images/illustrations/phaer-1.png',
-//     name: 'PHAER #1',
-//     date: new Date(2023, 8, 23),
-//     location: 'O29',
-//     genres: ['Techno', 'Hardtechno', 'Hardcore'],
-//     shotgun: '/#',
-//   },
-//   {
-//     illustration: '/images/illustrations/sero-4.png',
-//     name: 'SEROTONIC #4 : TECHNOEL',
-//     date: new Date(2022, 0, 7),
-//     location: 'O29',
-//     genres: ['Techno', 'Hardtechno', 'Hardcore'],
-//     shotgun: '/#',
-//   },
-// ];
-
 export default function Index({ events }: { events: TypeEvent[] }) {
   return (
     <PageTransition>
@@ -104,25 +44,26 @@ export default function Index({ events }: { events: TypeEvent[] }) {
           {events
             .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
             .map((event, index, array) => {
-              // const showYearHeading =
-              //   index === 0 || event.date.getFullYear() !== array[index - 1].date.getFullYear();
-
+              const showYearHeading =
+                index === 0 ||
+                new Date(event.date).getFullYear() !==
+                  new Date(array[index - 1].date).getFullYear();
               return (
-                <>
-                  {/* {showYearHeading && (
+                <div key={index}>
+                  {showYearHeading && (
                     <Typography type="heading1" className="ml-10 opacity-[0.08]">
-                      {event.date.getFullYear()}
+                      {new Date(event.date).getFullYear()}
                     </Typography>
-                  )} */}
-                  <div className="h-screen" key={index}>
+                  )}
+                  <div className="h-screen">
                     <CardEvent event={event} />
                   </div>
-                </>
+                </div>
               );
             })}
         </div>
       </section>
-      <section className="px-x-default md:px-x-large py-[30vh]">
+      <section className="px-x-default py-[30vh] md:px-x-large">
         <Typography
           type="heading2"
           as="heading4"

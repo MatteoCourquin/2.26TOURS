@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 export default function PageTransition({ children }: { children: ReactNode }) {
   return (
     <>
-      <motion.div
+      {/* <motion.div
         initial={{ y: '100vh' }}
         animate={{
           y: '0vh',
@@ -14,9 +14,9 @@ export default function PageTransition({ children }: { children: ReactNode }) {
           ease: [0.22, 1, 0.36, 1],
           delay: 0,
         }}
-      >
-        {children}
-      </motion.div>
+      > */}
+      {children}
+      {/* </motion.div> */}
       <motion.div
         className="slide-in"
         initial={{ y: '100%', x: '-50%', borderRadius: '100%' }}
