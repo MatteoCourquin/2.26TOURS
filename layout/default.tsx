@@ -1,12 +1,9 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { useTouchDevice } from '@/utils/states';
-import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useRef } from 'react';
 
 const Layout = ({ children }: { children: ReactNode }) => {
-  const router = useRouter();
-
   const backgroundRef = useRef<HTMLImageElement>(null);
   const followMouse = (event: MouseEvent) => {
     if (!backgroundRef.current) return;

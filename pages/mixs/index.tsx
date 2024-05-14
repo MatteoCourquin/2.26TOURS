@@ -3,6 +3,7 @@ import { IconArrowUpRight } from '@/components/Atoms/Icons';
 import Tag from '@/components/Atoms/Tag';
 import Typography from '@/components/Atoms/Typography';
 import PageTransition from '@/components/PageTransition';
+import ResponsiveLayer from '@/components/ResponsiveLayer';
 import Vinyle from '@/components/Vinyle';
 import { TypeMix } from '@/data/types';
 import { client } from '@/sanity/lib/client';
@@ -203,129 +204,131 @@ export default function Mixs({ mixs }: { mixs: TypeMix[] }) {
 
   return (
     <PageTransition>
-      <div className="z-10 flex min-h-screen flex-col items-center justify-between gap-20 px-x-default py-y-default pt-header md:px-x-large">
-        <div className="grid h-full w-full grow grid-cols-2 items-center pt-[10vh]">
-          <div className="relative flex w-1/2 items-center justify-center">
-            {listVinyle.map((vinyle, index) => {
-              return (
-                <div key={index} className="absolute p-4" id={'vinyle-' + index}>
-                  <Vinyle
-                    className={clsx(
-                      index === listVinyle.length - 2 && 'opacity-95 blur-[1px]',
-                      index === listVinyle.length - 3 && 'opacity-90 blur-[2px]',
-                      index === listVinyle.length - 4 && 'opacity-85 blur-[3px]',
-                      index === listVinyle.length - 5 && 'opacity-80 blur-[4px]',
-                      index === listVinyle.length - 6 && 'scale-0',
-                      index <= listVinyle.length - 7 && 'hidden',
-                    )}
-                    hovered={index === listVinyle.length - 1}
-                    src={urlForImage(vinyle.cover)}
-                    alt={'Mix de ' + vinyle.artist}
-                  />
+      <ResponsiveLayer>
+        <div className="z-10 flex min-h-screen flex-col items-center justify-between gap-20 px-x-default py-y-default pt-header md:px-x-large">
+          <div className="grid h-full w-full grow grid-cols-2 items-center pt-[10vh]">
+            <div className="relative flex w-1/2 items-center justify-center">
+              {listVinyle.map((vinyle, index) => {
+                return (
+                  <div key={index} className="absolute p-0 lg:p-4" id={'vinyle-' + index}>
+                    <Vinyle
+                      className={clsx(
+                        index === listVinyle.length - 2 && 'opacity-95 blur-[1px]',
+                        index === listVinyle.length - 3 && 'opacity-90 blur-[2px]',
+                        index === listVinyle.length - 4 && 'opacity-85 blur-[3px]',
+                        index === listVinyle.length - 5 && 'opacity-80 blur-[4px]',
+                        index === listVinyle.length - 6 && 'scale-0',
+                        index <= listVinyle.length - 7 && 'hidden',
+                      )}
+                      hovered={index === listVinyle.length - 1}
+                      src={urlForImage(vinyle.cover)}
+                      alt={'Mix de ' + vinyle.artist}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+            <div className="flex flex-col gap-6 self-start">
+              <Typography type="text" className="text-lg uppercase">
+                2.26 PODCAST <span className="text-white">#{activeMix?.subtitle}</span>
+              </Typography>
+              <div className="h-[2px] w-20 rounded-full bg-white-opacity" />
+              <div>
+                <div ref={titleRef} className="-translate-y-8 opacity-0">
+                  <Typography type="heading2" as="heading5">
+                    {activeMix?.title}
+                  </Typography>
                 </div>
-              );
-            })}
-          </div>
-          <div className="flex flex-col gap-6 self-start">
-            <Typography type="text" className="text-lg uppercase">
-              2.26 PODCAST <span className="text-white">#{activeMix?.subtitle}</span>
-            </Typography>
-            <div className="h-[2px] w-20 rounded-full bg-white-opacity" />
-            <div>
-              <div ref={titleRef} className="-translate-y-8 opacity-0">
-                <Typography type="heading2" as="heading5">
-                  {activeMix?.title}
-                </Typography>
+                <div ref={artistRef} className="-translate-y-8 pt-2 opacity-0">
+                  <Typography className="inline" type="text">
+                    par{' '}
+                  </Typography>
+                  <Typography
+                    className="inline font-bold"
+                    type="heading2"
+                    as="heading6"
+                    colored={true}
+                  >
+                    {activeMix?.artist}
+                  </Typography>
+                </div>
               </div>
-              <div ref={artistRef} className="-translate-y-8 pt-2 opacity-0">
-                <Typography className="inline" type="text">
-                  par{' '}
-                </Typography>
-                <Typography
-                  className="inline font-bold"
-                  type="heading2"
-                  as="heading6"
-                  colored={true}
-                >
-                  {activeMix?.artist}
-                </Typography>
+              <div className="flex gap-3">
+                {activeMix?.genres.map((genre, index) => (
+                  <div
+                    key={index}
+                    ref={(el: HTMLDivElement | null) => {
+                      genresRefs.current[index] = el;
+                    }}
+                    className="scale-0 opacity-0"
+                  >
+                    <Tag>{genre.name}</Tag>
+                  </div>
+                ))}
+              </div>
+              {activeMix?.description && (
+                <div ref={descriptionRef} className="-translate-y-8 opacity-0">
+                  <Typography type="text">{activeMix?.description}</Typography>
+                </div>
+              )}
+              <div ref={linkRef} className="w-fit scale-0 opacity-0">
+                <Button as="a" href={activeMix?.link} target="_blank" type={BUTTON_TYPE.TEXT}>
+                  <p className="pr-2">Écouter sur soundcloud</p>
+                  <IconArrowUpRight />
+                </Button>
               </div>
             </div>
-            <div className="flex gap-3">
-              {activeMix?.genres.map((genre, index) => (
+          </div>
+          {mixs && (
+            <div className="max-w-screen z-40 flex h-52 w-full">
+              {mixs.map((mix, index) => (
                 <div
-                  key={index}
-                  ref={(el: HTMLDivElement | null) => {
-                    genresRefs.current[index] = el;
-                  }}
-                  className="scale-0 opacity-0"
+                  key={index + mix.title}
+                  className="transition-smooth relative flex !h-52 grow items-start justify-start last-of-type:pr-36 hover:pr-28"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleMixClick(index)}
                 >
-                  <Tag>{genre.name}</Tag>
+                  <div
+                    className={clsx(
+                      'transition-smooth absolute left-0 top-0 !aspect-square !h-52 !w-52 grow-0 cursor-pointer ease-power2inOut',
+                      {
+                        '-translate-y-3 scale-[1.25]': index === hoveredIndex,
+                        '-translate-y-2 scale-[1.20]':
+                          hoveredIndex !== null &&
+                          (index === hoveredIndex - 1 || index === hoveredIndex + 1),
+                        '-translate-y-1 scale-[1.15]':
+                          hoveredIndex !== null &&
+                          (index === hoveredIndex - 2 || index === hoveredIndex + 2),
+                        '-translate-y-0 scale-[1.10]':
+                          hoveredIndex !== null &&
+                          (index === hoveredIndex - 3 || index === hoveredIndex + 3),
+                      },
+                    )}
+                  >
+                    <img
+                      className="h-full w-full select-none object-cover"
+                      src={urlForImage(mix.cover)}
+                      alt={'Mix de ' + mix.artist}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
-            {activeMix?.description && (
-              <div ref={descriptionRef} className="-translate-y-8 opacity-0">
-                <Typography type="text">{activeMix?.description}</Typography>
-              </div>
-            )}
-            <div ref={linkRef} className="w-fit scale-0 opacity-0">
-              <Button as="a" href={activeMix?.link} target="_blank" type={BUTTON_TYPE.TEXT}>
-                <p className="pr-2">Écouter sur soundcloud</p>
-                <IconArrowUpRight />
-              </Button>
-            </div>
-          </div>
-        </div>
-        {mixs && (
-          <div className="max-w-screen z-40 flex h-52 w-full">
-            {mixs.map((mix, index) => (
-              <div
-                key={index + mix.title}
-                className="transition-smooth relative flex !h-52 grow items-start justify-start last-of-type:pr-36 hover:pr-28"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => handleMixClick(index)}
+          )}
+          {!mixs ||
+            (!activeMix && (
+              <Typography
+                className="fixed left-[50vw] top-[50vh] z-10 -translate-x-1/2 -translate-y-1/2"
+                type="heading1"
+                as="heading2"
+                colored={true}
               >
-                <div
-                  className={clsx(
-                    'transition-smooth absolute left-0 top-0 !aspect-square !h-52 !w-52 grow-0 cursor-pointer ease-power2inOut',
-                    {
-                      '-translate-y-3 scale-[1.25]': index === hoveredIndex,
-                      '-translate-y-2 scale-[1.20]':
-                        hoveredIndex !== null &&
-                        (index === hoveredIndex - 1 || index === hoveredIndex + 1),
-                      '-translate-y-1 scale-[1.15]':
-                        hoveredIndex !== null &&
-                        (index === hoveredIndex - 2 || index === hoveredIndex + 2),
-                      '-translate-y-0 scale-[1.10]':
-                        hoveredIndex !== null &&
-                        (index === hoveredIndex - 3 || index === hoveredIndex + 3),
-                    },
-                  )}
-                >
-                  <img
-                    className="h-full w-full select-none object-cover"
-                    src={urlForImage(mix.cover)}
-                    alt={'Mix de ' + mix.artist}
-                  />
-                </div>
-              </div>
+                Artists
+              </Typography>
             ))}
-          </div>
-        )}
-        {!mixs ||
-          (!activeMix && (
-            <Typography
-              className="fixed left-[50vw] top-[50vh] z-10 -translate-x-1/2 -translate-y-1/2"
-              type="heading1"
-              as="heading2"
-              colored={true}
-            >
-              Artists
-            </Typography>
-          ))}
-      </div>
+        </div>
+      </ResponsiveLayer>
     </PageTransition>
   );
 }

@@ -8,7 +8,6 @@ import Typography from './Atoms/Typography';
 const Footer = () => {
   const pathname = usePathname();
   const isRouteActive = (path: string) => pathname === path;
-  const date = new Date().getFullYear();
 
   return (
     <>
@@ -124,7 +123,7 @@ const Footer = () => {
           </div>
         </footer>
         <Typography className="mx-auto text-center text-sm leading-8" type="text">
-          © {date} • 2.26 Tours
+          © {new Date().getFullYear()} • 2.26 Tours
         </Typography>
       </div>
     </>

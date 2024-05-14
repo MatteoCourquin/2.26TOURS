@@ -19,16 +19,16 @@ export default function PageTransition({ children }: { children: ReactNode }) {
       {/* </motion.div> */}
       <motion.div
         className="slide-in"
-        initial={{ y: '100%', x: '-50%', borderRadius: '100%' }}
-        animate={{ y: '100%', borderRadius: '0%' }}
-        exit={{ y: '0%', borderRadius: '0%' }}
+        initial={{ y: '100%', x: '-50%', borderRadius: '0px' }}
+        animate={{ y: '100%', borderRadius: '0px' }}
+        exit={{ y: '0%', borderRadius: '0px' }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       />
       <motion.div
         className="slide-out"
-        initial={{ y: '0%', x: '-50%', borderRadius: '0%' }}
-        animate={{ y: '-100%', borderRadius: '100%' }}
-        exit={{ y: '-100%', borderRadius: '100%' }}
+        initial={{ y: '-20%', x: '-50%', borderRadius: '9999px' }}
+        animate={{ y: '-100%', borderRadius: '0px' }}
+        exit={{ y: '-100%', borderRadius: '0px' }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       />
     </>
