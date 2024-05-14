@@ -50,12 +50,12 @@ export default function Index({ events }: { events: TypeEvent[] }) {
                   new Date(array[index - 1].date).getFullYear();
               return (
                 <div key={index}>
-                  {showYearHeading && (
-                    <Typography type="heading1" className="ml-10 opacity-[0.08]">
-                      {new Date(event.date).getFullYear()}
-                    </Typography>
-                  )}
                   <div className="h-screen">
+                    {showYearHeading && (
+                      <Typography type="heading1" className="pb-10 pl-10 opacity-15">
+                        {new Date(event.date).getFullYear()}
+                      </Typography>
+                    )}
                     <CardEvent event={event} />
                   </div>
                 </div>

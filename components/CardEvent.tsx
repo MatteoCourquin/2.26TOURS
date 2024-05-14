@@ -33,12 +33,12 @@ const CardEvent = ({ event }: { event: TypeEvent }) => {
   }, [scrollCubeRef]);
 
   return (
-    <div className="card-event sticky top-36 grid grid-cols-[24px,1fr] gap-6 md:top-1/3 md:grid-cols-[150px,1fr]">
+    <div className="card-event sm:sticky top-36 grid grid-cols-[24px,1fr] gap-6 md:top-1/3 md:grid-cols-[150px,1fr]">
       <div
-        className="card-event-circle"
+        className="card-event-circle hidden md:block"
         style={{ backgroundImage: `radial-gradient(${color}1a 0%, ${color}00 60%)` }}
       ></div>
-      <div className="sticky top-36 flex h-fit items-center gap-4 md:top-1/3">
+      <div className="sm:sticky top-36 flex h-fit items-center gap-4 md:top-1/3">
         {event.genres && (
           <div
             style={{ borderColor: color }}
