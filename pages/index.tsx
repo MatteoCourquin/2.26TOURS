@@ -12,7 +12,7 @@ export default function Index({ events }: { events: TypeEvent[] }) {
   return (
     <PageTransition>
       <section className="flex h-screen flex-col items-center justify-center px-x-default md:px-x-large">
-        <Typography type="heading1" colored={true}>
+        <Typography type="heading1" colored={true} className='text-center'>
           2.26 TOURS
         </Typography>
         <Typography type="heading2" as="heading6" className="pt-6 !normal-case">
@@ -50,7 +50,7 @@ export default function Index({ events }: { events: TypeEvent[] }) {
                   new Date(array[index - 1].date).getFullYear();
               return (
                 <div key={index}>
-                  <div className="h-screen">
+                  <div className="sm:h-screen">
                     {showYearHeading && (
                       <Typography type="heading1" className="pb-10 pl-10 opacity-15">
                         {new Date(event.date).getFullYear()}

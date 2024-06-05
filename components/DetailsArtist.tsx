@@ -132,7 +132,7 @@ const DetailsArtist = ({
       >
         <div
           onClick={() => setIsOpen(false)}
-          className="flex h-svh w-full items-end justify-center overflow-hidden px-x-default pb-[120px] pt-[140px]"
+          className="flex h-svh w-full items-end justify-center overflow-hidden sm:px-x-default sm:pb-[120px] sm:pt-[140px]"
         >
           <div
             ref={wrapperImageRef}
@@ -142,19 +142,19 @@ const DetailsArtist = ({
               ref={imageRef}
               className="flex h-0 origin-bottom items-end justify-center overflow-hidden"
             >
-              <div className="h-[calc(100vh-260px)] w-full">
+              <div className="h-screen w-full sm:h-[calc(100vh-260px)] sm:w-screen">
                 <img
                   src={urlForImage(artist.portrait)}
                   alt={'Portrait de ' + artist.name}
-                  className="h-full w-full object-contain"
+                  className="h-screen w-screen object-cover sm:h-full sm:w-full sm:object-contain"
                 />
               </div>
             </div>
           </div>
-          <div className="text-shadow-xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pt-[30vh] text-center">
+          <div className="text-shadow-xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pt-[50vh] sm:pt-[30vh] text-center">
             <div ref={wrapperTitleRef} className="will-change-[transform,opacity]">
               <div ref={titleRef}>
-                <Typography className="whitespace-nowrap" type="heading2" as="heading1">
+                <Typography className="sm:whitespace-nowrap" type="heading2" as="heading1">
                   {artist.name}
                 </Typography>
               </div>
@@ -163,12 +163,12 @@ const DetailsArtist = ({
         </div>
         <section
           ref={wrapperSectionDescritionRef}
-          className="section-revealer w-screen translate-y-14 border-x-[1px] border-x-grey bg-black-opacity pt-12 text-white"
+          className="section-revealer w-screen translate-y-14 border-none bg-black-opacity pt-12 text-white sm:border-x-[1px] sm:border-x-grey"
         >
           <div className="flex w-full flex-col gap-24 pb-24">
             <div className="grid grid-cols-1 gap-6 px-x-default md:grid-cols-2">
               <div className="flex flex-col gap-6">
-                <Typography type="heading3" colored={true}>
+                <Typography type="heading3" colored={true} className="hidden sm:block">
                   {artist.name}
                 </Typography>
                 <div className="flex gap-3">
@@ -239,23 +239,21 @@ const DetailsArtist = ({
                 <Typography className="pb-10" type="heading4" as="heading5">
                   GALERIE
                 </Typography>
-                <div className="wrapper">
-                  <div className="container">
-                    {artist.gallery
-                      .filter((image) => image !== null)
-                      .map((image, index) => (
-                        <div className={clsx(getClass(index), 'overflow-hidden')} key={index}>
-                          <LazyLoadImage
-                            alt={'Dernier mix ' + artist.name}
-                            effect="blur"
-                            width="100%"
-                            height="100%"
-                            className="h-full w-full object-cover"
-                            src={urlForImage(image)}
-                          />
-                        </div>
-                      ))}
-                  </div>
+                <div className="gallery-container">
+                  {artist.gallery
+                    .filter((image) => image !== null)
+                    .map((image, index) => (
+                      <div className={clsx(getClass(index), 'overflow-hidden')} key={index}>
+                        <LazyLoadImage
+                          alt={'Dernier mix ' + artist.name}
+                          effect="blur"
+                          width="100%"
+                          height="100%"
+                          className="h-full w-full object-cover"
+                          src={urlForImage(image)}
+                        />
+                      </div>
+                    ))}
                 </div>
               </div>
             )}

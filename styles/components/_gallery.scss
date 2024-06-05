@@ -18,19 +18,19 @@
   }
 }
 
-.container > div {
+.gallery-container > div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.container > div > img {
+.gallery-container > div > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.container {
+.gallery-container {
   display: grid;
   grid-gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

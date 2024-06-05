@@ -12,6 +12,9 @@ $color-black-opacity: #0d0d0da6;
 $color-grey-light: #ffffff37;
 $color-grey: #3c3c3c;
 
+// RESPONSIVE
+$breakpoint-sm: 639px;
+
 // FONTS
 $font-space-grotesk: 'Space Grotesk', sans-serif;
 
@@ -53,4 +56,38 @@ $padding-x-button: 20px;
     transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1),
     padding 0.8s;
   transform-origin: bottom;
+}
+
+.margin-top-40vh {
+  margin-top: 40vh;
+}
+.margin-top-20vh {
+  margin-top: 20vh;
+}
+.margin-top-35vh {
+  margin-top: 35vh;
+}
+.margin-top-60vh {
+  margin-top: 60vh;
+}
+.margin-top-30vh {
+  margin-top: 30vh;
+}
+.margin-top-60vh {
+  margin-top: 60vh;
+}
+.margin-top-0vh {
+  margin-top: 0vh;
+}
+
+.margin-top-40vh,
+.margin-top-20vh,
+.margin-top-35vh,
+.margin-top-60vh,
+.margin-top-30vh,
+.margin-top-60vh,
+.margin-top-0vh {
+  @media (max-width: $breakpoint-sm) {
+    margin-top: 0vh;
+  }
 }
