@@ -30,26 +30,24 @@ const CardArtist = ({
   const imageRef = useRef<HTMLImageElement>(null);
   const timeline = useRef(gsap.timeline({ paused: true }));
   const [isRight, setIsRight] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(0);
 
   const checkAndUpdatePosition = () => {
-    setScreenWidth(window.innerWidth);
     if (!artistRef.current) return;
-    if (screenWidth < 640) return;
-    const rect = artistRef.current.getBoundingClientRect();
-    const midpoint = window.innerWidth / 2;
-    setIsRight(rect.left + rect.width / 2 > midpoint);
+    if (window.innerWidth <= 640) {
+      resetPositionMobile();
+    } else {
+      resetPositionDesktop();
+      const rect = artistRef.current.getBoundingClientRect();
+      const midpoint = window.innerWidth / 2;
+      setIsRight(rect.left + rect.width / 2 > midpoint);
+    }
   };
-
-  useEffect(() => {
-    console.log(screenWidth);
-  }, [screenWidth]);
 
   const apparitionText = () => {
     if (!artistRef.current) return;
-    if (screenWidth < 640) return;
     const wrapperText = artistRef.current.querySelector('#wrapper-text');
     const arrayToAnim = artistRef.current.querySelectorAll('.animate-text');
+    resetPositionDesktop();
     timeline.current.clear();
     timeline.current.to(wrapperText, {
       opacity: 1,
@@ -70,9 +68,9 @@ const CardArtist = ({
         .play();
     });
   };
+
   const disparitionText = () => {
     if (!artistRef.current) return;
-    if (screenWidth < 640) return;
     const wrapperText = artistRef.current.querySelector('#wrapper-text');
     const arrayToAnim = artistRef.current.querySelectorAll('.animate-text');
     const reversedArrayToAnim = gsap.utils.toArray<Element>(arrayToAnim).reverse();
@@ -100,15 +98,50 @@ const CardArtist = ({
     );
   };
 
+  const resetPositionMobile = () => {
+    if (!artistRef.current) return;
+    timeline.current.clear();
+    const wrapperText = artistRef.current.querySelector('#wrapper-text');
+    const arrayToAnim = artistRef.current.querySelectorAll('.animate-text');
+    gsap.set(wrapperText, {
+      opacity: 1,
+      xPercent: 0,
+      left: 0,
+      position: 'relative',
+      textAlign: 'left',
+      alignItems: 'flex-start',
+    });
+    gsap.utils.toArray<Element>(arrayToAnim).forEach((item: Element) => {
+      gsap.set(item, { opacity: 1, y: 0 });
+    });
+  };
+
+  const resetPositionDesktop = () => {
+    if (!artistRef.current) return;
+    timeline.current.clear();
+    const wrapperText = artistRef.current.querySelector('#wrapper-text');
+    const arrayToAnim = artistRef.current.querySelectorAll('.animate-text');
+    gsap.set(wrapperText, {
+      opacity: 0,
+      xPercent: isRight ? '100' : '-100',
+      alignItems: isRight ? 'flex-end' : 'flex-start',
+      textAlign: isRight ? 'right' : 'left',
+      left: isRight ? -16 : 'auto',
+      right: isRight ? 'auto' : -16,
+      position: 'absolute',
+    });
+    gsap.utils.toArray<Element>(arrayToAnim).forEach((item: Element) => {
+      gsap.set(item, { opacity: 0, y: -20 });
+    });
+  };
+
   useEffect(() => {
     checkAndUpdatePosition();
-    setScreenWidth(window.innerWidth);
     window.addEventListener('resize', checkAndUpdatePosition);
     return () => window.removeEventListener('resize', checkAndUpdatePosition);
   }, []);
 
   useGSAP(() => {
-    if (screenWidth < 640) return;
     gsap.registerPlugin(ScrollTrigger);
     const speed = Math.random() * 2 + 1;
     gsap
@@ -134,8 +167,8 @@ const CardArtist = ({
         <div
           ref={imageRef}
           className="transition-transform sm:group-hover:scale-[1.04]"
-          onMouseOver={apparitionText}
-          onMouseLeave={disparitionText}
+          onMouseOver={() => window.innerWidth > 640 && apparitionText()}
+          onMouseLeave={() => window.innerWidth > 640 && disparitionText()}
         >
           <img
             onClick={onClick}

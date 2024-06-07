@@ -23,14 +23,11 @@ export default function Artists({ artists }: { artists: TypeArtist[] }) {
   return (
     <PageTransition>
       <div className="relative flex min-h-screen grid-cols-2 flex-wrap gap-4 overflow-x-hidden px-x-default pt-header sm:grid sm:grid-cols-3 md:grid-cols-4 md:px-x-large lg:grid-cols-6">
-        <Typography
-          className="fixed left-[50vw] top-[50vh] z-10 -translate-x-1/2 -translate-y-1/2"
-          type="heading1"
-          as="heading2"
-          colored={true}
-        >
-          Artists
-        </Typography>
+        <div className="inset-0 flex h-[70vh] w-screen items-center justify-center sm:fixed sm:h-screen">
+          <Typography type="heading1" as="heading2" colored={true}>
+            Artists
+          </Typography>
+        </div>
 
         {artists &&
           artists.map((artist, index) => (
