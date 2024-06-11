@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import Button, { BUTTON_TYPE } from './Atoms/Button';
 import { IconFacebook, IconInstagram, IconSoundcloud } from './Atoms/Icons';
 import Typography from './Atoms/Typography';
+import Burger from './Burger';
 
 const Header = () => {
   const logoRef = useRef(null);
@@ -16,7 +17,7 @@ const Header = () => {
     <>
       <div className="fixed top-0 z-[999] w-full px-x-default pt-8">
         <header className="space-grotesk-bold flex gap-4 uppercase text-white">
-          <nav className="blur-medium transition-[padding] flex h-[60px] shrink grow items-center gap-6 px-4 sm:px-x-default">
+          <nav className="blur-medium flex h-[60px] shrink grow items-center gap-6 px-4 transition-[padding] sm:px-x-default">
             <Link
               href="/"
               onMouseMove={(e) => useMagnet(e, 0.4)}
@@ -121,6 +122,8 @@ const Header = () => {
           >
             <IconSoundcloud />
           </Button>
+          {/* BURGER */}
+          <Burger />
         </header>
       </div>
     </>
