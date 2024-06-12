@@ -1,5 +1,31 @@
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useState } from 'react';
+
+// const routes = {
+//   '/': 'Home',
+//   '/about': 'About',
+//   '/contact': 'Contact',
+//   '/mixs': 'Mixs',
+//   '/artists': 'Artists',
+// };
+
+// const text = {
+//   initial: {
+//     opacity: 1,
+//   },
+//   enter: {
+//     opacity: 0,
+//     top: -100,
+//     transition: { duration: 0.75, delay: 0.35, ease: [0.76, 0, 0.24, 1] },
+//     transitionEnd: { top: '47.5%' },
+//   },
+//   exit: {
+//     opacity: 1,
+//     top: '40%',
+//     transition: { duration: 0.5, delay: 0.4, ease: [0.33, 1, 0.68, 1] },
+//   },
+// };
 
 const curve = (initialPath: string, targetPath: string) => {
   return {
@@ -44,6 +70,7 @@ const anim = (variants: any) => {
 };
 
 export default function Curve({ children }: { children: ReactNode }) {
+  const router = useRouter();
   const [dimensions, setDimensions] = useState({
     width: 0,
     height: 0,
@@ -65,6 +92,11 @@ export default function Curve({ children }: { children: ReactNode }) {
 
   return (
     <div className="page curve">
+      {/* <motion.p className="route z-[9999] text-black" {...anim(text)}>
+        <Typography colored={true} type="heading3">
+          {routes[router.route]}
+        </Typography>
+      </motion.p> */}
       {dimensions.width != 0 && <SVG {...dimensions} />}
       {children}
     </div>

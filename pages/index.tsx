@@ -12,7 +12,7 @@ export default function Index({ events }: { events: TypeEvent[] }) {
   return (
     <PageTransition>
       <section className="flex h-screen flex-col items-center justify-center px-x-default md:px-x-large">
-        <Typography type="heading1" colored={true} className='text-center'>
+        <Typography type="heading1" colored={true} className="text-center">
           2.26 TOURS
         </Typography>
         <Typography type="heading2" as="heading6" className="pt-6 !normal-case">
