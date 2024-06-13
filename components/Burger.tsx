@@ -1,21 +1,86 @@
-import { useState } from 'react';
-import Button, { BUTTON_TYPE } from './Atoms/Button';
 import clsx from 'clsx';
+import gsap from 'gsap';
 import Link from 'next/link';
-import { IconFacebook, IconInstagram, IconSoundcloud } from './Atoms/Icons';
 import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+import Button, { BUTTON_TYPE } from './Atoms/Button';
+import { IconFacebook, IconInstagram, IconSoundcloud } from './Atoms/Icons';
 
 const Burger = () => {
-  const pathname = usePathname();
-
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const wrapperMenuRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const timeline = useRef(gsap.timeline({ paused: true }));
+
+  const links = [
+    { label: 'accueil', href: '/' },
+    { label: 'à propos', href: '/about' },
+    { label: 'artistes', href: '/artists' },
+    { label: 'mixs', href: '/mixs' },
+    { label: 'contact', href: '/contact' },
+  ];
+
+  useEffect(() => {
+    if (!menuRef.current || !wrapperMenuRef.current) return;
+
+    const linksToAnim = menuRef.current.querySelectorAll('.animate-link');
+    const socialsToAnim = menuRef.current.querySelectorAll('.animate-social');
+
+    timeline.current
+      .add(
+        gsap.to(wrapperMenuRef.current, {
+          visibility: 'visible',
+          scale: 1,
+          duration: 0,
+        }),
+      )
+      .add(
+        gsap.to(menuRef.current, {
+          scaleY: 1,
+          opacity: 1,
+          ease: 'power4.inOut',
+          duration: 0.4,
+        }),
+      )
+      .add(
+        gsap.to(linksToAnim, {
+          y: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.4,
+          ease: 'power4.out',
+        }),
+        '-=0.4',
+      )
+      .add(
+        gsap.to(socialsToAnim, {
+          x: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.4,
+          ease: 'power4.out',
+        }),
+        '-=0.4',
+      );
+  }, []);
+
+  const openMenu = () => {
+    setIsOpen(true);
+    timeline.current.play();
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    timeline.current.reverse();
+  };
 
   const handleLinkClick = (link: string) => {
     if (pathname === link) {
-      setIsOpen(false);
+      closeMenu();
     } else {
       setTimeout(() => {
-        setIsOpen(false);
+        closeMenu();
       }, 1000);
     }
   };
@@ -24,7 +89,7 @@ const Burger = () => {
       <Button
         type={BUTTON_TYPE.ICON}
         as="button"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={isOpen ? closeMenu : openMenu}
         className="group/burger"
       >
         <div className="flex h-full w-full flex-col items-end justify-between py-[20px]">
@@ -43,74 +108,51 @@ const Burger = () => {
           <div
             className={clsx(
               isOpen ? 'w-full -translate-y-2 -rotate-45' : 'w-2/3 translate-y-0 rotate-0',
-              'h-[2px]  bg-white transition-[transform,width] group-hover/burger:w-full',
+              'h-[2px] bg-white transition-[transform,width] group-hover/burger:w-full',
             )}
           ></div>
         </div>
       </Button>
       <div
-        className={clsx(
-          isOpen ? 'translate-y-0 scale-y-100' : '-translate-y-1/2 scale-y-0',
-          'fixed inset-0 -z-10 h-svh w-screen px-x-default pb-y-default pt-header transition-transform',
-        )}
+        ref={wrapperMenuRef}
+        className="invisible fixed inset-0 -z-10 h-dvh w-screen scale-0 px-x-default pb-y-default pt-header"
       >
-        <div className="blur-medium flex h-full w-full flex-col justify-between px-x-default py-y-default">
-          <div className="flex flex-col gap-6">
-            <Link
-              onClick={() => handleLinkClick('/')}
-              href="/"
-              className="text-xl uppercase text-white"
-            >
-              accueil
-            </Link>
-            <Link
-              onClick={() => handleLinkClick('/about')}
-              href="/about"
-              className="text-xl uppercase text-white"
-            >
-              à propos
-            </Link>
-            <Link
-              onClick={() => handleLinkClick('/artists')}
-              href="/artists"
-              className="text-xl uppercase text-white"
-            >
-              artistes
-            </Link>
-            <Link
-              onClick={() => handleLinkClick('/mixs')}
-              href="/mixs"
-              className="text-xl uppercase text-white"
-            >
-              mixs
-            </Link>
-            <Link
-              onClick={() => handleLinkClick('/contact')}
-              href="/contact"
-              className="text-xl uppercase text-white"
-            >
-              contact
-            </Link>
+        <div
+          ref={menuRef}
+          className="blur-medium flex h-full w-full origin-top scale-y-0 flex-col justify-between px-x-default py-y-default opacity-0"
+        >
+          <div className="flex flex-col">
+            {links.map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                onClick={() => handleLinkClick(href)}
+                className="animate-link group/burger-item relative flex -translate-y-6 items-center py-3 text-xl uppercase text-white opacity-0"
+              >
+                <div className="absolute h-1 w-1 scale-0 rounded-full bg-white opacity-0 transition-[transform,opacity] group-hover/burger-item:scale-100 group-hover/burger-item:opacity-100"></div>
+                <span className="transition-[padding] group-hover/burger-item:pl-4">{label}</span>
+              </Link>
+            ))}
           </div>
           <div className="flex gap-6">
             <Link
               href="https://www.instagram.com/2.26tours"
               target="_blank"
-              className="text-xl uppercase text-white"
+              className="animate-social -translate-x-6 text-xl uppercase text-white opacity-0"
             >
               <IconInstagram />
             </Link>
             <Link
               href="https://www.facebook.com/2.26tours"
               target="_blank"
-              className="text-xl uppercase text-white"
+              className="animate-social -translate-x-6 text-xl uppercase text-white opacity-0"
             >
               <IconFacebook />
             </Link>
             <Link
               href="https://soundcloud.com/2-26-tours"
               target="_blank"
-              className="text-xl uppercase text-white"
+              className="animate-social -translate-x-6 text-xl uppercase text-white opacity-0"
             >
               <IconSoundcloud />
             </Link>

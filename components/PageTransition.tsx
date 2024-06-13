@@ -43,7 +43,7 @@ const anim = (variants: any) => {
   };
 };
 
-export default function Curve({ children }: { children: ReactNode }) {
+export default function PageTransition({ children }: { children: ReactNode }) {
   const [dimensions, setDimensions] = useState({
     width: 0,
     height: 0,
@@ -66,14 +66,14 @@ export default function Curve({ children }: { children: ReactNode }) {
   return (
     <div className="page curve">
       {dimensions.width != 0 && <SVG {...dimensions} />}
-      {children}
+      <div className="z-0">{children}</div>
     </div>
   );
 }
 
 const SVG = ({ height, width }: { height: number; width: number }) => {
   const initialPath = `
-        M0 300 
+        M0 300
         Q${width / 2} 0 ${width} 300
         L${width} ${height + 300}
         Q${width / 2} ${height + 600} 0 ${height + 300}
@@ -89,7 +89,7 @@ const SVG = ({ height, width }: { height: number; width: number }) => {
     `;
 
   return (
-    <motion.svg className="svg-anim z-[999]" {...anim(translate)}>
+    <motion.svg className="svg-anim z-[9999]" {...anim(translate)}>
       <motion.path {...anim(curve(initialPath, targetPath))} />
     </motion.svg>
   );
