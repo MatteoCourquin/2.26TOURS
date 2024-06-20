@@ -27,7 +27,8 @@
     "react-dom": "^18",
     "react-lazy-load-image-component": "^1.6.0",
     "sanity": "^3.25",
-    "styled-components": "^6.0"
+    "styled-components": "^6.0",
+    "swiper": "^11.1.4"
   },
   "devDependencies": {
     "@types/node": "^20",

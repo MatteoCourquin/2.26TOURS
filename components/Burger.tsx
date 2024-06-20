@@ -115,7 +115,7 @@ const Burger = () => {
       </Button>
       <div
         ref={wrapperMenuRef}
-        className="invisible fixed inset-0 -z-10 h-dvh w-screen scale-0 px-x-default pb-y-default pt-header"
+        className="invisible fixed inset-0 -z-10 h-svh w-screen scale-0 px-4 pb-y-default pt-header nav:px-x-default"
       >
         <div
           ref={menuRef}
