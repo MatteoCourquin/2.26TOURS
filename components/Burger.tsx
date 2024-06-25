@@ -28,13 +28,13 @@ const Burger = () => {
     const socialsToAnim = menuRef.current.querySelectorAll('.animate-social');
 
     timeline.current
-      .add(
-        gsap.to(wrapperMenuRef.current, {
-          visibility: 'visible',
-          scale: 1,
-          duration: 0,
-        }),
-      )
+      // .add(
+      //   gsap.to(wrapperMenuRef.current, {
+      //     visibility: 'visible',
+      //     scale: 1,
+      //     duration: 0,
+      //   }),
+      // )
       .add(
         gsap.to(menuRef.current, {
           scaleY: 1,

@@ -66,7 +66,7 @@ export default function PageTransition({ children }: { children: ReactNode }) {
   return (
     <div className="page curve">
       {dimensions.width != 0 && <SVG {...dimensions} />}
-      <div className="z-0">{children}</div>
+      {children}
     </div>
   );
 }
