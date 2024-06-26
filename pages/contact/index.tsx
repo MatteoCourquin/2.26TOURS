@@ -1,4 +1,4 @@
-import Typography from '@/components/Atoms/Typography';
+import Typography from '@/components/atoms/Typography';
 import PageTransition from '@/components/PageTransition';
 
 export default function Contact() {

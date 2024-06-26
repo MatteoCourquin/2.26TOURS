@@ -5,29 +5,29 @@ const Vinyle = ({
   src,
   alt,
   className,
-  hovered = true,
+  hoverable = true,
 }: {
   src: string;
   alt: string;
   className: string;
-  hovered?: boolean;
+  hoverable?: boolean;
 }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const playAudio = () => {
-    if (!hovered) return;
+    if (!hoverable) return;
     audioRef.current?.play();
   };
   const pauseAudio = () => {
-    if (!hovered) return;
+    if (!hoverable) return;
     audioRef.current?.pause();
   };
 
   useEffect(() => {
-    if (!hovered) {
+    if (!hoverable) {
       pauseAudio();
     }
-  }, [hovered]);
+  }, [hoverable]);
 
   return (
     <>
@@ -36,15 +36,19 @@ const Vinyle = ({
         onMouseEnter={playAudio}
         onMouseLeave={pauseAudio}
         className={clsx(
-          hovered && 'hover:translate-x-0',
+          hoverable && 'hover:translate-x-0',
           'group/vinyle relative z-0 h-fit w-full translate-x-[30%] transition-[transform,filter,opacity] duration-700',
           className,
         )}
       >
-        <img src={src} alt={alt} className="z-20 w-full select-none" />
+        <img
+          src={src}
+          alt={alt}
+          className="floating-element z-20 w-full select-none transition-transform"
+        />
         <div
           className={clsx(
-            hovered && 'group-hover/vinyle:translate-x-[60%]',
+            hoverable && 'group-hover/vinyle:translate-x-[60%]',
             'absolute inset-0 -z-10 p-2 transition-transform duration-700',
           )}
         >

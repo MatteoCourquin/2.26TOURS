@@ -1,4 +1,4 @@
-import Typography from '@/components/Atoms/Typography';
+import Typography from '@/components/atoms/Typography';
 import CardArtist from '@/components/CardArtist';
 import DetailsArtist from '@/components/DetailsArtist';
 import PageTransition from '@/components/PageTransition';

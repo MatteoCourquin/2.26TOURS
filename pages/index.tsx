@@ -1,6 +1,6 @@
-import Button, { BUTTON_TYPE } from '@/components/Atoms/Button';
-import { IconScrollDown } from '@/components/Atoms/Icons';
-import Typography from '@/components/Atoms/Typography';
+import Button, { BUTTON_TYPE } from '@/components/atoms/Button';
+import { IconScrollDown } from '@/components/atoms/Icons';
+import Typography from '@/components/atoms/Typography';
 import CardEvent from '@/components/CardEvent';
 import PageTransition from '@/components/PageTransition';
 import { TypeEvent } from '@/data/types';

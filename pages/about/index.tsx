@@ -1,5 +1,5 @@
-import Button, { BUTTON_TYPE } from '@/components/Atoms/Button';
-import Typography from '@/components/Atoms/Typography';
+import Button, { BUTTON_TYPE } from '@/components/atoms/Button';
+import Typography from '@/components/atoms/Typography';
 import PageTransition from '@/components/PageTransition';
 
 export default function About() {

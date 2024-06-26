@@ -9,10 +9,10 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useEffect, useRef } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import Button, { BUTTON_TYPE } from './Atoms/Button';
-import { IconClose, IconFacebook, IconInstagram, IconSoundcloud } from './Atoms/Icons';
-import Tag from './Atoms/Tag';
-import Typography from './Atoms/Typography';
+import Button, { BUTTON_TYPE } from './atoms/Button';
+import { IconClose, IconFacebook, IconInstagram, IconSoundcloud } from './atoms/Icons';
+import Tag from './atoms/Tag';
+import Typography from './atoms/Typography';
 
 const DetailsArtist = ({
   artist,
@@ -151,7 +151,7 @@ const DetailsArtist = ({
               </div>
             </div>
           </div>
-          <div className="text-shadow-xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pt-[50vh] sm:pt-[30vh] text-center">
+          <div className="text-shadow-xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pt-[50vh] text-center sm:pt-[30vh]">
             <div ref={wrapperTitleRef} className="will-change-[transform,opacity]">
               <div ref={titleRef}>
                 <Typography className="sm:whitespace-nowrap" type="heading2" as="heading1">

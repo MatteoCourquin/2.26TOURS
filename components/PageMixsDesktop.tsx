@@ -3,11 +3,11 @@ import { urlForImage } from '@/sanity/lib/image';
 import clsx from 'clsx';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
-import Button, { BUTTON_TYPE } from './Atoms/Button';
-import { IconArrowUpRight } from './Atoms/Icons';
-import Tag from './Atoms/Tag';
-import Typography from './Atoms/Typography';
 import Vinyle from './Vinyle';
+import Button, { BUTTON_TYPE } from './atoms/Button';
+import { IconArrowUpRight } from './atoms/Icons';
+import Tag from './atoms/Tag';
+import Typography from './atoms/Typography';
 
 const PageMixsDesktop = ({ mixs, className }: { mixs: TypeMix[]; className?: string }) => {
   const [activeMix, setActiveMix] = useState<TypeMix | null>(null);
@@ -220,7 +220,7 @@ const PageMixsDesktop = ({ mixs, className }: { mixs: TypeMix[]; className?: str
                     index === listVinyle.length - 6 && 'scale-0',
                     index <= listVinyle.length - 7 && 'hidden',
                   )}
-                  hovered={index === listVinyle.length - 1}
+                  hoverable={index === listVinyle.length - 1}
                   src={urlForImage(vinyle.cover)}
                   alt={'Mix de ' + vinyle.artist}
                 />

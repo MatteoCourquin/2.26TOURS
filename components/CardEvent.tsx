@@ -4,10 +4,10 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useRef, useState } from 'react';
-import Button, { BUTTON_TYPE } from './Atoms/Button';
-import Tag from './Atoms/Tag';
-import Typography from './Atoms/Typography';
-import { IconArrowUpRight } from './Atoms/Icons';
+import Button, { BUTTON_TYPE } from './atoms/Button';
+import Tag from './atoms/Tag';
+import Typography from './atoms/Typography';
+import { IconArrowUpRight } from './atoms/Icons';
 import { urlForImage } from '@/sanity/lib/image';
 
 const CardEvent = ({ event }: { event: TypeEvent }) => {
@@ -33,12 +33,12 @@ const CardEvent = ({ event }: { event: TypeEvent }) => {
   }, [scrollCubeRef]);
 
   return (
-    <div className="card-event sm:sticky top-36 grid grid-cols-[24px,1fr] gap-6 md:top-1/3 md:grid-cols-[150px,1fr]">
+    <div className="card-event top-36 grid grid-cols-[24px,1fr] gap-6 sm:sticky md:top-1/3 md:grid-cols-[150px,1fr]">
       <div
         className="card-event-circle hidden md:block"
         style={{ backgroundImage: `radial-gradient(${color}1a 0%, ${color}00 60%)` }}
       ></div>
-      <div className="sm:sticky top-36 flex h-fit items-center gap-4 md:top-1/3">
+      <div className="top-36 flex h-fit items-center gap-4 sm:sticky md:top-1/3">
         {event.genres && (
           <div
             style={{ borderColor: color }}

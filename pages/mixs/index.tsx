@@ -3,12 +3,25 @@ import PageMixsMobile from '@/components/PageMixsMobile';
 import PageTransition from '@/components/PageTransition';
 import { TypeMix } from '@/data/types';
 import { client } from '@/sanity/lib/client';
+import { useEffect, useState } from 'react';
 
 export default function Mixs({ mixs }: { mixs: TypeMix[] }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <PageTransition>
-      <PageMixsDesktop className="hidden md:flex" mixs={mixs} />
-      <PageMixsMobile className="flex md:hidden" mixs={mixs} />
+      {!isMobile && <PageMixsDesktop className="hidden md:flex" mixs={mixs} />}
+      {isMobile && <PageMixsMobile className="flex md:hidden" mixs={mixs} />}
     </PageTransition>
   );
 }

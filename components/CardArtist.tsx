@@ -8,8 +8,8 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Image } from 'sanity';
-import Tag from './Atoms/Tag';
-import Typography from './Atoms/Typography';
+import Tag from './atoms/Tag';
+import Typography from './atoms/Typography';
 
 const CardArtist = ({
   index,
