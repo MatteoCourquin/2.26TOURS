@@ -174,7 +174,8 @@ const CardArtist = ({
             onClick={onClick}
             alt={'Portrait de ' + name}
             src={urlForImage(portrait)}
-            className="z-10 w-full select-none"
+            style={{ animationDelay: index / 4 + 's' }}
+            className="animate-float z-10 w-full select-none"
           />
         </div>
         <div

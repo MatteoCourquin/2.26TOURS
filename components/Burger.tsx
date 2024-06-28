@@ -21,20 +21,20 @@ const Burger = () => {
     { label: 'contact', href: '/contact' },
   ];
 
-  useEffect(() => {
+  const playAnimation = () => {
     if (!menuRef.current || !wrapperMenuRef.current) return;
 
     const linksToAnim = menuRef.current.querySelectorAll('.animate-link');
     const socialsToAnim = menuRef.current.querySelectorAll('.animate-social');
 
     timeline.current
-      // .add(
-      //   gsap.to(wrapperMenuRef.current, {
-      //     visibility: 'visible',
-      //     scale: 1,
-      //     duration: 0,
-      //   }),
-      // )
+      .add(
+        gsap.to(wrapperMenuRef.current, {
+          visibility: 'visible',
+          scale: 1,
+          duration: 0,
+        }),
+      )
       .add(
         gsap.to(menuRef.current, {
           scaleY: 1,
@@ -62,12 +62,13 @@ const Burger = () => {
           ease: 'power4.out',
         }),
         '-=0.4',
-      );
-  }, []);
+      )
+      .play();
+  };
 
   const openMenu = () => {
     setIsOpen(true);
-    timeline.current.play();
+    playAnimation();
   };
 
   const closeMenu = () => {

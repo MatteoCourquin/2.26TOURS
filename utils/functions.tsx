@@ -1,5 +1,3 @@
-import { TypeGenre } from '@/data/types';
-
 export const scroll = () => {
   window.scrollTo({
     top: window.innerHeight - 92,
@@ -27,12 +25,11 @@ export const formatDateWithoutDay = (date: Date) =>
     year: 'numeric',
   });
 
-export const formatSlug = (slug: string) => {
-  return slug
+export const formatSlug = (slug: string) =>
+  slug
     .toLowerCase()
     .replace(/ /g, '-')
     .replace(/[^\w-]+/g, '');
-};
 
 export const getColorsFromGenre = (genres: any[]) => {
   const colorGenreMap: { [color: string]: string[] } = {

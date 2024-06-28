@@ -110,12 +110,20 @@ const Footer = () => {
             </nav>
             <Typography type="text">
               Site designé et développé par
-              <a className="text-white underline" href="#">
+              <a
+                className="text-white underline"
+                href="https://bento.me/jerome-bezeau"
+                target="_blank"
+              >
                 {' '}
                 Jérôme Bezeau{' '}
               </a>
               &
-              <a className="text-white underline" href="#">
+              <a
+                className="text-white underline"
+                href="https://bento.me/matteo-courquin"
+                target="_blank"
+              >
                 {' '}
                 Mattéo Courquin
               </a>

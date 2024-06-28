@@ -15,7 +15,7 @@ export default function Index({ events }: { events: TypeEvent[] }) {
         <Typography type="heading1" colored={true} className="text-center">
           2.26 TOURS
         </Typography>
-        <Typography type="heading2" as="heading6" className="pt-6 !normal-case">
+        <Typography animated={true} type="heading2" as="heading6" className="pt-6 !normal-case">
           Collectif techno parisien
         </Typography>
         <div
