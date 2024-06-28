@@ -44,7 +44,7 @@ const Vinyle = ({
         <img
           src={src}
           alt={alt}
-          className="floating-element z-20 w-full select-none transition-transform"
+          className="z-20 w-full select-none transition-transform"
         />
         <div
           className={clsx(

@@ -1,6 +1,7 @@
 import clsx from 'clsx';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { CSSProperties } from 'styled-components';
+import gsap from 'gsap';
 
 const Typography = ({
   type = 'text',
@@ -9,6 +10,7 @@ const Typography = ({
   children,
   className,
   style,
+  animated = false,
 }: {
   type?: 'text' | 'heading1' | 'heading2' | 'heading3' | 'heading4' | 'heading5' | 'heading6';
   as?: string;
@@ -16,8 +18,9 @@ const Typography = ({
   children?: ReactNode;
   className?: string;
   style?: CSSProperties;
+  animated?: boolean;
 }) => {
-  const Typography = (() => {
+  const Tag = (() => {
     switch (type) {
       case 'text':
         return 'p';
@@ -38,8 +41,10 @@ const Typography = ({
     }
   })();
 
+  const textRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
   return (
-    <Typography
+    <Tag
       style={style}
       className={clsx(
         as || type,
@@ -48,8 +53,21 @@ const Typography = ({
         className,
       )}
     >
-      {children}
-    </Typography>
+      {!animated
+        ? children
+        : (children as string).split('').map((letter, index) => (
+            <span
+              key={index}
+              className="animate-letter inline-block"
+              style={{ animationDelay: `${index * 0.03}s` }}
+              ref={(el) => {
+                textRefs.current[index] = el;
+              }}
+            >
+              {letter == ' ' ? '\u00A0' : letter}
+            </span>
+          ))}
+    </Tag>
   );
 };
 
