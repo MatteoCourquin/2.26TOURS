@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { IconFacebook, IconInstagram, IconSoundcloud } from './atoms/Icons';
 import Typography from './atoms/Typography';
+import Image from 'next/image';
 
 const Footer = () => {
   const pathname = usePathname();
@@ -13,7 +14,7 @@ const Footer = () => {
     <>
       <div className="bottom-0 z-[999] w-full px-x-default pt-8">
         <footer className="flex gap-4 text-white">
-          <div className=" blur-medium flex shrink grow flex-col gap-6 px-4 py-8 sm:px-x-default">
+          <div className="blur-medium flex shrink grow flex-col gap-6 px-4 py-8 sm:px-x-default">
             <div className="space-grotesk-bold flex w-full justify-between uppercase">
               <Link className="flex items-center gap-4" href="/">
                 <div
@@ -21,7 +22,13 @@ const Footer = () => {
                   onMouseMove={(e) => useMagnet(e, 0.4)}
                   onMouseOut={(e) => useResetMagnet(e)}
                 >
-                  <img className="w-14" src="/images/icons/logo-white.svg" alt="" />
+                  <Image
+                    width={80}
+                    height={80}
+                    className="w-14"
+                    src="/images/icons/logo-white.svg"
+                    alt=""
+                  />
                 </div>
                 <Typography type="heading4" as="heading5">
                   2.26 TOURS

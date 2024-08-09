@@ -5,9 +5,10 @@ import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { Image } from 'sanity';
+import { Image as ImageSanity } from 'sanity';
 import Tag from './atoms/Tag';
 import Typography from './atoms/Typography';
 
@@ -21,7 +22,7 @@ const CardArtist = ({
 }: {
   index: number;
   name: string;
-  portrait: Image;
+  portrait: ImageSanity;
   genres: TypeGenre[];
   onClick: () => void;
   className?: string;
@@ -170,7 +171,9 @@ const CardArtist = ({
           onMouseOver={() => window.innerWidth > 640 && apparitionText()}
           onMouseLeave={() => window.innerWidth > 640 && disparitionText()}
         >
-          <img
+          <Image
+            width={800}
+            height={800}
             onClick={onClick}
             alt={'Portrait de ' + name}
             src={urlForImage(portrait)}

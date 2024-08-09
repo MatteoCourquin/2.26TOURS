@@ -1,17 +1,18 @@
 import { TypeEvent } from '@/data/types';
+import { urlForImage } from '@/sanity/lib/image';
 import { formatDateDigit, formatDateWithoutDay, getColorsFromGenre } from '@/utils/functions';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import { useRef, useState } from 'react';
+import Image from 'next/image';
+import { useRef } from 'react';
 import Button, { BUTTON_TYPE } from './atoms/Button';
+import { IconArrowUpRight } from './atoms/Icons';
 import Tag from './atoms/Tag';
 import Typography from './atoms/Typography';
-import { IconArrowUpRight } from './atoms/Icons';
-import { urlForImage } from '@/sanity/lib/image';
 
 const CardEvent = ({ event }: { event: TypeEvent }) => {
-  const [color, _] = useState<string>(event.color || getColorsFromGenre(event.genres || ['']));
+  const color = event.color || getColorsFromGenre(event.genres || ['']);
   const scrollCubeRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -55,7 +56,9 @@ const CardEvent = ({ event }: { event: TypeEvent }) => {
           {formatDateWithoutDay(event.date)}
         </Typography>
         <div className="aspect-square w-full min-w-[240px] shrink-0 md:w-[20vw]">
-          <img
+          <Image
+            width={800}
+            height={800}
             className="h-full w-full object-cover"
             src={urlForImage(event.illustration)}
             alt=""

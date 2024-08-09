@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import Button, { BUTTON_TYPE } from './atoms/Button';
 import { IconFacebook, IconInstagram, IconSoundcloud } from './atoms/Icons';
 import Burger from './Burger';
+import Image from 'next/image';
 
 const Header = () => {
   const logoRef = useRef(null);
@@ -23,7 +24,13 @@ const Header = () => {
               onMouseOut={(e) => useResetMagnet(e)}
             >
               <div onMouseEnter={(e) => useRotateHover(e.currentTarget, 0.7)}>
-                <img ref={logoRef} src="/images/icons/logo-white.svg" alt="" />
+                <Image
+                  width={36}
+                  height={36}
+                  ref={logoRef}
+                  src="/images/icons/logo-white.svg"
+                  alt=""
+                />
               </div>
             </Link>
             <Link href="/" className="block text-xl uppercase text-white nav:hidden">

@@ -8,6 +8,7 @@ import Button, { BUTTON_TYPE } from './atoms/Button';
 import { IconArrowUpRight } from './atoms/Icons';
 import Tag from './atoms/Tag';
 import Typography from './atoms/Typography';
+import Image from 'next/image';
 
 const PageMixsDesktop = ({ mixs, className }: { mixs: TypeMix[]; className?: string }) => {
   const [activeMix, setActiveMix] = useState<TypeMix | null>(null);
@@ -301,7 +302,9 @@ const PageMixsDesktop = ({ mixs, className }: { mixs: TypeMix[]; className?: str
                   },
                 )}
               >
-                <img
+                <Image
+                  width={300}
+                  height={300}
                   className="h-full w-full select-none object-cover"
                   src={urlForImage(mix.cover)}
                   alt={'Mix de ' + mix.artist}

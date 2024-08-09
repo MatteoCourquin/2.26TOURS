@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import gsap from 'gsap';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Button, { BUTTON_TYPE } from './atoms/Button';
 import { IconFacebook, IconInstagram, IconSoundcloud } from './atoms/Icons';
 

@@ -13,6 +13,7 @@ import Button, { BUTTON_TYPE } from './atoms/Button';
 import { IconClose, IconFacebook, IconInstagram, IconSoundcloud } from './atoms/Icons';
 import Tag from './atoms/Tag';
 import Typography from './atoms/Typography';
+import Image from 'next/image';
 
 const DetailsArtist = ({
   artist,
@@ -143,7 +144,9 @@ const DetailsArtist = ({
               className="flex h-0 origin-bottom items-end justify-center overflow-hidden"
             >
               <div className="h-screen w-full sm:h-[calc(100vh-260px)] sm:w-screen">
-                <img
+                <Image
+                  width={1080}
+                  height={1080}
                   src={urlForImage(artist.portrait)}
                   alt={'Portrait de ' + artist.name}
                   className="h-screen w-screen object-cover sm:h-full sm:w-full sm:object-contain"
@@ -215,7 +218,9 @@ const DetailsArtist = ({
                     <div className="slider-item h-fit overflow-hidden" key={index}>
                       <div className="overflow-hidden">
                         <div className="anim-image-slider relative h-[30vh] min-h-[240px]">
-                          <img
+                          <Image
+                            width={1080}
+                            height={1080}
                             src={urlForImage(event.illustration)}
                             alt={'Dernier mix ' + artist.name}
                             className="absolute h-full w-full object-cover"

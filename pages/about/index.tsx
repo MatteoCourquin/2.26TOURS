@@ -1,5 +1,6 @@
 import Button, { BUTTON_TYPE } from '@/components/atoms/Button';
 import Typography from '@/components/atoms/Typography';
+import Image from 'next/image';
 
 export default function About() {
   return (
@@ -14,7 +15,7 @@ export default function About() {
       </Typography>
       <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
         <div className="flex w-full items-center pr-0 sm:pr-10">
-          <img src="/images/illustrations/dj.png" alt="" />
+          <Image width={800} height={800} src="/images/illustrations/dj.png" alt="" />
         </div>
         <div className="col-span-1 flex flex-col justify-center gap-10 lg:col-span-2">
           <Typography type="heading5" as="heading6">

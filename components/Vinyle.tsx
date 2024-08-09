@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 const Vinyle = ({
@@ -41,7 +42,9 @@ const Vinyle = ({
           className,
         )}
       >
-        <img
+        <Image
+          width={800}
+          height={800}
           src={src}
           alt={alt}
           className="z-20 w-full select-none transition-transform"
@@ -53,18 +56,24 @@ const Vinyle = ({
           )}
         >
           <div className="relative flex h-full w-full items-center justify-center rounded-full">
-            <img
+            <Image
+              width={800}
+              height={800}
               src="/images/illustrations/vinyle-black.png"
               className="absolute inset-0 select-none opacity-90"
               alt=""
             />
-            <img
+            <Image
+              width={800}
+              height={800}
               src="/images/illustrations/VINYLE_BASE.png"
               className="animate-slow-spin absolute inset-0 select-none opacity-20"
               alt=""
             />
             <div className="animate-slow-spin absolute flex h-[34%] w-[34%] select-none items-center justify-center overflow-hidden rounded-full">
-              <img
+              <Image
+                width={800}
+                height={800}
                 src={src}
                 alt=""
                 className="aspect-square h-[180%] w-[180%] select-none object-cover"

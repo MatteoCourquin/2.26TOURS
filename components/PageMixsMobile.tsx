@@ -2,31 +2,17 @@ import { TypeMix } from '@/data/types';
 import { urlForImage } from '@/sanity/lib/image';
 import clsx from 'clsx';
 import gsap from 'gsap';
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Button, { BUTTON_TYPE } from './atoms/Button';
 import { IconArrowUpRight } from './atoms/Icons';
 import Tag from './atoms/Tag';
 import Typography from './atoms/Typography';
-
-const SwiperButton = () => {
-  const swiper = useSwiper();
-
-  return (
-    <div className="flex w-full justify-between px-x-default">
-      <button className="bg-red-500 text-white" onClick={() => swiper.slidePrev()}>
-        Prev
-      </button>
-      <button className="bg-red-500 text-white" onClick={() => swiper.slideNext()}>
-        Next
-      </button>
-    </div>
-  );
-};
 
 const PageMixsMobile = ({ mixs, className }: { mixs: TypeMix[]; className: string }) => {
   const [activeMix, setActiveMix] = useState<TypeMix | null>(null);
@@ -213,10 +199,10 @@ const PageMixsMobile = ({ mixs, className }: { mixs: TypeMix[]; className: strin
       )}
     >
       <Swiper
-        effect={'coverflow'}
+        effect="coverflow"
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={'auto'}
+        slidesPerView="auto"
         coverflowEffect={{
           rotate: 80,
           stretch: 0,
@@ -229,7 +215,12 @@ const PageMixsMobile = ({ mixs, className }: { mixs: TypeMix[]; className: strin
       >
         {mixs.map((mix, index) => (
           <SwiperSlide key={mix.title + index} className="px-20">
-            <img src={urlForImage(mix.cover)} />
+            <Image
+              width={200}
+              height={200}
+              src={urlForImage(mix.cover)}
+              alt={'Mix de ' + mix.artist}
+            />
           </SwiperSlide>
         ))}
         {/* <SwiperButton /> */}

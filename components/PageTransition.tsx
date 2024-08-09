@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, TargetAndTransition } from 'framer-motion';
 import { ReactNode, useEffect, useState } from 'react';
 
 const curve = (initialPath: string, targetPath: string) => {
@@ -34,7 +34,7 @@ const translate = {
   },
 };
 
-const anim = (variants: any) => {
+const anim = (variants: { [key: string]: TargetAndTransition }) => {
   return {
     variants,
     initial: 'initial',
