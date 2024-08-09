@@ -2,7 +2,6 @@ import Button, { BUTTON_TYPE } from '@/components/atoms/Button';
 import { IconScrollDown } from '@/components/atoms/Icons';
 import Typography from '@/components/atoms/Typography';
 import CardEvent from '@/components/CardEvent';
-import PageTransition from '@/components/PageTransition';
 import { TypeEvent } from '@/data/types';
 import { client } from '@/sanity/lib/client';
 import { useMagnet, useResetMagnet } from '@/utils/animations';
@@ -10,7 +9,7 @@ import { scroll } from '@/utils/functions';
 
 export default function Index({ events }: { events: TypeEvent[] }) {
   return (
-    <PageTransition>
+    <>
       <section className="flex h-screen flex-col items-center justify-center px-x-default md:px-x-large">
         <Typography type="heading1" colored={true} className="text-center">
           2.26 TOURS
@@ -95,7 +94,7 @@ export default function Index({ events }: { events: TypeEvent[] }) {
           </div>
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 }
 

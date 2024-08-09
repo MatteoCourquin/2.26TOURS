@@ -1,3 +1,4 @@
+import PageTransition from '@/components/PageTransition';
 import Layout from '@/layout/default';
 import SmoothScrolling from '@/layout/lenis';
 import '@/styles/main.scss';
@@ -20,7 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <SmoothScrolling>
           <Layout>
             <AnimatePresence mode="wait">
-              <Component key={pathname} {...pageProps} />
+              <PageTransition key={pathname}>
+                <Component key={pathname} {...pageProps} />
+              </PageTransition>
             </AnimatePresence>
           </Layout>
         </SmoothScrolling>

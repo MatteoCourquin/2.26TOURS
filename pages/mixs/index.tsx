@@ -1,6 +1,5 @@
 import PageMixsDesktop from '@/components/PageMixsDesktop';
 import PageMixsMobile from '@/components/PageMixsMobile';
-import PageTransition from '@/components/PageTransition';
 import { TypeMix } from '@/data/types';
 import { client } from '@/sanity/lib/client';
 import { useEffect, useState } from 'react';
@@ -19,10 +18,10 @@ export default function Mixs({ mixs }: { mixs: TypeMix[] }) {
   }, []);
 
   return (
-    <PageTransition>
+    <>
       {!isMobile && <PageMixsDesktop className="hidden md:flex" mixs={mixs} />}
-      {isMobile && <PageMixsMobile className="flex md:hidden" mixs={mixs} />}
-    </PageTransition>
+      {!!isMobile && <PageMixsMobile className="flex md:hidden" mixs={mixs} />}
+    </>
   );
 }
 
