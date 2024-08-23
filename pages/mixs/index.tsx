@@ -43,7 +43,7 @@ export async function getStaticProps() {
     }`;
 
   const mixsData = await client.fetch(query);
-  const mixs = mixsData.length <= 10 ? [...mixsData, ...mixsData] : [...mixsData];
+  const mixs = mixsData.length <= 8 ? [...mixsData, ...mixsData] : [...mixsData];
   return {
     props: {
       mixs,

@@ -1,41 +1,45 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 const Vinyle = ({
   src,
   alt,
+  link,
   className,
   hoverable = true,
 }: {
   src: string;
   alt: string;
+  link: string;
   className: string;
   hoverable?: boolean;
 }) => {
-  const audioRef = useRef<HTMLAudioElement>(null);
+  // const audioRef = useRef<HTMLAudioElement>(null);
 
-  const playAudio = () => {
-    if (!hoverable) return;
-    audioRef.current?.play();
-  };
-  const pauseAudio = () => {
-    if (!hoverable) return;
-    audioRef.current?.pause();
-  };
+  // const playAudio = () => {
+  //   if (!hoverable) return;
+  //   audioRef.current?.play();
+  // };
+  // const pauseAudio = () => {
+  //   if (!hoverable) return;
+  //   audioRef.current?.pause();
+  // };
 
-  useEffect(() => {
-    if (!hoverable) {
-      pauseAudio();
-    }
-  }, [hoverable]);
+  // useEffect(() => {
+  //   if (!hoverable) {
+  //     pauseAudio();
+  //   }
+  // }, [hoverable]);
 
   return (
     <>
-      <audio className="scale-0" ref={audioRef} src="/sounds/von-bikrav.mp3"></audio>
-      <div
-        onMouseEnter={playAudio}
-        onMouseLeave={pauseAudio}
+      {/* <audio className="scale-0" ref={audioRef} src="/sounds/von-bikrav.mp3"></audio> */}
+      <Link
+        href={link}
+        target="_blank"
+        // onMouseEnter={playAudio}
+        // onMouseLeave={pauseAudio}
         className={clsx(
           hoverable && 'hover:translate-x-0',
           'group/vinyle relative z-0 h-fit w-full translate-x-[30%] transition-[transform,filter,opacity] duration-700',
@@ -81,7 +85,7 @@ const Vinyle = ({
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };

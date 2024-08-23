@@ -27,6 +27,7 @@ export default defineType({
       options: {
         dateFormat: 'DD.MM.YY',
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'genres',
@@ -39,6 +40,7 @@ export default defineType({
       name: 'location',
       title: 'Location',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'color',
@@ -52,4 +54,11 @@ export default defineType({
       type: 'string', // Link ?
     }),
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'date',
+      media: 'illustration',
+    },
+  },
 });

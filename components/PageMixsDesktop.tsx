@@ -221,6 +221,7 @@ const PageMixsDesktop = ({ mixs, className }: { mixs: TypeMix[]; className?: str
                     index === listVinyle.length - 6 && 'scale-0',
                     index <= listVinyle.length - 7 && 'hidden',
                   )}
+                  link={vinyle.link}
                   hoverable={index === listVinyle.length - 1}
                   src={urlForImage(vinyle.cover)}
                   alt={'Mix de ' + vinyle.artist}

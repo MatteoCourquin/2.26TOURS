@@ -33,6 +33,7 @@ export default defineType({
       name: 'link',
       title: 'Lien du mix',
       type: 'url',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'genres',

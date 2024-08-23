@@ -7,8 +7,10 @@ import { client } from '@/sanity/lib/client';
 import { useMagnet, useResetMagnet } from '@/utils/animations';
 import { scroll } from '@/utils/functions';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Index({ events }: { events: TypeEvent[] }) {
+  const [displayedEventCount, setDisplayedEventCount] = useState(3);
   return (
     <>
       <section className="flex h-screen flex-col items-center justify-center px-x-default md:px-x-large">
@@ -42,7 +44,8 @@ export default function Index({ events }: { events: TypeEvent[] }) {
         <div className="relative flex flex-col gap-32">
           <div className="line-calendar absolute left-3 h-full w-px bg-white opacity-50"></div>
           {events
-            .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            .filter((_, index) => index < displayedEventCount)
             .map((event, index, array) => {
               const showYearHeading =
                 index === 0 ||
@@ -62,6 +65,18 @@ export default function Index({ events }: { events: TypeEvent[] }) {
               );
             })}
         </div>
+        {displayedEventCount < events.length && (
+          <div className="pt-40">
+            <Button
+              onClick={() => setDisplayedEventCount(events.length)}
+              type={BUTTON_TYPE.TEXT}
+              as="button"
+              className="mx-auto"
+            >
+              Voir tous les évenements
+            </Button>
+          </div>
+        )}
       </section>
       <section className="px-x-default py-[30vh] md:px-x-large">
         <Typography
