@@ -1,6 +1,8 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import SEO from '@/components/SEO';
 import { useTouchDevice } from '@/utils/states';
+import Image from 'next/image';
 import { ReactNode, useEffect, useRef } from 'react';
 
 const Layout = ({ children }: { children: ReactNode }) => {
@@ -23,14 +25,19 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
+      <SEO />
       <div className="background-wrapper"></div>
-      <img
+      <Image
+        width={1920}
+        height={1920}
         ref={backgroundRef}
         className="fixed left-1/2 top-1/2 -z-10 aspect-square h-[250vh] min-h-[250vh] w-[250vw] min-w-[250vw] -translate-x-1/2 -translate-y-1/2 object-cover"
         src="/images/illustrations/background-gradient.svg"
         alt=""
       />
-      <img
+      <Image
+        width={1920}
+        height={1920}
         className="fixed inset-0 -z-[5] h-screen w-screen object-cover opacity-50"
         src="/images/illustrations/background-texture.png"
         alt=""

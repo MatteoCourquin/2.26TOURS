@@ -12,7 +12,7 @@ import Tag from './atoms/Tag';
 import Typography from './atoms/Typography';
 
 const CardEvent = ({ event }: { event: TypeEvent }) => {
-  const color = event.color || getColorsFromGenre(event.genres || ['']);
+  const color = event.color || getColorsFromGenre(event.genres || []);
   const scrollCubeRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
