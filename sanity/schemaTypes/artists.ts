@@ -30,13 +30,28 @@ export default defineType({
       title: 'Genres',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'genre' }] }],
-      validation: (Rule) => Rule.required().min(1).max(3),
+      validation: (Rule) => Rule.required().min(1).max(4),
     }),
     defineField({
       name: 'events',
       title: 'Évenements',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'events' }] }],
+    }),
+    defineField({
+      name: 'soundcloud',
+      title: 'Soundcloud',
+      type: 'url',
+    }),
+    defineField({
+      name: 'instagram',
+      title: 'Instagram',
+      type: 'url',
+    }),
+    defineField({
+      name: 'facebook',
+      title: 'Facebook',
+      type: 'url',
     }),
     defineField({
       name: 'gallery',

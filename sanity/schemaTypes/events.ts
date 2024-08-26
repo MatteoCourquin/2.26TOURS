@@ -51,7 +51,7 @@ export default defineType({
     defineField({
       name: 'billeterie', // À traduire
       title: 'Lien de la billeterie',
-      type: 'string', // Link ?
+      type: 'url', // Link ?
     }),
   ],
   preview: {
