@@ -3,7 +3,7 @@ import Layout from '@/layout/default';
 import SmoothScrolling from '@/layout/lenis';
 import '@/styles/main.scss';
 import { useLenis } from '@studio-freight/react-lenis';
-import { AnimatePresence, useAnimate } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import type { AppProps } from 'next/app';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
@@ -13,7 +13,6 @@ export default function App({ Component, pageProps }: AppProps) {
   const pathname = usePathname();
   const router = useRouter();
   const lenis = useLenis();
-  const framer = useAnimate();
 
   useEffect(() => {
     const handleRouteChange = () => {
@@ -26,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
     };
 
     router.events.on('routeChangeStart', handleRouteChange);
-  }, [framer]);
+  }, [router]);
 
   return (
     <>

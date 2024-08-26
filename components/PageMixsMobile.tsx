@@ -1,8 +1,10 @@
 import { TypeMix } from '@/data/types';
 import { urlForImage } from '@/sanity/lib/image';
+import { formatSlug } from '@/utils/functions';
 import clsx from 'clsx';
 import gsap from 'gsap';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -21,7 +23,7 @@ const PageMixsMobile = ({ mixs, className }: { mixs: TypeMix[]; className: strin
   const artistRef = useRef<HTMLDivElement>(null);
   const genresRefs = useRef<HTMLDivElement[] | null[]>([]);
   const descriptionRef = useRef<HTMLDivElement>(null);
-  const linkRef = useRef<HTMLDivElement>(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
   const timelineChangeDiscRef = useRef(gsap.timeline({ paused: true }));
 
   const hideAnimation = (onCompleteCallback: () => void) => {
@@ -225,51 +227,68 @@ const PageMixsMobile = ({ mixs, className }: { mixs: TypeMix[]; className: strin
         ))}
         {/* <SwiperButton /> */}
       </Swiper>
-      <div className="flex w-full flex-col items-center gap-6 self-start px-x-default text-center">
-        <Typography type="text" className="text-lg uppercase">
-          2.26 PODCAST <span className="text-white">#{activeMix?.subtitle}</span>
-        </Typography>
-        <div className="h-[2px] w-20 rounded-full bg-white-opacity" />
-        <div>
-          <div ref={titleRef} className="-translate-y-8 opacity-0">
-            <Typography type="heading2" as="heading5">
-              {activeMix?.title}
-            </Typography>
-          </div>
-          <div ref={artistRef} className="-translate-y-8 pt-2 opacity-0">
-            <Typography className="inline" type="text">
-              par{' '}
-            </Typography>
-            <Typography className="inline font-bold" type="heading2" as="heading6" colored={true}>
-              {activeMix?.artist}
-            </Typography>
-          </div>
-        </div>
-        <div className="flex gap-3">
-          {activeMix?.genres.map((genre, index) => (
-            <div
-              key={index}
-              ref={(el: HTMLDivElement | null) => {
-                genresRefs.current[index] = el;
-              }}
-              className="scale-0 opacity-0"
+      {activeMix && (
+        <div className="flex w-full flex-col items-center gap-6 self-start px-x-default text-center">
+          <Typography type="text" className="text-lg uppercase">
+            2.26 PODCAST <span className="text-white">#{activeMix.subtitle}</span>
+          </Typography>
+          <div className="h-[2px] w-20 rounded-full bg-white-opacity" />
+          <div>
+            <Typography
+              ref={titleRef}
+              className="-translate-y-8 opacity-0"
+              type="heading2"
+              as="heading5"
             >
-              <Tag>{genre.name}</Tag>
+              {activeMix.title}
+            </Typography>
+            <div ref={artistRef} className="-translate-y-8 pt-2 opacity-0">
+              <Typography className="inline" type="text">
+                par{' '}
+              </Typography>
+              <Link href={'/artists?name=' + formatSlug(activeMix.artist)}>
+                <Typography
+                  className="inline font-bold"
+                  type="heading2"
+                  as="heading6"
+                  colored={true}
+                >
+                  {activeMix.artist}
+                </Typography>
+              </Link>
             </div>
-          ))}
-        </div>
-        {activeMix?.description && (
-          <div ref={descriptionRef} className="-translate-y-8 opacity-0">
-            <Typography type="text">{activeMix?.description}</Typography>
           </div>
-        )}
-        <div ref={linkRef} className="w-fit scale-0 opacity-0">
-          <Button as="a" href={activeMix?.link} target="_blank" type={BUTTON_TYPE.TEXT}>
+          <div className="flex gap-3">
+            {activeMix.genres.map((genre, index) => (
+              <div
+                key={index}
+                ref={(el) => {
+                  genresRefs.current[index] = el;
+                }}
+                className="scale-0 opacity-0"
+              >
+                <Tag>{genre.name}</Tag>
+              </div>
+            ))}
+          </div>
+          {activeMix.description && (
+            <Typography ref={descriptionRef} className="-translate-y-8 opacity-0" type="text">
+              {activeMix.description}
+            </Typography>
+          )}
+          <Button
+            ref={linkRef}
+            className="w-fit scale-0 opacity-0"
+            as="a"
+            href={activeMix.link}
+            target="_blank"
+            type={BUTTON_TYPE.TEXT}
+          >
             <p className="pr-2">Écouter sur soundcloud</p>
             <IconArrowUpRight />
           </Button>
         </div>
-      </div>
+      )}
     </div>
   );
 };

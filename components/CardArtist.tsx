@@ -1,4 +1,4 @@
-import { TypeGenre } from '@/data/types';
+import { TypeArtist } from '@/data/types';
 import { urlForImage } from '@/sanity/lib/image';
 import { calculateMargin } from '@/utils/functions';
 import { useGSAP } from '@gsap/react';
@@ -8,25 +8,21 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { Image as ImageSanity } from 'sanity';
 import Tag from './atoms/Tag';
 import Typography from './atoms/Typography';
 
 const CardArtist = ({
   index,
-  name,
-  portrait,
-  genres,
+  artist,
   onClick,
   className,
 }: {
   index: number;
-  name: string;
-  portrait: ImageSanity;
-  genres: TypeGenre[];
+  artist: TypeArtist;
   onClick: () => void;
   className?: string;
 }) => {
+  const { name, portrait, genres } = artist;
   const artistRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const timeline = useRef(gsap.timeline({ paused: true }));
@@ -112,7 +108,7 @@ const CardArtist = ({
       textAlign: 'left',
       alignItems: 'flex-start',
     });
-    gsap.utils.toArray<Element>(arrayToAnim).forEach((item: Element) => {
+    gsap.utils.toArray<Element>(arrayToAnim).forEach((item) => {
       gsap.set(item, { opacity: 1, y: 0 });
     });
   };
@@ -131,7 +127,7 @@ const CardArtist = ({
       right: isRight ? 'auto' : -16,
       position: 'absolute',
     });
-    gsap.utils.toArray<Element>(arrayToAnim).forEach((item: Element) => {
+    gsap.utils.toArray<Element>(arrayToAnim).forEach((item) => {
       gsap.set(item, { opacity: 0, y: -20 });
     });
   };
@@ -162,7 +158,7 @@ const CardArtist = ({
     <div
       key={'artist-' + name}
       ref={artistRef}
-      className={clsx(className, `margin-top-${calculateMargin(index)}`)}
+      className={clsx(className, `margin-top-${calculateMargin(index)}`, 'z-10 hover:z-20')}
     >
       <div className="group relative z-20 h-fit w-full cursor-pointer hover:z-50">
         <div

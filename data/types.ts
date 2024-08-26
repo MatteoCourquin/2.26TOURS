@@ -12,6 +12,9 @@ export interface TypeArtist {
   name: string;
   description: string;
   genres: TypeGenre[];
+  soundcloud?: string;
+  instagram?: string;
+  facebook?: string;
   events?: TypeEvent[];
   gallery?: Image[];
 }

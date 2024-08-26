@@ -3,17 +3,32 @@ import CardArtist from '@/components/CardArtist';
 import DetailsArtist from '@/components/DetailsArtist';
 import { TypeArtist } from '@/data/types';
 import { client } from '@/sanity/lib/client';
+import { formatSlug } from '@/utils/functions';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export default function Artists({ artists }: { artists: TypeArtist[] }) {
-  const [activeArtist, setActiveArtist] = useState<TypeArtist>(artists[0]);
+  const [activeArtist, setActiveArtist] = useState<TypeArtist>();
   const [isOpen, setIsOpen] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!router.query.name) return;
+    const activeArtistFromUrl = artists.find(
+      (artist) => formatSlug(artist.name) === formatSlug(router.query.name as string),
+    );
+    if (!activeArtistFromUrl) return;
+    setActiveArtist(activeArtistFromUrl);
+    setIsOpen(true);
+  }, [router.query]);
 
   const handleClick = (artist: TypeArtist) => {
     if (activeArtist === artist && isOpen) {
       setIsOpen(false);
     } else {
+      router.push('/artists#name=' + formatSlug(artist.name), undefined, { shallow: true });
       setActiveArtist(artist);
       setIsOpen(true);
     }
@@ -21,7 +36,7 @@ export default function Artists({ artists }: { artists: TypeArtist[] }) {
 
   return (
     <>
-      <div className="relative flex min-h-screen grid-cols-2 flex-wrap gap-4 overflow-x-hidden px-x-default pt-header sm:grid sm:grid-cols-3 md:grid-cols-4 md:px-x-large lg:grid-cols-6">
+      <div className="relative flex min-h-screen grid-cols-2 flex-wrap gap-4 overflow-x-hidden px-x-default pt-40 sm:grid sm:grid-cols-3 md:grid-cols-4 md:px-x-large lg:grid-cols-6">
         <div className="inset-0 flex h-[70vh] w-screen items-center justify-center sm:fixed sm:h-screen">
           <Typography type="heading1" as="heading2" colored={true}>
             Artists
@@ -32,11 +47,9 @@ export default function Artists({ artists }: { artists: TypeArtist[] }) {
           artists.map((artist, index) => (
             <CardArtist
               key={artist.name + index}
+              artist={artist}
               index={index}
-              name={artist.name}
               className={clsx(index % 2 ? 'sm:pb-80' : 'sm:pt-80', 'w-[calc(50%-8px)] sm:w-full')}
-              portrait={artist.portrait}
-              genres={artist.genres}
               onClick={() => handleClick(artist)}
             />
           ))}
@@ -58,6 +71,9 @@ export async function getStaticProps() {
       "genres": genres[]->{
         name
       },
+      soundcloud,
+      instagram,
+      facebook,
       "events": events[]->{
         illustration,
         name,
