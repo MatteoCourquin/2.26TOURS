@@ -239,12 +239,7 @@ const PageMixsDesktop = ({ mixs, className }: { mixs: TypeMix[]; className?: str
             </Typography>
             <div className="h-[2px] w-20 rounded-full bg-white-opacity" />
             <div>
-              <Typography
-                ref={titleRef}
-                type="heading2"
-                as="heading5"
-                className="-translate-y-8 opacity-0"
-              >
+              <Typography ref={titleRef} type="heading2" as="heading5">
                 {activeMix.title}
               </Typography>
               <div ref={artistRef} className="-translate-y-8 pt-2 opacity-0">

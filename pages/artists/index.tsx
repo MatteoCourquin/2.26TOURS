@@ -14,15 +14,20 @@ export default function Artists({ artists }: { artists: TypeArtist[] }) {
 
   const router = useRouter();
 
+  const getParam = (url: string | null) => {
+    const match = url?.match(/#name=([^&]+)/);
+    return match ? match[1] : undefined;
+  };
+
   useEffect(() => {
-    if (!router.query.name) return;
+    if (!getParam(router.asPath)) return;
     const activeArtistFromUrl = artists.find(
-      (artist) => formatSlug(artist.name) === formatSlug(router.query.name as string),
+      (artist) => formatSlug(artist.name) === formatSlug(getParam(router.asPath) as string),
     );
     if (!activeArtistFromUrl) return;
     setActiveArtist(activeArtistFromUrl);
     setIsOpen(true);
-  }, [router.query]);
+  }, [router]);
 
   const handleClick = (artist: TypeArtist) => {
     if (activeArtist === artist && isOpen) {

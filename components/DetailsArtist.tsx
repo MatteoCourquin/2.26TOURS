@@ -185,6 +185,7 @@ const DetailsArtist = ({
                 <Image
                   width={1080}
                   height={1080}
+                  priority={true}
                   src={urlForImage(portrait)}
                   alt={'Portrait de ' + name}
                   className="h-screen w-screen object-cover sm:h-full sm:w-full sm:object-contain"
@@ -246,7 +247,7 @@ const DetailsArtist = ({
                   {events.map((event, index) => (
                     <div className="slider-item h-fit overflow-hidden" key={index}>
                       <div className="overflow-hidden">
-                        <div className="anim-image-slider relative h-[30vh] min-h-[240px]">
+                        <div className="relative h-[30vh] min-h-[240px]">
                           <Image
                             width={1080}
                             height={1080}

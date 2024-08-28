@@ -42,7 +42,7 @@ const Vinyle = ({
         // onMouseLeave={pauseAudio}
         className={clsx(
           hoverable && 'hover:translate-x-0',
-          'group/vinyle relative z-0 h-fit w-full translate-x-[30%] transition-[transform,filter,opacity] duration-700',
+          'group/vinyle relative z-0 h-fit w-full inline-block translate-x-[30%] transition-[transform,filter,opacity] duration-700',
           className,
         )}
       >
