@@ -44,7 +44,7 @@ const anim = (variants: { [key: string]: TargetAndTransition }) => {
 };
 
 export default function PageTransition({ children }: { children: ReactNode }) {
-  const [dimensions, setDimensions] = useState({
+  const [dimensions, setDimensions] = useState<{ width: number; height: number }>({
     width: 0,
     height: 0,
   });
@@ -65,7 +65,8 @@ export default function PageTransition({ children }: { children: ReactNode }) {
 
   return (
     <div className="page curve">
-      {dimensions.width != 0 && <SVG {...dimensions} />}
+      <div style={{ opacity: dimensions.width == 0 ? 1 : 0 }} className="background" />
+      {dimensions.width !== 0 && dimensions.height !== 0 && <SVG {...dimensions} />}
       {children}
     </div>
   );
@@ -89,7 +90,7 @@ const SVG = ({ height, width }: { height: number; width: number }) => {
     `;
 
   return (
-    <motion.svg className="svg-anim z-[9999]" {...anim(translate)}>
+    <motion.svg className="svg" {...anim(translate)}>
       <motion.path {...anim(curve(initialPath, targetPath))} />
     </motion.svg>
   );
