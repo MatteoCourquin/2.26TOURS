@@ -119,7 +119,7 @@ const Footer = () => {
               Site designé et développé par
               <a
                 className="text-white underline"
-                href="https://bento.me/jerome-bezeau"
+                href="https://bento.me/jeromebezeau"
                 target="_blank"
               >
                 {' '}

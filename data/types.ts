@@ -40,5 +40,14 @@ export interface TypeEvent {
   location: string;
   genres?: TypeGenre[];
   shotgun?: string;
-  color?: string; // A voir en fonction du genre
+  color?: string;
+}
+
+export interface TypeFormContact {
+  firstName: string;
+  lastName: string;
+  mail: string;
+  phone: string;
+  object: string;
+  message: string;
 }

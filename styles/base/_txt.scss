@@ -46,6 +46,11 @@
   color: $color-white;
   text-transform: normal !important;
 }
+.text-placeholder::placeholder {
+  font-family: $font-space-grotesk;
+  color: $color-white-opacity;
+  text-transform: normal !important;
+}
 
 p {
   font-family: $font-space-grotesk;
