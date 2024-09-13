@@ -3,10 +3,12 @@ import { IconArrowUpRight, IconMail, IconPhone } from '@/components/atoms/Icons'
 import Typography from '@/components/atoms/Typography';
 import Input from '@/components/Input';
 import { TypeFormContact } from '@/data/types';
+import { submitContactForm } from '@/services/api';
+import { useMutation } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useState } from 'react';
 
-enum OBJECT_CONTACT {
+export enum OBJECT_CONTACT {
   PARTY = 'Demander une soirée',
   COLLAB = 'Faire une collab',
   JOIN = 'Rejoindre 2.26 Tours',
@@ -19,13 +21,57 @@ export default function Contact() {
     lastName: '',
     mail: '',
     phone: '',
-    object: '',
+    object: OBJECT_CONTACT.OTHER,
     message: '',
   });
 
-  // const sendForm () => {
+  const resetForm = () => {
+    setFormValues({
+      firstName: '',
+      lastName: '',
+      mail: '',
+      phone: '',
+      object: OBJECT_CONTACT.OTHER,
+      message: '',
+    });
+  };
 
-  // }>
+  const submitFormMutation = useMutation({
+    mutationFn: submitContactForm,
+    onMutate: () => {
+      // setFormState(FORM_STATE.LOAD);
+    },
+    onError: (error) => {
+      // setFormState(FORM_STATE.ERROR);
+      console.error('onError', error);
+    },
+    onSuccess: () => {
+      resetForm();
+      // router.push('/contact/success');
+    },
+  });
+
+  const handdleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // if (formValues.name === '' && formValues.email === '') {
+    //   setFormErrors({
+    //     ...formErrors,
+    //     name: data.contact.form.errors.name,
+    //     email: data.contact.form.errors.email,
+    //   });
+    // } else if (formValues.name === '') {
+    //   setFormErrors({ ...formErrors, name: data.contact.form.errors.name });
+    // } else if (formValues.email === '') {
+    //   setFormErrors({ ...formErrors, email: data.contact.form.errors.email });
+    // } else if (!isEmail(formValues.email)) {
+    //   setFormErrors({ ...formErrors, email: data.contact.form.errors.emailValid });
+    // }
+
+    // if (!formValues.name || !formValues.email || !isEmail(formValues.email)) return;
+
+    submitFormMutation.mutate(formValues);
+  };
 
   return (
     <div className="flex min-h-screen items-center px-x-default pt-header md:px-x-large">
@@ -95,7 +141,7 @@ export default function Contact() {
           <Typography type="heading2" as="heading5" className="pb-4">
             Ou démarre une conversation avec nous :
           </Typography>
-          <form action="" className="flex flex-col gap-10">
+          <form action="" onSubmit={(e) => handdleFormSubmit(e)} className="flex flex-col gap-10">
             <div className="flex flex-col gap-4">
               <Typography type="heading6">QUI ES TU ?</Typography>
               <div className="flex w-full flex-col gap-4 lg:flex-row">
@@ -103,23 +149,29 @@ export default function Contact() {
                   className="w-full"
                   placeholder="John"
                   name="firstName"
+                  value={formValues.firstName}
                   onChange={(e) => setFormValues({ ...formValues, firstName: e.target.value })}
                 />
                 <Input
                   className="w-full"
                   placeholder="Doe"
                   name="lastName"
+                  value={formValues.lastName}
                   onChange={(e) => setFormValues({ ...formValues, lastName: e.target.value })}
                 />
               </div>
               <Input
                 name="mail"
+                type="email"
                 placeholder="john@doe.fr"
+                value={formValues.mail}
                 onChange={(e) => setFormValues({ ...formValues, mail: e.target.value })}
               />
               <Input
                 name="phone"
+                type="phone"
                 placeholder="+33 6 78 91 23 45"
+                value={formValues.phone}
                 onChange={(e) => setFormValues({ ...formValues, phone: e.target.value })}
               />
             </div>
@@ -130,7 +182,7 @@ export default function Contact() {
                   name="object"
                   type="select"
                   placeholder="Motif du contact"
-                  value="Motif du contact"
+                  value={formValues.object}
                   options={Object.values(OBJECT_CONTACT)}
                   onChange={(e) => setFormValues({ ...formValues, object: e.target.value })}
                 />
@@ -138,6 +190,7 @@ export default function Contact() {
                   name="message"
                   placeholder="Message"
                   type="textarea"
+                  value={formValues.message}
                   onChange={(e) => setFormValues({ ...formValues, message: e.target.value })}
                 />
               </div>

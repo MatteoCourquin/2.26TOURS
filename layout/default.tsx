@@ -2,8 +2,11 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import SEO from '@/components/SEO';
 import { useTouchDevice } from '@/utils/states';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Image from 'next/image';
 import { ReactNode, useEffect, useRef } from 'react';
+
+const queryClient = new QueryClient();
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const backgroundRef = useRef<HTMLImageElement>(null);
@@ -24,7 +27,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <SEO />
       <div className="background-wrapper"></div>
       <Image
@@ -45,7 +48,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <Header />
       <main className="z-10 min-h-screen">{children}</main>
       <Footer />
-    </>
+    </QueryClientProvider>
   );
 };
 

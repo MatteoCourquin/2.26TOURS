@@ -15,7 +15,7 @@ const Input = ({
 }: {
   name: string;
   className?: string;
-  type?: 'text' | 'select' | 'textarea';
+  type?: 'text' | 'select' | 'textarea' | 'email' | 'phone';
   placeholder?: string;
   value?: string;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
@@ -76,7 +76,7 @@ const Input = ({
           ))}
         </select>
       )}
-      {type === 'text' && (
+      {type !== 'textarea' && type !== 'select' && (
         <input
           id={name}
           type={type}
