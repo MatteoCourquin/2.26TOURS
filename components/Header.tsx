@@ -15,10 +15,11 @@ const Header = () => {
 
   return (
     <>
-      <div className="fixed top-0 z-[999] w-full px-4 pt-8 transition-[padding] nav:px-x-default">
+      <div className="fixed top-0 z-[500] w-full px-4 pt-8 transition-[padding] nav:px-x-default">
         <header className="space-grotesk-bold flex gap-4 uppercase text-white">
           <nav className="blur-medium flex h-[60px] shrink grow items-center gap-6 px-4 transition-[padding] sm:px-x-default">
             <Link
+              scroll={false}
               href="/"
               onMouseMove={(e) => useMagnet(e, 0.4)}
               onMouseOut={(e) => useResetMagnet(e)}
@@ -33,10 +34,11 @@ const Header = () => {
                 />
               </div>
             </Link>
-            <Link href="/" className="block text-xl uppercase text-white nav:hidden">
+            <Link scroll={false} href="/" className="block text-xl uppercase text-white nav:hidden">
               2.26 tours
             </Link>
             <Link
+              scroll={false}
               className="wrapper-link hidden h-full items-center nav:flex"
               onMouseMove={(e) => useMagnet(e, 0.4)}
               onMouseOut={(e) => useResetMagnet(e)}
@@ -47,6 +49,7 @@ const Header = () => {
               </span>
             </Link>
             <Link
+              scroll={false}
               className="wrapper-link hidden h-full items-center nav:flex"
               onMouseMove={(e) => useMagnet(e, 0.4)}
               onMouseOut={(e) => useResetMagnet(e)}
@@ -57,6 +60,7 @@ const Header = () => {
               </span>
             </Link>
             <Link
+              scroll={false}
               className="wrapper-link hidden h-full items-center nav:flex"
               onMouseMove={(e) => useMagnet(e, 0.4)}
               onMouseOut={(e) => useResetMagnet(e)}
@@ -69,6 +73,7 @@ const Header = () => {
               </span>
             </Link>
             <Link
+              scroll={false}
               className="wrapper-link hidden h-full items-center nav:flex"
               onMouseMove={(e) => useMagnet(e, 0.4)}
               onMouseOut={(e) => useResetMagnet(e)}
@@ -81,6 +86,7 @@ const Header = () => {
           </nav>
           {/* CONTACT */}
           <Link
+            scroll={false}
             className="blur-medium wrapper-link button-text hidden shrink-0 nav:block"
             onMouseMove={(e) => useMagnet(e, 1)}
             onMouseOut={(e) => useResetMagnet(e)}

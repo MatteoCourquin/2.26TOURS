@@ -97,9 +97,9 @@ export default function Contact() {
             </Button>
             <div className="relative flex flex-col">
               <Typography type="heading6">PHONE</Typography>
-              <Link href="tel:+33652647110" className="absolute top-8">
+              <Link href="tel:+33663025124" className="absolute top-8">
                 <Typography className="whitespace-nowrap" type="text">
-                  +33 6 52 64 71 10
+                  +33 6 63 02 51 24
                 </Typography>
               </Link>
             </div>

@@ -1,4 +1,3 @@
-import Button, { BUTTON_TYPE } from '@/components/atoms/Button';
 import Typography from '@/components/atoms/Typography';
 import Image from 'next/image';
 
@@ -18,20 +17,21 @@ export default function About() {
           <Image width={800} height={800} src="/images/illustrations/dj.png" alt="" />
         </div>
         <div className="col-span-1 flex flex-col justify-center gap-10 lg:col-span-2">
-          <Typography type="heading5" as="heading6">
-            Elit bibendum vitae
-          </Typography>
-          <Typography type="text" className="w-full lg:w-2/3">
-            Elit bibendum vitae fermentum egestas amet senectus. Ullamcorper ultrices metus senectus
-            scelerisque pretium etiam morbi semper hendrerit.
-          </Typography>
-          <Typography type="text" className="w-full lg:w-2/3">
-            Elit viverra eget quis duis ut neque sit gravida. Sed magna erat non sit neque tellus.
-            Turpis est viverra neque ac. Non ornare diam turpis nisl nec tempus porttitor nec proin.
-          </Typography>
-          <Button type={BUTTON_TYPE.TEXT} as="button">
-            En savoir plus
-          </Button>
+          <div className="col-span-1 flex flex-col justify-center gap-10 lg:col-span-2">
+            <Typography type="heading5" as="heading6">
+              2.26 Tours : Collectif techno parisien
+            </Typography>
+            <Typography type="text" className="w-full lg:w-2/3">
+              2.26 Tours est un collectif parisien dédié à la musique électronique. Nous explorons
+              et partageons une large palette de genres, du Minimal à la Hard Techno, en passant par
+              la House et le Hardcore.
+            </Typography>
+            <Typography type="text" className="w-full lg:w-2/3">
+              Notre mission : rassembler les amateurs de sons électroniques dans un esprit de
+              plaisir et de découverte musicale. Rejoins-nous pour vivre une expérience auditive
+              unique.
+            </Typography>
+          </div>
         </div>
       </div>
     </section>

@@ -14,15 +14,10 @@ export default function Artists({ artists }: { artists: TypeArtist[] }) {
 
   const router = useRouter();
 
-  const getParam = (url: string | null) => {
-    const match = url?.match(/#name=([^&]+)/);
-    return match ? match[1] : undefined;
-  };
-
   useEffect(() => {
-    if (!getParam(router.asPath)) return;
+    if (!router.query.name) return;
     const activeArtistFromUrl = artists.find(
-      (artist) => formatSlug(artist.name) === formatSlug(getParam(router.asPath) as string),
+      (artist) => formatSlug(artist.name) === formatSlug(router.query.name as string),
     );
     if (!activeArtistFromUrl) return;
     setActiveArtist(activeArtistFromUrl);
@@ -33,7 +28,7 @@ export default function Artists({ artists }: { artists: TypeArtist[] }) {
     if (activeArtist === artist && isOpen) {
       setIsOpen(false);
     } else {
-      router.push('/artists#name=' + formatSlug(artist.name), undefined, { shallow: true });
+      router.push('/artists?name=' + formatSlug(artist.name), undefined, { shallow: true });
       setActiveArtist(artist);
       setIsOpen(true);
     }

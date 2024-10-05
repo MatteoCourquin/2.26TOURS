@@ -24,6 +24,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonType>(
       <>
         {as === 'a' && href && (
           <Link
+            scroll={false}
             href={href}
             ref={ref as ForwardedRef<HTMLAnchorElement>}
             target={target}

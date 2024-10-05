@@ -16,7 +16,7 @@ const Footer = () => {
         <footer className="flex gap-4 text-white">
           <div className="blur-medium flex shrink grow flex-col gap-6 px-4 py-8 sm:px-x-default">
             <div className="space-grotesk-bold flex w-full justify-between uppercase">
-              <Link className="flex items-center gap-4" href="/">
+              <Link scroll={false} className="flex items-center gap-4" href="/">
                 <div
                   onMouseEnter={(e) => useRotateHover(e.currentTarget, 0.7)}
                   onMouseMove={(e) => useMagnet(e, 0.4)}
@@ -36,6 +36,7 @@ const Footer = () => {
               </Link>
               <nav className="hidden gap-6 lg:flex">
                 <Link
+                  scroll={false}
                   className="wrapper-link flex h-full items-center"
                   onMouseMove={(e) => useMagnet(e, 0.4)}
                   onMouseOut={(e) => useResetMagnet(e)}
@@ -46,6 +47,7 @@ const Footer = () => {
                   </span>
                 </Link>
                 <Link
+                  scroll={false}
                   className="wrapper-link flex h-full items-center"
                   onMouseMove={(e) => useMagnet(e, 0.4)}
                   onMouseOut={(e) => useResetMagnet(e)}
@@ -58,6 +60,7 @@ const Footer = () => {
                   </span>
                 </Link>
                 <Link
+                  scroll={false}
                   className="wrapper-link flex h-full items-center"
                   onMouseMove={(e) => useMagnet(e, 0.4)}
                   onMouseOut={(e) => useResetMagnet(e)}
@@ -73,6 +76,7 @@ const Footer = () => {
                   </span>
                 </Link>
                 <Link
+                  scroll={false}
                   className="wrapper-link flex h-full items-center"
                   onMouseMove={(e) => useMagnet(e, 0.4)}
                   onMouseOut={(e) => useResetMagnet(e)}

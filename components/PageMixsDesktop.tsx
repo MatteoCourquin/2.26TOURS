@@ -246,7 +246,7 @@ const PageMixsDesktop = ({ mixs, className }: { mixs: TypeMix[]; className?: str
                 <Typography className="inline" type="text">
                   par{' '}
                 </Typography>
-                <Link href={'/artists?name=' + formatSlug(activeMix.artist)}>
+                <Link scroll={false} href={'/artists?name=' + formatSlug(activeMix.artist)}>
                   <Typography
                     className="inline font-bold"
                     type="heading2"

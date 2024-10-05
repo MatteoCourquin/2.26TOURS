@@ -39,7 +39,7 @@ export interface TypeEvent {
   date: Date;
   location: string;
   genres?: TypeGenre[];
-  shotgun?: string;
+  billeterie?: string;
   color?: string;
 }
 

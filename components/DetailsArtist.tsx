@@ -121,7 +121,7 @@ const DetailsArtist = ({
       .to(wrapperSectionRef.current, { visibility: 'hidden', duration: 0 })
       .add(() => {
         setIsOpen(false);
-        router.push('/artists#name=', undefined, { shallow: true });
+        router.push('/artists?name=', undefined, { shallow: true, scroll: false });
       })
       .play();
   });

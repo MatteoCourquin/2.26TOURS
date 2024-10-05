@@ -46,12 +46,16 @@ export default defineType({
       name: 'color',
       title: 'Color Hexadecimal (#000000)',
       type: 'string',
-      // validation: (Rule) => Rule.required(), // Regex hexadecimal
+      validation: (Rule) =>
+        Rule.regex(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/, {
+          name: 'hexadecimal',
+          invert: false,
+        }).error("Merci d'entrer un code hexadécimal valide (e.g., #000000 or #FFF)."),
     }),
     defineField({
-      name: 'billeterie', // À traduire
+      name: 'billeterie',
       title: 'Lien de la billeterie',
-      type: 'url', // Link ?
+      type: 'url',
     }),
   ],
   preview: {

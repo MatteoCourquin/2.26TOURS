@@ -10,13 +10,13 @@ import Button, { BUTTON_TYPE } from './atoms/Button';
 import { IconArrowUpRight } from './atoms/Icons';
 import Tag from './atoms/Tag';
 import Typography from './atoms/Typography';
+gsap.registerPlugin(ScrollTrigger);
 
 const CardEvent = ({ event }: { event: TypeEvent }) => {
   const color = event.color || getColorsFromGenre(event.genres || []);
   const scrollCubeRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
     gsap
       .timeline({
         scrollTrigger: {
@@ -76,11 +76,8 @@ const CardEvent = ({ event }: { event: TypeEvent }) => {
             {event.genres?.map((genre, index) => <Tag key={index}>{genre.name}</Tag>)}
           </div>
           <div className="mt-auto flex flex-wrap gap-3 pt-6">
-            <Button type={BUTTON_TYPE.TEXT} as="button">
-              En savoir plus
-            </Button>
-            <Button as="a" href={event.shotgun} target="_blank" type={BUTTON_TYPE.TEXT}>
-              <p className="pr-2">Écouter sur soundcloud</p>
+            <Button as="a" href={event.billeterie} target="_blank" type={BUTTON_TYPE.TEXT}>
+              <p className="pr-2">Billeterie</p>
               <IconArrowUpRight />
             </Button>
           </div>
