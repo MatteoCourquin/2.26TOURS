@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { forwardRef, ReactNode, useRef } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import { CSSProperties } from 'styled-components';
 
 type TypographyProps = {
@@ -35,8 +35,6 @@ const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
       }
     })();
 
-    const textRefs = useRef<(HTMLSpanElement | null)[]>([]);
-
     return (
       <Tag
         ref={ref}
@@ -50,14 +48,12 @@ const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
       >
         {!animated
           ? children
-          : (children as string).split('').map((letter, index) => (
+          : typeof children === 'string' &&
+            children.split('').map((letter, index) => (
               <span
                 key={index}
                 className="animate-letter inline-block"
                 style={{ animationDelay: `${index * 0.03}s` }}
-                ref={(el) => {
-                  textRefs.current[index] = el;
-                }}
               >
                 {letter == ' ' ? '\u00A0' : letter}
               </span>

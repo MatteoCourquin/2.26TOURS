@@ -140,12 +140,12 @@ export default function PageTransition({ children }: { children: ReactNode }) {
     <div className="page curve">
       {/* TEXTE */}
       <motion.div
-        className={clsx('route !hidden nav:!flex', isAnimationComplete && 'hidden')}
+        className={clsx('route !hidden nav:!block', isAnimationComplete && 'hidden')}
         onAnimationStart={() => setIsAnimationComplete(false)}
         onAnimationComplete={() => setIsAnimationComplete(true)}
         {...anim(text)}
       >
-        <Typography type="heading1" className="whitespace-nowrap uppercase text-black">
+        <Typography type="heading1" className="whitespace-nowrap uppercase !text-black">
           {routes[pathname] || '404'}
         </Typography>
       </motion.div>
