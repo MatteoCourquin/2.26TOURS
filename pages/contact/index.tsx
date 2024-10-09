@@ -195,7 +195,11 @@ export default function Contact() {
                 />
               </div>
             </div>
-            <Button className="!w-full sm:!w-fit" as="button" type={BUTTON_TYPE.TEXT}>
+            <Button
+              className="!w-full !backdrop-blur-0 sm:!w-fit"
+              as="button"
+              type={BUTTON_TYPE.TEXT}
+            >
               ENVOYER
             </Button>
           </form>
