@@ -50,7 +50,7 @@ const Input = ({
             onChange(e);
           }}
           className={clsx(
-            'blur-filter blur-medium text2 text-placeholder h-[120px] w-full resize-none border-b !bg-transparent p-4 transition-[height] focus:outline-none',
+            'blur-filter blur-medium text2 text-placeholder h-[120px] w-full resize-none border-b !bg-transparent p-4 !backdrop-blur-0 transition-[height] focus:outline-none',
             error ? 'border-b-red-500' : 'border-b-black',
           )}
         />
@@ -62,7 +62,7 @@ const Input = ({
           onBlur={onBlur}
           onChange={onChange}
           className={clsx(
-            'blur-filter blur-medium text2 text-placeholder relative w-full border-b !bg-transparent p-4 focus:outline-none',
+            'blur-filter blur-medium text2 text-placeholder relative w-full border-b !bg-transparent p-4 !backdrop-blur-0 focus:outline-none',
             error ? 'border-b-red-500' : 'border-b-black',
           )}
         >
@@ -85,7 +85,7 @@ const Input = ({
           onBlur={onBlur}
           onChange={onChange}
           className={clsx(
-            'blur-filter blur-medium text2 text-placeholder w-full border-b !bg-transparent p-4 focus:outline-none',
+            'blur-filter blur-medium text2 text-placeholder w-full border-b !bg-transparent p-4 !backdrop-blur-0 focus:outline-none',
             error ? 'border-b-red-500' : 'border-b-black',
           )}
         />

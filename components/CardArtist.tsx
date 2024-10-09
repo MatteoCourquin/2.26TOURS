@@ -186,7 +186,11 @@ const CardArtist = ({
               : 'sm:-right-4 sm:items-start sm:text-left',
           )}
         >
-          <Typography type="heading4" as="heading6" className="whitespace-nowrap font-bold">
+          <Typography
+            type="heading4"
+            as="heading6"
+            className="whitespace-nowrap pt-4 font-bold sm:pt-0"
+          >
             {name}
           </Typography>
           {genres.map((genre, index) => (

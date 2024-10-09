@@ -120,22 +120,20 @@ const Footer = () => {
               </a>
             </nav>
             <Typography type="text">
-              Site designé et développé par
+              Site designé et développé par{' '}
               <a
                 className="text-white underline"
                 href="https://bento.me/jeromebezeau"
                 target="_blank"
               >
-                {' '}
-                Jérôme Bezeau{' '}
-              </a>
-              &
+                Jérôme Bezeau
+              </a>{' '}
+              &{' '}
               <a
                 className="text-white underline"
                 href="https://bento.me/matteo-courquin"
                 target="_blank"
               >
-                {' '}
                 Mattéo Courquin
               </a>
             </Typography>
