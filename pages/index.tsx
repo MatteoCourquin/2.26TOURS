@@ -55,7 +55,7 @@ export default function Index({ events }: { events: TypeEvent[] }) {
                 <div key={index}>
                   <div className="sm:h-screen">
                     {showYearHeading && (
-                      <Typography type="heading1" className="pb-10 pl-10 opacity-15">
+                      <Typography type="heading2" as='heading1' className="pb-10 pl-10 opacity-15">
                         {new Date(event.date).getFullYear()}
                       </Typography>
                     )}
@@ -92,7 +92,7 @@ export default function Index({ events }: { events: TypeEvent[] }) {
             <Image width={800} height={800} src="/images/illustrations/dj.png" alt="" />
           </div>
           <div className="col-span-1 flex flex-col justify-center gap-10 lg:col-span-2">
-            <Typography type="heading5" as="heading6">
+            <Typography type="heading3" as="heading6">
               2.26 Tours : Collectif techno parisien
             </Typography>
             <Typography type="text" className="w-full lg:w-2/3">

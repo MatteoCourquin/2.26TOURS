@@ -23,6 +23,7 @@ const Header = () => {
               href="/"
               onMouseMove={(e) => useMagnet(e, 0.4)}
               onMouseOut={(e) => useResetMagnet(e)}
+              aria-label="Retour à la page d'acceuil"
             >
               <div onMouseEnter={(e) => useRotateHover(e.currentTarget, 0.7)}>
                 <Image
@@ -30,7 +31,7 @@ const Header = () => {
                   height={36}
                   ref={logoRef}
                   src="/images/icons/logo-white.svg"
-                  alt=""
+                  alt="Logo 2.26 TOURS"
                 />
               </div>
             </Link>
@@ -110,7 +111,7 @@ const Header = () => {
             type={BUTTON_TYPE.ICON}
             as="a"
             target="_blank"
-            href="https://www.instagram.com/2.26tours"
+            href="https://instagram.com/2.26tours"
           >
             <IconInstagram />
           </Button>
@@ -120,7 +121,7 @@ const Header = () => {
             type={BUTTON_TYPE.ICON}
             as="a"
             target="_blank"
-            href="https://www.facebook.com/2.26tours"
+            href="https://facebook.com/2.26tours"
           >
             <IconFacebook />
           </Button>
