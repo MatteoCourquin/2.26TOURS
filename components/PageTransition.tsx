@@ -145,7 +145,11 @@ export default function PageTransition({ children }: { children: ReactNode }) {
         onAnimationComplete={() => setIsAnimationComplete(true)}
         {...anim(text)}
       >
-        <Typography type="heading3" as='heading1' className="whitespace-nowrap uppercase !text-black">
+        <Typography
+          type="heading3"
+          as="heading1"
+          className="whitespace-nowrap uppercase !text-black"
+        >
           {routes[pathname] || '404'}
         </Typography>
       </motion.div>

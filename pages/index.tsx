@@ -55,7 +55,7 @@ export default function Index({ events }: { events: TypeEvent[] }) {
                 <div key={index}>
                   <div className="sm:h-screen">
                     {showYearHeading && (
-                      <Typography type="heading2" as='heading1' className="pb-10 pl-10 opacity-15">
+                      <Typography type="heading2" as="heading1" className="pb-10 pl-10 opacity-15">
                         {new Date(event.date).getFullYear()}
                       </Typography>
                     )}
