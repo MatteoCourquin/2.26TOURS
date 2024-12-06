@@ -93,6 +93,7 @@ const Footer = () => {
             <nav className="flex gap-6">
               {/* INSTAGRAM */}
               <a
+                aria-label="Lien vers Instagram"
                 href="https://www.instagram.com/2.26tours/"
                 target="_blank"
                 onMouseMove={(e) => useMagnet(e, 0.4)}
@@ -102,6 +103,7 @@ const Footer = () => {
               </a>
               {/* FACEBOOK */}
               <a
+                aria-label="Lien vers Facebook"
                 href="https://www.facebook.com/2.26tours"
                 target="_blank"
                 onMouseMove={(e) => useMagnet(e, 0.4)}
@@ -111,6 +113,7 @@ const Footer = () => {
               </a>
               {/* SOUNDCLOUD */}
               <a
+                aria-label="Lien vers SoundCloud"
                 href="https://soundcloud.com/2-26-tours"
                 target="_blank"
                 onMouseMove={(e) => useMagnet(e, 0.4)}
