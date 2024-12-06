@@ -24,7 +24,7 @@ const SEO = ({
       <meta property="og:site_name" content="2.26 Tours" />
       <meta property="og:type" content="website" />
 
-      {/* <meta name="google-site-verification" content="" /> */}
+      <meta name="google-site-verification" content="TEO7ZMjtFf_sWFI0WHT-LkMWQjVYalqHiBDN2y8Eog8" />
 
       <meta
         name="keywords"
